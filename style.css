@@ -2959,3 +2959,35 @@ a:focus-visible {
 .xt-player-avatar-status {
   z-index: 3;
 }
+
+/* XTREMETOY profile picture restoration */
+.xt-player-avatar {
+  position: relative;
+  overflow: visible;
+  isolation: isolate;
+}
+
+.xt-player-avatar-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.xt-player-avatar-fallback {
+  position: absolute;
+  inset: 0;
+  place-items: center;
+  border-radius: 18px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #702cff, #ff36bd);
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.xt-player-avatar-status {
+  z-index: 3;
+}
