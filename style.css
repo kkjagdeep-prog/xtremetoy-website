@@ -67,3 +67,235 @@
     font-size: 10px;
   }
 }
+
+/* =====================================
+   XTREMETOY — DISCORD PROFILE CARD
+   ===================================== */
+
+.discord-profile-card {
+  flex: 1;
+  background:
+    radial-gradient(
+      ellipse at 100% 0%,
+      rgba(137, 55, 255, 0.17),
+      transparent 55%
+    ),
+    linear-gradient(145deg, #151025, #0c0916);
+  overflow: hidden;
+}
+
+.discord-profile-banner {
+  min-height: 125px;
+  padding: 18px;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 75% 40%, #8e35ff66, transparent 38%),
+    linear-gradient(115deg, #20103d, #37156a, #10102b);
+  border-bottom: 1px solid rgba(173, 104, 255, 0.3);
+}
+
+.discord-profile-banner::before,
+.discord-profile-banner::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 100px;
+  border: 1px solid rgba(206, 151, 255, 0.24);
+  border-radius: 50%;
+  transform: rotate(-25deg);
+  pointer-events: none;
+}
+
+.discord-profile-banner::before {
+  top: 10px;
+  right: -55px;
+}
+
+.discord-profile-banner::after {
+  top: 35px;
+  right: -35px;
+  transform: rotate(25deg);
+}
+
+.discord-banner-label {
+  position: relative;
+  z-index: 1;
+  color: #d9b5ff;
+  font: 600 9px Orbitron, sans-serif;
+  letter-spacing: 1.4px;
+}
+
+.discord-banner-x {
+  position: absolute;
+  right: 27px;
+  top: -15px;
+  color: rgba(223, 190, 255, 0.16);
+  font: 800 115px Orbitron, sans-serif;
+  transform: rotate(-10deg);
+}
+
+.discord-profile-main {
+  position: relative;
+  padding: 0 24px 25px;
+}
+
+.discord-avatar-wrap {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  margin-top: -42px;
+  margin-bottom: 15px;
+  z-index: 2;
+}
+
+.discord-avatar {
+  display: grid;
+  place-items: center;
+  width: 88px;
+  height: 88px;
+  border-radius: 25px;
+  border: 3px solid #100b1a;
+  background: linear-gradient(140deg, #a34cff, #37205f 70%);
+  color: #fff0ff;
+  font: 800 29px Orbitron, sans-serif;
+  box-shadow:
+    0 0 0 1px #bd78ff,
+    0 0 28px rgba(155, 77, 255, 0.4);
+}
+
+.discord-status-indicator {
+  position: absolute;
+  width: 19px;
+  height: 19px;
+  right: -2px;
+  bottom: -1px;
+  border: 4px solid #100b1a;
+  border-radius: 50%;
+  background: #9a8eac;
+}
+
+.discord-identity .eyebrow {
+  margin: 0 0 8px;
+  font-size: 9px;
+}
+
+.discord-identity h3 {
+  margin: 0;
+  font: 700 23px Orbitron, sans-serif;
+  overflow-wrap: anywhere;
+}
+
+.discord-tag {
+  margin: 9px 0 0;
+  color: #9e8eb9;
+  font: 600 9px Orbitron, sans-serif;
+  letter-spacing: 0.6px;
+  line-height: 1.8;
+}
+
+.discord-profile-divider {
+  height: 1px;
+  margin: 21px 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(173, 104, 255, 0.55),
+    transparent
+  );
+}
+
+.discord-bio {
+  color: #c6bdd8;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.discord-profile-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0 23px;
+}
+
+.discord-profile-tags span {
+  padding: 7px 9px;
+  border: 1px solid rgba(173, 104, 255, 0.3);
+  border-radius: 5px;
+  background: rgba(130, 65, 210, 0.1);
+  color: #d4b6f7;
+  font: 600 8px Orbitron, sans-serif;
+  letter-spacing: 0.4px;
+}
+
+.discord-profile-button {
+  box-shadow: 0 0 22px rgba(142, 55, 216, 0.2);
+}
+
+.discord-profile-footnote {
+  margin: 13px 0 0;
+  text-align: center;
+  color: #7f7195;
+  font: 600 8px Orbitron, sans-serif;
+  letter-spacing: 1.2px;
+}
+
+.discord-profile-card,
+.discord-avatar,
+.discord-profile-button {
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.discord-card:hover .discord-avatar {
+  box-shadow:
+    0 0 0 1px #d09aff,
+    0 0 35px rgba(155, 77, 255, 0.6);
+}
+
+.discord-card:hover .discord-profile-card {
+  border-color: rgba(190, 119, 255, 0.45);
+}
+
+.discord-profile-button:focus-visible {
+  outline: 2px solid #7de7ff;
+  outline-offset: 4px;
+}
+
+@media (max-width: 620px) {
+  .discord-profile-banner {
+    min-height: 105px;
+  }
+
+  .discord-profile-main {
+    padding: 0 19px 22px;
+  }
+
+  .discord-avatar-wrap,
+  .discord-avatar {
+    width: 78px;
+    height: 78px;
+  }
+
+  .discord-avatar-wrap {
+    margin-top: -37px;
+  }
+
+  .discord-avatar {
+    border-radius: 22px;
+    font-size: 25px;
+  }
+
+  .discord-identity h3 {
+    font-size: 20px;
+  }
+
+  .discord-profile-tags {
+    gap: 6px;
+  }
+}
