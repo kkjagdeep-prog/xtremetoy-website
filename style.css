@@ -296,6 +296,16 @@
   }
 
   .discord-profile-tags {
+    /* Custom XTREMETOY Discord avatar */
+img.discord-avatar {
+  display: block;
+  width: 88px;
+  height: 88px;
+  padding: 0;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 25px;
+}
     gap: 6px;
   }
 }
