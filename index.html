@@ -318,7 +318,7 @@
         </a>
       </div>
 
-      <!-- NEW HTML GAMER PROFILE — NO PNG PROFILE CARD -->
+      <!-- XTREMETOY GAMER PROFILE -->
       <section class="xt-player-section" aria-label="XTREMETOY gamer profile">
         <div class="xt-player-card">
 
@@ -340,8 +340,19 @@
           <div class="xt-player-content">
 
             <div class="xt-player-identity">
+
+              <!-- RESTORED PROFILE PICTURE -->
               <div class="xt-player-avatar">
-                <span>X</span>
+                <img
+                  src="discord-avatar.png"
+                  alt="XTREMETOY profile picture"
+                  class="xt-player-avatar-image"
+                  width="94"
+                  height="94"
+                  loading="eager"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+                >
+                <span class="xt-player-avatar-fallback" style="display:none;">X</span>
                 <i class="xt-player-avatar-status" aria-label="Status indicator"></i>
               </div>
 
@@ -411,12 +422,23 @@
 
     </section>
 
-    <!-- END SECTION -->
-    <section class="section final-section">
+    <!-- CONNECT -->
+    <section class="section final-section" id="connect">
       <div class="final-glow"></div>
       <p class="eyebrow">END OF TRANSMISSION</p>
       <h2>SEE YOU IN<br><span class="gradient-text">THE GAME.</span></h2>
-      <a class="button primary" href="#home">BACK TO TOP ↑</a>
+
+      <div class="hero-actions">
+        <a
+          class="button primary"
+          href="https://discord.com/users/1315545130199027782"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          CONNECT ON DISCORD ↗
+        </a>
+        <a class="button secondary" href="#home">BACK TO TOP ↑</a>
+      </div>
     </section>
 
   </main>
