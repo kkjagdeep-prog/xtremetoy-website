@@ -309,3 +309,111 @@ img.discord-avatar {
     gap: 6px;
   }
 }
+
+/* ==========================================
+   XTREMETOY — CYBERPUNK DISCORD CARD
+   ========================================== */
+
+.discord-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgba(177, 105, 255, 0.55);
+  border-radius: 24px;
+  background:
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(142, 55, 255, 0.2),
+      transparent 40%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(24, 15, 48, 0.97),
+      rgba(12, 10, 27, 0.98)
+    );
+  box-shadow:
+    0 0 25px rgba(133, 57, 255, 0.15),
+    inset 0 0 25px rgba(151, 79, 255, 0.05);
+  backdrop-filter: blur(14px);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.discord-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(205, 160, 255, 0.9);
+  box-shadow:
+    0 0 18px rgba(157, 73, 255, 0.3),
+    0 0 45px rgba(112, 43, 255, 0.15);
+}
+
+/* Custom avatar image */
+img.discord-avatar {
+  display: block;
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+  padding: 3px;
+  object-fit: cover;
+  object-position: center;
+  border: 2px solid #c084fc;
+  border-radius: 24px;
+  background: #1b1035;
+  box-shadow:
+    0 0 12px rgba(192, 132, 252, 0.65),
+    0 0 28px rgba(139, 92, 246, 0.25);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.discord-card:hover img.discord-avatar {
+  transform: scale(1.04);
+  box-shadow:
+    0 0 18px rgba(192, 132, 252, 0.85),
+    0 0 35px rgba(139, 92, 246, 0.4);
+}
+
+/* Username */
+.discord-card h3 {
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(192, 132, 252, 0.25);
+}
+
+/* Role and profile badges */
+.discord-card .badge,
+.discord-card .role-badge {
+  border: 1px solid rgba(192, 132, 252, 0.3);
+  border-radius: 999px;
+  background: rgba(139, 92, 246, 0.12);
+  color: #e9d5ff;
+}
+
+/* Discord profile button */
+.discord-card a {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+.discord-card a:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.12);
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+  .discord-card {
+    border-radius: 18px;
+    padding: 18px;
+  }
+
+  img.discord-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+  }
+}
