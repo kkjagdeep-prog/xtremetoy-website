@@ -2938,3 +2938,24 @@ a:focus-visible {
     transition: none;
   }
 }
+
+/* Restore the actual gamer profile picture */
+.xt-player-avatar {
+  position: relative;
+  overflow: visible;
+  isolation: isolate;
+}
+
+.xt-player-avatar-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.xt-player-avatar-status {
+  z-index: 3;
+}
