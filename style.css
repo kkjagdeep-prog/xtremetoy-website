@@ -2991,3 +2991,32 @@ a:focus-visible {
 .xt-player-avatar-status {
   z-index: 3;
 }
+
+// Sync the intro music button with the existing navbar music control
+(() => {
+  const introMusicButton = document.getElementById("introMusicToggle");
+  const existingMusicButton = document.getElementById("musicToggle");
+  const bgMusic = document.getElementById("bgMusic");
+
+  if (!introMusicButton || !existingMusicButton || !bgMusic) return;
+
+  const updateIntroMusicButton = () => {
+    const playing = !bgMusic.paused;
+
+    introMusicButton.classList.toggle("is-playing", playing);
+    introMusicButton.setAttribute("aria-pressed", String(playing));
+
+    const label = introMusicButton.querySelector(".intro-music-label");
+    if (label) label.textContent = playing ? "SOUND ON" : "SOUND OFF";
+  };
+
+  introMusicButton.addEventListener("click", () => {
+    existingMusicButton.click();
+    window.setTimeout(updateIntroMusicButton, 150);
+  });
+
+  bgMusic.addEventListener("play", updateIntroMusicButton);
+  bgMusic.addEventListener("pause", updateIntroMusicButton);
+
+  updateIntroMusicButton();
+})();
