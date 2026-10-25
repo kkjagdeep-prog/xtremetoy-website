@@ -1,10 +1,942 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
-:root{--bg:#090712;--panel:#100d1d;--panel2:#151026;--purple:#9b4dff;--pink:#e34fff;--cyan:#7de7ff;--white:#f8f5ff;--muted:#aaa2c2;--line:rgba(173,104,255,.24)}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--white);font-family:'Rajdhani',sans-serif;font-size:18px;overflow-x:hidden}body.locked{overflow:hidden}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}.particles{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}.particle{position:absolute;width:3px;height:3px;border-radius:50%;background:#c78cff;box-shadow:0 0 12px #9b4dff;animation:float-up linear infinite;opacity:.55}@keyframes float-up{from{transform:translateY(105vh) scale(.5);opacity:0}15%{opacity:.8}85%{opacity:.55}to{transform:translateY(-10vh) scale(1.5);opacity:0}}.intro{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;background:radial-gradient(ellipse at 50% 45%,rgba(102,30,181,.27),transparent 48%),#090712;transition:opacity .8s,visibility .8s}.intro.hide{opacity:0;visibility:hidden}.intro-mark{display:grid;place-items:center;width:82px;height:82px;border:1px solid #a65aff;border-radius:23px;color:#d8a6ff;font:800 48px Orbitron;transform:rotate(-8deg);box-shadow:0 0 35px #7d2ee766,inset 0 0 25px #7d2ee733;margin-bottom:28px}.eyebrow{font:600 11px Orbitron,sans-serif;letter-spacing:2.2px;color:#c8a4ff}.intro h1{font:800 clamp(38px,7vw,74px)/1.1 Orbitron,sans-serif;letter-spacing:-2px;margin:16px 0}.intro h1 span,.gradient-text{background:linear-gradient(100deg,#f1b5ff,#9d50ff 55%,#72dcff);-webkit-background-clip:text;background-clip:text;color:transparent}.intro-copy,.small-note{color:var(--muted)}.enter-button{margin-top:25px;padding:16px 25px;border:1px solid #b76bff;background:linear-gradient(100deg,#7125c9,#a442e8);border-radius:8px;font:700 12px Orbitron;letter-spacing:1px;box-shadow:0 0 28px #8a36e755;cursor:pointer}.enter-button span{margin-left:18px}.small-note{font-size:14px;margin-top:18px}.topbar{height:78px;position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:0 max(5vw,22px);background:#0a0813df;border-bottom:1px solid var(--line);backdrop-filter:blur(16px)}.brand{display:flex;align-items:center;gap:11px;font:700 15px Orbitron;letter-spacing:.4px}.brand-icon{display:grid;place-items:center;width:37px;height:37px;border:1px solid #a955ff;border-radius:10px;color:#d9a6ff;font:800 23px Orbitron;box-shadow:0 0 18px #9d4dff66}.brand small{display:block;color:#8b7da9;font:500 8px Orbitron;letter-spacing:2px;margin-top:4px}.topbar nav{display:flex;gap:29px}.topbar nav a{color:#b8afcb;font-size:16px;transition:.2s}.topbar nav a:hover,.topbar nav a.active{color:#d9a4ff}.music-toggle,.menu-toggle{border:1px solid var(--line);background:#151025;padding:10px 13px;border-radius:7px;color:#d9baff;font:600 10px Orbitron;letter-spacing:1px;cursor:pointer}.music-toggle span:first-child{font-size:16px;margin-right:8px}.menu-toggle{display:none}main,footer{position:relative;z-index:1}.section{padding:105px max(7vw,24px);position:relative}.hero{min-height:650px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:35px;overflow:hidden;background:radial-gradient(ellipse at 78% 46%,#47167a55,transparent 39%),linear-gradient(110deg,#0b0815,#0d0918 65%,#140b25)}.hero:after{content:'';position:absolute;inset:auto 0 0;height:1px;background:linear-gradient(90deg,transparent,#a849ff,transparent)}.hero-copy{position:relative;z-index:2}.status-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#72f5c1;box-shadow:0 0 12px #72f5c1;margin-right:8px}.hero h2{font:800 clamp(39px,5vw,68px)/1.13 Orbitron,sans-serif;letter-spacing:-2.7px;margin:22px 0}.cursor{color:#b76bff;animation:blink 1s steps(2) infinite}@keyframes blink{50%{opacity:0}}.lead{font-size:22px;color:#b9b1cc;line-height:1.45}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.button{display:inline-flex;align-items:center;justify-content:center;gap:17px;padding:14px 18px;border-radius:7px;font:700 10px Orbitron;letter-spacing:.7px;transition:transform .2s,box-shadow .2s}.button:hover{transform:translateY(-3px);box-shadow:0 8px 28px #9d4dff44}.button.primary{background:linear-gradient(110deg,#7e2bd0,#aa42e8);border:1px solid #bd78ff;box-shadow:0 0 22px #8e37d82b}.button.secondary{border:1px solid #62428b;background:#120d20;color:#d7c7e9}.hero-tags{display:flex;gap:22px;margin-top:35px;color:#8c7da6;font:600 10px Orbitron;letter-spacing:1px}.hero-visual{height:390px;position:relative;display:grid;place-items:center}.hero-visual:before{content:'';position:absolute;width:300px;height:300px;border-radius:50%;background:#7b2be82a;filter:blur(35px)}.hero-x{font:800 clamp(160px,23vw,280px)/1 Orbitron;color:#d8b3ff;text-shadow:0 0 12px #b957ff,0 0 45px #8d2cff,0 0 95px #8d2cff;transform:rotate(-9deg);animation:pulse 4s ease-in-out infinite}.orbit{position:absolute;width:310px;height:310px;border:1px solid #a84fff70;border-radius:50%;box-shadow:0 0 24px #8e35ff22}.orbit-one{transform:rotateX(66deg) rotateZ(20deg);width:400px;height:400px}.orbit-two{transform:rotateY(66deg) rotateZ(-20deg);width:330px;height:330px;border-color:#68dfff44}@keyframes pulse{50%{text-shadow:0 0 20px #b957ff,0 0 70px #8d2cff,0 0 120px #8d2cff;transform:rotate(0) scale(1.04)}}.visual-label{position:absolute;font:600 9px Orbitron;letter-spacing:1.6px;color:#a99bbf}.visual-label b{color:#d4a0ff;margin-left:7px}.label-top{top:38px;right:4%}.label-bottom{bottom:38px;left:4%}.scroll-hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);font:600 9px Orbitron;letter-spacing:2px;color:#796a91}.scroll-hint span{color:#cf8dff;margin-left:9px}.section-heading{text-align:center;margin-bottom:42px}.section-heading h2,.final-section h2{font:800 clamp(32px,4vw,48px) Orbitron;margin:12px 0}.section-desc{color:var(--muted);font-size:19px;margin:0}.about-section{background:linear-gradient(180deg,#0b0814,#0e0a19)}.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;max-width:1050px;margin:auto}.panel,.quote-panel,.role-card,.game-card{border:1px solid var(--line);background:linear-gradient(145deg,#151025,#0f0b1a);border-radius:12px;overflow:hidden}.profile-panel{padding:28px}.profile-top{display:flex;align-items:center;gap:18px}.avatar{display:grid;place-items:center;width:78px;height:78px;border-radius:18px;background:linear-gradient(140deg,#7625b6,#201438);border:1px solid #bc70ff;color:#e4c6ff;font:800 40px Orbitron;box-shadow:0 0 24px #9b4dff30}.online-pill{font:600 9px Orbitron;letter-spacing:1px;color:#7ef4c4}.online-pill i{display:inline-block;width:6px;height:6px;background:#7ef4c4;border-radius:50%;margin-right:5px}.profile-top h3{font:700 22px Orbitron;margin:7px 0 2px}.muted{color:var(--muted);margin:0}.panel-line{height:1px;background:var(--line);margin:24px 0}.bio{line-height:1.6;color:#c6bdd8}.bio strong{color:#e0b8ff}.info-chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}.info-chips span{padding:8px 10px;border:1px solid var(--line);border-radius:5px;background:#211632;color:#d4c4e8;font-size:14px}.quote-panel{padding:30px;position:relative;display:flex;flex-direction:column;justify-content:center;min-height:260px;background:radial-gradient(ellipse at 100% 0,#762bc43b,transparent 55%),#100c1c}.quote-mark{font:90px Georgia;color:#a34cff;line-height:.7}.quote-panel h3{font:700 22px Orbitron}.quote-panel p{color:#bcb2ce;line-height:1.6;max-width:340px}.quote-decoration{position:absolute;right:20px;bottom:16px;font:600 10px Orbitron;letter-spacing:2px;color:#725b90}.roles-section{background:#090712}.role-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1050px;margin:auto}.role-card{padding:26px;min-height:230px;transition:transform .25s,border-color .25s}.role-card:hover{transform:translateY(-5px);border-color:#b15bff}.role-card.featured{background:radial-gradient(ellipse at 100% 0,#7424b53d,transparent 60%),#151025;border-color:#8e42cf}.role-icon{font-size:31px;color:#c17aff}.role-number{font:600 9px Orbitron;letter-spacing:1.5px;color:#8e7da8;margin:18px 0 10px}.role-card h3,.game-info h3{font:700 18px Orbitron}.role-card p:last-child,.game-info p:not(.eyebrow){color:#a99fbd;line-height:1.45}.gaming-section{background:linear-gradient(180deg,#0b0814,#10091a)}.game-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1050px;margin:auto}.game-card{display:flex;flex-direction:column}.game-art{height:190px;position:relative;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 50% 50%,#7022a9,#17102b 60%,#0c0916)}.game-art:before,.game-art:after{content:'';position:absolute;width:340px;height:130px;border:1px solid #bd70ff40;transform:rotate(-25deg);border-radius:50%}.game-art:after{transform:rotate(25deg);border-color:#69dfff2e}.art-glow{position:absolute;width:150px;height:100px;background:#a83dff55;filter:blur(50px)}.roblox-diamond,.discord-symbol{z-index:1;font-size:88px;color:#f2dfff;text-shadow:0 0 30px #c15bff}.roblox-diamond{transform:rotate(22deg)}.discord-symbol{font-size:75px}.art-caption{position:absolute;bottom:14px;left:17px;z-index:1;font:600 9px Orbitron;letter-spacing:2px;color:#bca3d7}.discord-art{background:radial-gradient(ellipse at 50% 50%,#37207b,#12102b 62%,#0c0916)}.game-info{padding:23px;display:flex;flex:1;flex-direction:column;justify-content:space-between;gap:22px}.game-info h3{font-size:23px;margin:8px 0}.game-info p:not(.eyebrow){margin:0}.game-info .eyebrow{margin:0;font-size:9px}.button.full{width:100%;justify-content:space-between}.discord-note{max-width:1050px;margin:20px auto 0;padding:20px;display:flex;align-items:center;gap:16px;border:1px solid var(--line);border-radius:10px;background:#120d20}.discord-note-icon{display:grid;place-items:center;flex-shrink:0;width:45px;height:45px;background:#2b1744;border-radius:10px;color:#d4a2ff;font-size:25px}.discord-note h3{font:700 12px Orbitron;letter-spacing:.5px;margin:0 0 6px}.discord-note p{margin:0;color:#a99fbd;font-size:15px;line-height:1.4}.text-link{font:600 9px Orbitron;color:#d6a0ff;white-space:nowrap;margin-left:auto}.final-section{text-align:center;overflow:hidden;background:radial-gradient(ellipse at 50% 100%,#6c1cae3b,transparent 60%),#0b0813}.final-section .eyebrow,.final-section h2,.final-section .button{position:relative;z-index:1}.final-section h2{font-size:clamp(38px,6vw,66px);line-height:1.2;margin:18px 0 28px}.final-glow{position:absolute;left:50%;bottom:-150px;transform:translateX(-50%);width:450px;height:250px;border-radius:50%;background:#8a2cff33;filter:blur(65px)}footer{display:flex;align-items:center;justify-content:space-between;padding:22px max(5vw,22px);border-top:1px solid var(--line);background:#090711}footer p{font:600 9px Orbitron;letter-spacing:1.2px;color:#827395}footer p span{color:#bb69ff;margin-left:7px}.footer-brand .brand-icon{width:31px;height:31px;font-size:18px}.back-top{font:600 10px Orbitron;color:#c6a0ef}
-@media(max-width:850px){.topbar{padding:0 20px}.topbar nav{gap:15px}.topbar nav a{font-size:14px}.hero{grid-template-columns:1fr;min-height:auto;padding-top:85px;padding-bottom:90px}.hero-visual{height:300px;grid-row:1}.hero-copy{text-align:center}.hero-actions,.hero-tags{justify-content:center}.hero h2{font-size:clamp(38px,8vw,58px)}.scroll-hint{display:none}.about-grid{grid-template-columns:1fr}.role-grid{grid-template-columns:1fr}.role-card{min-height:190px}.game-grid{grid-template-columns:1fr 1fr}.discord-note{align-items:flex-start;flex-wrap:wrap}.text-link{margin-left:61px}.section{padding:80px 24px}}
-@media(max-width:620px){.topbar{height:68px}.topbar nav{display:none;position:absolute;left:12px;right:12px;top:72px;padding:18px;background:#100b1d;border:1px solid var(--line);border-radius:10px;flex-direction:column;gap:16px}.topbar nav.open{display:flex}.music-toggle{margin-left:auto;margin-right:10px;padding:9px}.music-toggle #musicText{font-size:8px}.menu-toggle{display:block}.brand{font-size:13px}.hero{padding:65px 22px 70px}.hero-visual{height:250px}.hero-x{font-size:175px}.orbit-one{width:290px;height:290px}.orbit-two{width:245px;height:245px}.visual-label{font-size:8px}.hero h2{letter-spacing:-1.8px}.lead{font-size:19px}.hero-actions{flex-direction:column;align-items:stretch}.hero-tags{gap:12px;flex-wrap:wrap;font-size:9px}.section{padding:70px 19px}.section-heading{margin-bottom:30px}.game-grid{grid-template-columns:1fr}.game-art{height:170px}.discord-note{padding:16px}.discord-note>div:nth-child(2){flex:1;min-width:190px}.text-link{margin-left:61px}.profile-panel{padding:20px}.profile-top{gap:13px}.avatar{width:65px;height:65px}.profile-top h3{font-size:18px}.quote-panel{min-height:220px}footer{gap:12px;flex-wrap:wrap}footer p{order:3;width:100%;text-align:center}.intro h1{letter-spacing:-1px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
 
-/* Role statistics — xtremetoy */
+/* =========================================================
+   XTREMETOY — REZE-INSPIRED CYBERPUNK WEBSITE
+   Complete stylesheet
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+/* -------------------------
+   1. GLOBAL THEME
+   ------------------------- */
+
+:root {
+  --bg: #080610;
+  --bg-soft: #0d0917;
+  --panel: #120d1e;
+  --panel2: #1b112b;
+  --purple: #a855f7;
+  --purple-light: #d0a0ff;
+  --pink: #ff4fc8;
+  --pink-light: #ff9be4;
+  --cyan: #91e8ff;
+  --white: #fcf7ff;
+  --muted: #b3a6c8;
+  --line: rgba(174, 105, 255, 0.27);
+  --glow-purple: 0 0 25px rgba(168, 85, 247, 0.22);
+  --glow-pink: 0 0 25px rgba(255, 79, 200, 0.15);
+  --radius: 14px;
+  --content-width: 1100px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(
+      ellipse at 10% 10%,
+      rgba(107, 38, 155, 0.12),
+      transparent 35%
+    ),
+    radial-gradient(
+      ellipse at 90% 50%,
+      rgba(255, 79, 200, 0.045),
+      transparent 34%
+    ),
+    var(--bg);
+  color: var(--white);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 18px;
+  overflow-x: hidden;
+}
+
+body.locked {
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  color: inherit;
+  font: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+::selection {
+  color: white;
+  background: #8737c9;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 4px;
+}
+
+/* Shared gradient text */
+
+.gradient-text,
+.intro h1 span {
+  background: linear-gradient(
+    100deg,
+    #ffd1f1 0%,
+    #ff73d3 30%,
+    #bd83ff 68%,
+    #91e8ff 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Shared small labels */
+
+.eyebrow {
+  color: #d6b0ff;
+  font: 600 10px 'Orbitron', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.small-note {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.muted {
+  color: var(--muted);
+  margin: 0;
+}
+
+/* -------------------------
+   2. BACKGROUND PARTICLES
+   ------------------------- */
+
+.particles {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #d5a3ff;
+  box-shadow:
+    0 0 8px #a855f7,
+    0 0 16px rgba(255, 79, 200, 0.35);
+  animation: float-up linear infinite;
+  opacity: 0.55;
+}
+
+@keyframes float-up {
+  from {
+    transform: translateY(105vh) scale(0.5);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.8;
+  }
+
+  85% {
+    opacity: 0.55;
+  }
+
+  to {
+    transform: translateY(-10vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* -------------------------
+   3. INTRO / ENTER SCREEN
+   ------------------------- */
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  background:
+    radial-gradient(
+      ellipse at 50% 42%,
+      rgba(132, 43, 207, 0.25),
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 70% 65%,
+      rgba(255, 79, 200, 0.09),
+      transparent 40%
+    ),
+    #080610;
+  transition:
+    opacity 0.8s ease,
+    visibility 0.8s ease;
+}
+
+.intro.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-mark {
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  margin-bottom: 28px;
+  border: 1px solid var(--pink);
+  border-radius: 23px;
+  color: #f3d7ff;
+  font: 800 46px 'Orbitron', sans-serif;
+  transform: rotate(-8deg);
+  background: rgba(168, 85, 247, 0.08);
+  box-shadow:
+    0 0 22px rgba(168, 85, 247, 0.28),
+    0 0 42px rgba(255, 79, 200, 0.12),
+    inset 0 0 20px rgba(168, 85, 247, 0.12);
+}
+
+.intro h1 {
+  margin: 16px 0;
+  font: 800 clamp(38px, 7vw, 74px)/1.1 'Orbitron', sans-serif;
+  letter-spacing: -2px;
+}
+
+.intro-copy {
+  max-width: 480px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.enter-button {
+  margin-top: 25px;
+  padding: 16px 25px;
+  border: 1px solid rgba(255, 156, 231, 0.7);
+  border-radius: 8px;
+  background: linear-gradient(110deg, #7024bd, #b52b9e);
+  box-shadow: var(--glow-purple);
+  font: 700 11px 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+.enter-button:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.12);
+  box-shadow:
+    0 0 25px rgba(168, 85, 247, 0.38),
+    0 0 35px rgba(255, 79, 200, 0.16);
+}
+
+.enter-button span {
+  margin-left: 16px;
+}
+
+.intro .small-note {
+  margin-top: 18px;
+}
+
+/* -------------------------
+   4. NAVIGATION
+   ------------------------- */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 78px;
+  padding: 0 max(5vw, 22px);
+  border-bottom: 1px solid var(--line);
+  background: rgba(8, 6, 16, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font: 700 15px 'Orbitron', sans-serif;
+  letter-spacing: 0.4px;
+}
+
+.brand-icon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 37px;
+  height: 37px;
+  border: 1px solid rgba(255, 105, 219, 0.8);
+  border-radius: 10px;
+  color: #f0caff;
+  font: 800 22px 'Orbitron', sans-serif;
+  box-shadow:
+    0 0 15px rgba(168, 85, 247, 0.28),
+    0 0 24px rgba(255, 79, 200, 0.1);
+}
+
+.brand small {
+  display: block;
+  margin-top: 4px;
+  color: #a392ba;
+  font: 500 8px 'Orbitron', sans-serif;
+  letter-spacing: 2px;
+}
+
+.topbar nav {
+  display: flex;
+  align-items: center;
+  gap: 27px;
+}
+
+.topbar nav a {
+  position: relative;
+  color: #b8afcb;
+  font-size: 16px;
+  transition:
+    color 0.2s ease,
+    text-shadow 0.2s ease;
+}
+
+.topbar nav a::after {
+  position: absolute;
+  right: 0;
+  bottom: -7px;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--purple), var(--pink));
+  content: '';
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.topbar nav a:hover,
+.topbar nav a.active {
+  color: #ff9be4;
+  text-shadow: 0 0 12px rgba(255, 79, 200, 0.25);
+}
+
+.topbar nav a:hover::after,
+.topbar nav a.active::after {
+  transform: scaleX(1);
+}
+
+.music-toggle,
+.menu-toggle {
+  padding: 10px 13px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #151025;
+  color: #e2c9ff;
+  font: 600 10px 'Orbitron', sans-serif;
+  letter-spacing: 0.7px;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.music-toggle:hover,
+.menu-toggle:hover {
+  border-color: var(--pink);
+  background: #21112f;
+  box-shadow: var(--glow-purple);
+}
+
+.music-toggle span:first-child {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+/* -------------------------
+   5. PAGE STRUCTURE
+   ------------------------- */
+
+main,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+.section {
+  position: relative;
+  padding: 100px max(7vw, 24px);
+}
+
+.section-heading {
+  max-width: 760px;
+  margin: 0 auto 44px;
+  text-align: center;
+}
+
+.section-heading h2,
+.final-section h2 {
+  margin: 12px 0;
+  font: 800 clamp(32px, 4vw, 48px)/1.2 'Orbitron', sans-serif;
+  letter-spacing: -1px;
+}
+
+.section-desc {
+  margin: 0;
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.55;
+}
+
+/* -------------------------
+   6. HOME / HERO
+   ------------------------- */
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 35px;
+  min-height: 650px;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse at 78% 46%,
+      rgba(132, 43, 207, 0.25),
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at 92% 65%,
+      rgba(255, 79, 200, 0.08),
+      transparent 34%
+    ),
+    linear-gradient(110deg, #090712, #10091b 65%, #170a23);
+}
+
+.hero::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--purple),
+    var(--pink),
+    transparent
+  );
+  content: '';
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: #72f5c1;
+  box-shadow: 0 0 12px #72f5c1;
+}
+
+.hero h2 {
+  margin: 22px 0;
+  font: 800 clamp(39px, 5vw, 68px)/1.13 'Orbitron', sans-serif;
+  letter-spacing: -2.7px;
+}
+
+.cursor {
+  color: var(--pink-light);
+  animation: blink 1s steps(2) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.lead {
+  max-width: 570px;
+  color: #c3b7d3;
+  font-size: 22px;
+  line-height: 1.5;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 14px 18px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  font: 700 10px 'Orbitron', sans-serif;
+  letter-spacing: 0.7px;
+  cursor: pointer;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease,
+    filter 0.22s ease;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.1);
+}
+
+.button.primary {
+  border-color: rgba(255, 156, 231, 0.65);
+  background: linear-gradient(110deg, #7024bd, #b52b9e);
+  box-shadow: 0 0 22px rgba(183, 51, 215, 0.2);
+}
+
+.button.primary:hover {
+  box-shadow:
+    0 0 25px rgba(168, 85, 247, 0.35),
+    0 0 30px rgba(255, 79, 200, 0.13);
+}
+
+.button.secondary {
+  border-color: rgba(168, 85, 247, 0.48);
+  background: rgba(18, 13, 32, 0.85);
+  color: #e2d2f4;
+}
+
+.button.secondary:hover {
+  border-color: var(--pink);
+}
+
+.button.full {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin-top: 35px;
+  color: #a394b8;
+  font: 600 10px 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+}
+
+/* Hero visual */
+
+.hero-visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 390px;
+}
+
+.hero-visual::before {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(123, 43, 232, 0.19);
+  filter: blur(38px);
+  content: '';
+}
+
+.hero-x {
+  position: relative;
+  z-index: 1;
+  color: #ead4ff;
+  font: 800 clamp(160px, 23vw, 280px)/1 'Orbitron', sans-serif;
+  text-shadow:
+    0 0 12px rgba(185, 87, 255, 0.9),
+    0 0 42px rgba(141, 44, 255, 0.65),
+    0 0 80px rgba(255, 79, 200, 0.2);
+  transform: rotate(-9deg);
+  animation: hero-pulse 4s ease-in-out infinite;
+}
+
+.orbit {
+  position: absolute;
+  width: 310px;
+  height: 310px;
+  border: 1px solid rgba(168, 79, 255, 0.42);
+  border-radius: 50%;
+  box-shadow: 0 0 24px rgba(142, 53, 255, 0.1);
+}
+
+.orbit-one {
+  width: 400px;
+  height: 400px;
+  transform: rotateX(66deg) rotateZ(20deg);
+}
+
+.orbit-two {
+  width: 330px;
+  height: 330px;
+  border-color: rgba(104, 223, 255, 0.25);
+  transform: rotateY(66deg) rotateZ(-20deg);
+}
+
+@keyframes hero-pulse {
+  50% {
+    text-shadow:
+      0 0 20px rgba(185, 87, 255, 0.95),
+      0 0 65px rgba(141, 44, 255, 0.75),
+      0 0 100px rgba(255, 79, 200, 0.3);
+    transform: rotate(0) scale(1.035);
+  }
+}
+
+.visual-label {
+  position: absolute;
+  z-index: 2;
+  color: #b5a6ca;
+  font: 600 9px 'Orbitron', sans-serif;
+  letter-spacing: 1.5px;
+}
+
+.visual-label b {
+  margin-left: 7px;
+  color: #e0adff;
+}
+
+.label-top {
+  top: 38px;
+  right: 4%;
+}
+
+.label-bottom {
+  bottom: 38px;
+  left: 4%;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  color: #9583ac;
+  font: 600 9px 'Orbitron', sans-serif;
+  letter-spacing: 2px;
+  transform: translateX(-50%);
+}
+
+.scroll-hint span {
+  margin-left: 9px;
+  color: var(--pink-light);
+}
+
+/* -------------------------
+   7. ABOUT / MY INFOS
+   ------------------------- */
+
+.about-section {
+  background:
+    radial-gradient(
+      ellipse at 0% 50%,
+      rgba(108, 34, 153, 0.08),
+      transparent 42%
+    ),
+    linear-gradient(180deg, #0b0814, #0e0918);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 20px;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.panel,
+.quote-panel {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(145deg, #171024, #0e0a18);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+.profile-panel {
+  padding: 28px;
+}
+
+.profile-top {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.avatar {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 78px;
+  height: 78px;
+  border: 1px solid #bc70ff;
+  border-radius: 18px;
+  background: linear-gradient(140deg, #7625b6, #201438);
+  color: #f0d8ff;
+  font: 800 40px 'Orbitron', sans-serif;
+  box-shadow: 0 0 24px rgba(155, 77, 255, 0.25);
+}
+
+.online-pill {
+  color: #7ef4c4;
+  font: 600 9px 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+}
+
+.online-pill i {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background: #7ef4c4;
+}
+
+.profile-top h3 {
+  margin: 7px 0 2px;
+  font: 700 22px 'Orbitron', sans-serif;
+  overflow-wrap: anywhere;
+}
+
+.panel-line {
+  height: 1px;
+  margin: 24px 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--line),
+    rgba(255, 79, 200, 0.18),
+    transparent
+  );
+}
+
+.bio {
+  color: #c6bdd8;
+  line-height: 1.7;
+}
+
+.bio strong {
+  color: #f0b8ff;
+}
+
+.info-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 20px;
+}
+
+.info-chips span {
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: rgba(130, 65, 210, 0.1);
+  color: #e0d0f2;
+  font-size: 14px;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.info-chips span:hover {
+  border-color: rgba(255, 105, 219, 0.55);
+  background: rgba(168, 85, 247, 0.15);
+}
+
+.quote-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 260px;
+  padding: 30px;
+  background:
+    radial-gradient(
+      ellipse at 100% 0%,
+      rgba(255, 79, 200, 0.1),
+      transparent 50%
+    ),
+    linear-gradient(145deg, #151025, #100b1b);
+}
+
+.quote-mark {
+  color: #c17aff;
+  font: 90px/0.7 Georgia, serif;
+}
+
+.quote-panel h3 {
+  font: 700 22px 'Orbitron', sans-serif;
+}
+
+.quote-panel p {
+  max-width: 340px;
+  color: #c3b6d3;
+  line-height: 1.65;
+}
+
+.quote-decoration {
+  position: absolute;
+  right: 20px;
+  bottom: 16px;
+  color: #9474b2;
+  font: 600 10px 'Orbitron', sans-serif;
+  letter-spacing: 2px;
+}
+
+/* -------------------------
+   8. MY ROLES
+   ------------------------- */
+
+.roles-section {
+  background:
+    radial-gradient(
+      ellipse at 100% 50%,
+      rgba(255, 79, 200, 0.04),
+      transparent 40%
+    ),
+    #090712;
+}
+
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.role-card {
+  position: relative;
+  min-width: 0;
+  min-height: 230px;
+  padding: 26px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(
+      ellipse at 100% 0%,
+      rgba(168, 85, 247, 0.1),
+      transparent 56%
+    ),
+    linear-gradient(145deg, #171024, #0d0917);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.role-card::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 55px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--pink), transparent);
+  content: '';
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.role-card:hover {
+  border-color: rgba(255, 105, 219, 0.65);
+  box-shadow:
+    0 8px 30px rgba(126, 42, 187, 0.14),
+    0 0 18px rgba(255, 79, 200, 0.06);
+  transform: translateY(-5px);
+}
+
+.role-card:hover::before {
+  opacity: 1;
+}
+
+.role-card.featured {
+  border-color: rgba(255, 105, 219, 0.45);
+  background:
+    radial-gradient(
+      ellipse at 100% 0%,
+      rgba(255, 79, 200, 0.12),
+      transparent 58%
+    ),
+    linear-gradient(145deg, #1c102b, #100a1a);
+}
+
+.role-icon {
+  color: #e5a5ff;
+  font-size: 31px;
+  filter: drop-shadow(0 0 9px rgba(168, 85, 247, 0.25));
+}
+
+.role-number {
+  margin: 18px 0 10px;
+  color: #a391ba;
+  font: 600 9px 'Orbitron', sans-serif;
+  letter-spacing: 1.5px;
+}
+
+.role-card h3 {
+  margin: 10px 0;
+  font: 700 18px 'Orbitron', sans-serif;
+  overflow-wrap: anywhere;
+}
+
+.role-card p:last-child {
+  color: #b5a9c8;
+  line-height: 1.5;
+}
+
+/* Role statistics */
+
 .role-stats {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -15,29 +947,30 @@
 .role-stat {
   min-width: 0;
   padding: 13px 8px;
-  text-align: center;
   border: 1px solid rgba(174, 104, 255, 0.28);
-  border-radius: 12px;
-  background: rgba(130, 65, 210, 0.10);
-  transition: border-color 0.25s ease,
-              background 0.25s ease,
-              transform 0.25s ease;
+  border-radius: 10px;
+  background: rgba(130, 65, 210, 0.09);
+  text-align: center;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease;
 }
 
 .role-stat:hover {
-  border-color: rgba(195, 145, 255, 0.8);
-  background: rgba(130, 65, 210, 0.20);
+  border-color: rgba(255, 125, 221, 0.7);
+  background: rgba(168, 85, 247, 0.17);
   transform: translateY(-3px);
 }
 
 .stat-number {
   display: block;
-  color: #d8b5ff;
+  color: #f0c7ff;
   font-size: clamp(17px, 2vw, 23px);
   font-weight: 800;
   line-height: 1.3;
   overflow-wrap: anywhere;
-  text-shadow: 0 0 12px rgba(174, 104, 255, 0.35);
+  text-shadow: 0 0 12px rgba(255, 79, 200, 0.16);
 }
 
 .stat-label {
@@ -46,15 +979,860 @@
   color: #b8adc9;
   font-size: 11px;
   line-height: 1.4;
-  text-transform: uppercase;
   letter-spacing: 0.6px;
+  text-transform: uppercase;
 }
 
 .role-card.featured .role-stat {
-  border-color: rgba(195, 145, 255, 0.38);
+  border-color: rgba(255, 133, 222, 0.32);
 }
 
-@media (max-width: 420px) {
+/* -------------------------
+   9. GAMING SECTION
+   ------------------------- */
+
+.gaming-section {
+  background:
+    radial-gradient(
+      ellipse at 0% 45%,
+      rgba(108, 34, 153, 0.08),
+      transparent 42%
+    ),
+    linear-gradient(180deg, #0b0814, #10091a);
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.game-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(145deg, #171024, #0e0a18);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.game-card:hover {
+  border-color: rgba(255, 105, 219, 0.48);
+  box-shadow: 0 12px 35px rgba(110, 35, 165, 0.14);
+  transform: translateY(-4px);
+}
+
+.game-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 190px;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse at 50% 50%,
+      rgba(112, 34, 169, 0.72),
+      transparent 64%
+    ),
+    linear-gradient(135deg, #17102b, #0c0916);
+}
+
+.game-art::before,
+.game-art::after {
+  position: absolute;
+  width: 340px;
+  height: 130px;
+  border: 1px solid rgba(189, 112, 255, 0.25);
+  border-radius: 50%;
+  content: '';
+  pointer-events: none;
+  transform: rotate(-25deg);
+}
+
+.game-art::after {
+  border-color: rgba(255, 105, 219, 0.18);
+  transform: rotate(25deg);
+}
+
+.art-glow {
+  position: absolute;
+  width: 150px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(168, 61, 255, 0.45);
+  filter: blur(50px);
+}
+
+.roblox-diamond,
+.discord-symbol {
+  position: relative;
+  z-index: 1;
+  color: #f4dfff;
+  font-size: 82px;
+  text-shadow:
+    0 0 18px rgba(168, 85, 247, 0.7),
+    0 0 35px rgba(255, 79, 200, 0.2);
+}
+
+.roblox-diamond {
+  transform: rotate(22deg);
+}
+
+.discord-symbol {
+  font-size: 75px;
+}
+
+.art-caption {
+  position: absolute;
+  bottom: 14px;
+  left: 17px;
+  z-index: 1;
+  color: #d1b5eb;
+  font: 600 9px 'Orbitron', sans-serif;
+  letter-spacing: 2px;
+}
+
+.discord-art {
+  background:
+    radial-gradient(
+      ellipse at 50% 50%,
+      rgba(255, 79, 200, 0.18),
+      transparent 58%
+    ),
+    linear-gradient(135deg, #241039, #0b0918);
+}
+
+.game-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 23px;
+}
+
+.game-info .eyebrow {
+  margin: 0;
+  font-size: 9px;
+}
+
+.game-info h3 {
+  margin: 8px 0;
+  font: 700 23px 'Orbitron', sans-serif;
+  overflow-wrap: anywhere;
+}
+
+.game-info p:not(.eyebrow) {
+  margin: 0;
+  color: #b5a9c8;
+  line-height: 1.55;
+}
+
+/* -------------------------
+   10. DISCORD NOTE
+   ------------------------- */
+
+.discord-note {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: var(--content-width);
+  margin: 20px auto 0;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(18, 13, 32, 0.88);
+}
+
+.discord-note-icon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  background: rgba(139, 92, 246, 0.17);
+  color: #e0baff;
+  font-size: 25px;
+}
+
+.discord-note h3 {
+  margin: 0 0 6px;
+  font: 700 12px 'Orbitron', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.discord-note p {
+  margin: 0;
+  color: #b5a9c8;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.text-link {
+  margin-left: auto;
+  color: #e2b0ff;
+  font: 600 9px 'Orbitron', sans-serif;
+  white-space: nowrap;
+}
+
+/* -------------------------
+   11. DISCORD PROFILE CARD
+   ------------------------- */
+
+.discord-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgba(255, 105, 219, 0.4);
+  border-radius: 22px;
+  background:
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(255, 79, 200, 0.12),
+      transparent 42%
+    ),
+    linear-gradient(135deg, #190e28, #0c0917);
+  box-shadow:
+    0 0 25px rgba(133, 57, 255, 0.12),
+    inset 0 0 25px rgba(151, 79, 255, 0.04);
+  backdrop-filter: blur(14px);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.discord-card:hover {
+  border-color: rgba(255, 156, 231, 0.75);
+  box-shadow:
+    0 0 22px rgba(157, 73, 255, 0.22),
+    0 0 42px rgba(255, 79, 200, 0.08);
+  transform: translateY(-4px);
+}
+
+.discord-profile-card {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  border: 1px solid rgba(174, 105, 255, 0.25);
+  border-radius: 14px;
+  background:
+    radial-gradient(
+      ellipse at 100% 0%,
+      rgba(137, 55, 255, 0.15),
+      transparent 55%
+    ),
+    linear-gradient(145deg, #151025, #0c0916);
+}
+
+.discord-profile-banner {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-height: 125px;
+  padding: 18px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 105, 219, 0.25);
+  background:
+    radial-gradient(
+      circle at 75% 40%,
+      rgba(255, 79, 200, 0.25),
+      transparent 38%
+    ),
+    linear-gradient(115deg, #20103d, #42155c, #10102b);
+}
+
+.discord-profile-banner::before,
+.discord-profile-banner::after {
+  position: absolute;
+  width: 220px;
+  height: 100px;
+  border: 1px solid rgba(206, 151, 255, 0.2);
+  border-radius: 50%;
+  content: '';
+  pointer-events: none;
+}
+
+.discord-profile-banner::before {
+  top: 10px;
+  right: -55px;
+  transform: rotate(-25deg);
+}
+
+.discord-profile-banner::after {
+  top: 35px;
+  right: -35px;
+  border-color: rgba(255, 105, 219, 0.2);
+  transform: rotate(25deg);
+}
+
+.discord-banner-label {
+  position: relative;
+  z-index: 1;
+  color: #e1c5ff;
+  font: 600 9px 'Orbitron', sans-serif;
+  letter-spacing: 1.4px;
+}
+
+.discord-banner-x {
+  position: absolute;
+  top: -15px;
+  right: 27px;
+  color: rgba(223, 190, 255, 0.15);
+  font: 800 115px 'Orbitron', sans-serif;
+  transform: rotate(-10deg);
+}
+
+.discord-profile-main {
+  position: relative;
+  padding: 0 24px 25px;
+}
+
+.discord-avatar-wrap {
+  position: relative;
+  z-index: 2;
+  width: 88px;
+  height: 88px;
+  margin-top: -42px;
+  margin-bottom: 15px;
+}
+
+.discord-avatar {
+  display: grid;
+  place-items: center;
+  width: 88px;
+  height: 88px;
+  border: 3px solid #100b1a;
+  border-radius: 25px;
+  background: linear-gradient(140deg, #a34cff, #37205f 70%);
+  color: #fff0ff;
+  font: 800 29px 'Orbitron', sans-serif;
+  box-shadow:
+    0 0 0 1px #c084fc,
+    0 0 25px rgba(168, 85, 247, 0.35);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Actual avatar image */
+img.discord-avatar {
+  display: block;
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+  padding: 3px;
+  object-fit: cover;
+  object-position: center;
+  border: 2px solid #d59aff;
+  border-radius: 25px;
+  background: #1b1035;
+  box-shadow:
+    0 0 0 1px rgba(255, 105, 219, 0.25),
+    0 0 24px rgba(168, 85, 247, 0.35);
+}
+
+.discord-card:hover img.discord-avatar {
+  transform: scale(1.035);
+  box-shadow:
+    0 0 18px rgba(255, 156, 231, 0.5),
+    0 0 32px rgba(139, 92, 246, 0.4);
+}
+
+.discord-status-indicator {
+  position: absolute;
+  right: -2px;
+  bottom: -1px;
+  width: 19px;
+  height: 19px;
+  border: 4px solid #100b1a;
+  border-radius: 50%;
+  background: #9a8eac;
+}
+
+.discord-identity .eyebrow {
+  margin: 0 0 8px;
+  font-size: 9px;
+}
+
+.discord-identity h3,
+.discord-card h3 {
+  margin: 0;
+  color: #fff;
+  font: 700 23px 'Orbitron', sans-serif;
+  text-shadow: 0 0 12px rgba(192, 132, 252, 0.2);
+  overflow-wrap: anywhere;
+}
+
+.discord-tag {
+  margin: 9px 0 0;
+  color: #a999c1;
+  font: 600 9px/1.8 'Orbitron', sans-serif;
+  letter-spacing: 0.6px;
+  overflow-wrap: anywhere;
+}
+
+.discord-profile-divider {
+  height: 1px;
+  margin: 21px 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(173, 104, 255, 0.5),
+    rgba(255, 79, 200, 0.25),
+    transparent
+  );
+}
+
+.discord-bio {
+  margin: 0;
+  color: #c6bdd8;
+  line-height: 1.65;
+}
+
+.discord-profile-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0 23px;
+}
+
+.discord-profile-tags span,
+.discord-card .badge,
+.discord-card .role-badge {
+  padding: 7px 9px;
+  border: 1px solid rgba(192, 132, 252, 0.3);
+  border-radius: 6px;
+  background: rgba(139, 92, 246, 0.12);
+  color: #ead5ff;
+  font: 600 8px 'Orbitron', sans-serif;
+  letter-spacing: 0.4px;
+}
+
+.discord-profile-button {
+  box-shadow: 0 0 22px rgba(142, 55, 216, 0.2);
+}
+
+.discord-profile-button:hover {
+  box-shadow:
+    0 0 22px rgba(168, 85, 247, 0.32),
+    0 0 30px rgba(255, 79, 200, 0.12);
+}
+
+.discord-profile-footnote {
+  margin: 13px 0 0;
+  color: #9483a8;
+  font: 600 8px 'Orbitron', sans-serif;
+  letter-spacing: 1.2px;
+  text-align: center;
+}
+
+.discord-card a {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+.discord-card a:hover {
+  filter: brightness(1.12);
+}
+
+.discord-profile-button:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 4px;
+}
+
+/* -------------------------
+   12. FINAL CONTACT SECTION
+   ------------------------- */
+
+.final-section {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse at 50% 100%,
+      rgba(255, 79, 200, 0.12),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse at 50% 100%,
+      rgba(108, 39, 195, 0.2),
+      transparent 65%
+    ),
+    #0b0813;
+  text-align: center;
+}
+
+.final-section .eyebrow,
+.final-section h2,
+.final-section .button {
+  position: relative;
+  z-index: 1;
+}
+
+.final-section h2 {
+  margin: 18px 0 28px;
+  font-size: clamp(38px, 6vw, 66px);
+  line-height: 1.2;
+}
+
+.final-glow {
+  position: absolute;
+  bottom: -150px;
+  left: 50%;
+  width: 450px;
+  height: 250px;
+  border-radius: 50%;
+  background: rgba(138, 44, 255, 0.22);
+  filter: blur(65px);
+  transform: translateX(-50%);
+}
+
+/* -------------------------
+   13. FOOTER
+   ------------------------- */
+
+footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px max(5vw, 22px);
+  border-top: 1px solid var(--line);
+  background: #090711;
+}
+
+footer p {
+  color: #a092b3;
+  font: 600 9px 'Orbitron', sans-serif;
+  letter-spacing: 1.2px;
+}
+
+footer p span {
+  margin-left: 7px;
+  color: #e08bff;
+}
+
+.footer-brand .brand-icon {
+  width: 31px;
+  height: 31px;
+  font-size: 18px;
+}
+
+.back-top {
+  color: #e0baff;
+  font: 600 10px 'Orbitron', sans-serif;
+  transition: color 0.2s ease;
+}
+
+.back-top:hover {
+  color: var(--pink-light);
+}
+
+/* -------------------------
+   14. TABLET RESPONSIVENESS
+   ------------------------- */
+
+@media (max-width: 1000px) {
+  .section {
+    padding-right: 5vw;
+    padding-left: 5vw;
+  }
+
+  .topbar {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .topbar nav {
+    gap: 18px;
+  }
+
+  .hero {
+    gap: 15px;
+  }
+
+  .orbit-one {
+    width: 340px;
+    height: 340px;
+  }
+
+  .orbit-two {
+    width: 290px;
+    height: 290px;
+  }
+
+  .role-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 850px) {
+  .topbar {
+    padding: 0 20px;
+  }
+
+  .topbar nav {
+    gap: 15px;
+  }
+
+  .topbar nav a {
+    font-size: 14px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-top: 70px;
+    padding-bottom: 80px;
+  }
+
+  .hero-visual {
+    grid-row: 1;
+    height: 300px;
+  }
+
+  .hero-copy {
+    text-align: center;
+  }
+
+  .hero h2 {
+    font-size: clamp(38px, 8vw, 58px);
+  }
+
+  .lead {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .hero-actions,
+  .hero-tags {
+    justify-content: center;
+  }
+
+  .scroll-hint {
+    display: none;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .role-card {
+    min-height: 190px;
+  }
+
+  .discord-note {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .text-link {
+    margin-left: 61px;
+  }
+
+  .section {
+    padding: 80px 24px;
+  }
+}
+
+/* -------------------------
+   15. MOBILE RESPONSIVENESS
+   ------------------------- */
+
+@media (max-width: 620px) {
+  html {
+    scroll-padding-top: 76px;
+  }
+
+  .topbar {
+    height: 68px;
+    padding: 0 14px;
+  }
+
+  .brand {
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  .brand-icon {
+    width: 33px;
+    height: 33px;
+    font-size: 19px;
+  }
+
+  .brand small {
+    font-size: 7px;
+    letter-spacing: 1.5px;
+  }
+
+  .topbar nav {
+    position: absolute;
+    top: 72px;
+    right: 12px;
+    left: 12px;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: rgba(16, 11, 29, 0.98);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+  }
+
+  .topbar nav.open {
+    display: flex;
+  }
+
+  .topbar nav a {
+    padding: 5px 0;
+    font-size: 16px;
+  }
+
+  .topbar nav a::after {
+    display: none;
+  }
+
+  .music-toggle {
+    margin-left: auto;
+    margin-right: 8px;
+    padding: 9px;
+  }
+
+  .music-toggle #musicText {
+    font-size: 8px;
+  }
+
+  .menu-toggle {
+    display: block;
+    padding: 9px 10px;
+  }
+
+  .hero {
+    padding: 45px 20px 65px;
+  }
+
+  .hero-visual {
+    height: 245px;
+  }
+
+  .hero-visual::before {
+    width: 220px;
+    height: 220px;
+  }
+
+  .hero-x {
+    font-size: 165px;
+  }
+
+  .orbit-one {
+    width: 280px;
+    height: 280px;
+  }
+
+  .orbit-two {
+    width: 235px;
+    height: 235px;
+  }
+
+  .visual-label {
+    font-size: 8px;
+  }
+
+  .label-top {
+    top: 14px;
+    right: 0;
+  }
+
+  .label-bottom {
+    bottom: 14px;
+    left: 0;
+  }
+
+  .hero h2 {
+    margin: 18px 0;
+    font-size: clamp(34px, 9vw, 48px);
+    letter-spacing: -1.8px;
+  }
+
+  .lead {
+    font-size: 19px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-tags {
+    gap: 12px;
+    font-size: 9px;
+  }
+
+  .section {
+    padding: 70px 19px;
+  }
+
+  .section-heading {
+    margin-bottom: 30px;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(28px, 7vw, 38px);
+  }
+
+  .section-desc {
+    font-size: 17px;
+  }
+
+  .profile-panel {
+    padding: 20px;
+  }
+
+  .profile-top {
+    gap: 13px;
+  }
+
+  .avatar {
+    width: 65px;
+    height: 65px;
+    border-radius: 15px;
+    font-size: 30px;
+  }
+
+  .profile-top h3 {
+    font-size: 18px;
+  }
+
+  .quote-panel {
+    min-height: 220px;
+    padding: 24px;
+  }
+
+  .role-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .role-card {
+    padding: 22px;
+  }
+
   .role-stats {
     gap: 7px;
   }
@@ -66,208 +1844,33 @@
   .stat-label {
     font-size: 10px;
   }
-}
 
-/* =====================================
-   XTREMETOY — DISCORD PROFILE CARD
-   ===================================== */
+  .game-grid {
+    grid-template-columns: 1fr;
+  }
 
-.discord-profile-card {
-  flex: 1;
-  background:
-    radial-gradient(
-      ellipse at 100% 0%,
-      rgba(137, 55, 255, 0.17),
-      transparent 55%
-    ),
-    linear-gradient(145deg, #151025, #0c0916);
-  overflow: hidden;
-}
+  .game-art {
+    height: 170px;
+  }
 
-.discord-profile-banner {
-  min-height: 125px;
-  padding: 18px;
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 75% 40%, #8e35ff66, transparent 38%),
-    linear-gradient(115deg, #20103d, #37156a, #10102b);
-  border-bottom: 1px solid rgba(173, 104, 255, 0.3);
-}
+  .game-info {
+    padding: 20px;
+  }
 
-.discord-profile-banner::before,
-.discord-profile-banner::after {
-  content: "";
-  position: absolute;
-  width: 220px;
-  height: 100px;
-  border: 1px solid rgba(206, 151, 255, 0.24);
-  border-radius: 50%;
-  transform: rotate(-25deg);
-  pointer-events: none;
-}
+  .discord-note {
+    gap: 12px;
+    padding: 16px;
+  }
 
-.discord-profile-banner::before {
-  top: 10px;
-  right: -55px;
-}
+  .discord-note > div:nth-child(2) {
+    flex: 1;
+    min-width: 170px;
+  }
 
-.discord-profile-banner::after {
-  top: 35px;
-  right: -35px;
-  transform: rotate(25deg);
-}
+  .text-link {
+    margin-left: 57px;
+  }
 
-.discord-banner-label {
-  position: relative;
-  z-index: 1;
-  color: #d9b5ff;
-  font: 600 9px Orbitron, sans-serif;
-  letter-spacing: 1.4px;
-}
-
-.discord-banner-x {
-  position: absolute;
-  right: 27px;
-  top: -15px;
-  color: rgba(223, 190, 255, 0.16);
-  font: 800 115px Orbitron, sans-serif;
-  transform: rotate(-10deg);
-}
-
-.discord-profile-main {
-  position: relative;
-  padding: 0 24px 25px;
-}
-
-.discord-avatar-wrap {
-  position: relative;
-  width: 88px;
-  height: 88px;
-  margin-top: -42px;
-  margin-bottom: 15px;
-  z-index: 2;
-}
-
-.discord-avatar {
-  display: grid;
-  place-items: center;
-  width: 88px;
-  height: 88px;
-  border-radius: 25px;
-  border: 3px solid #100b1a;
-  background: linear-gradient(140deg, #a34cff, #37205f 70%);
-  color: #fff0ff;
-  font: 800 29px Orbitron, sans-serif;
-  box-shadow:
-    0 0 0 1px #bd78ff,
-    0 0 28px rgba(155, 77, 255, 0.4);
-}
-
-.discord-status-indicator {
-  position: absolute;
-  width: 19px;
-  height: 19px;
-  right: -2px;
-  bottom: -1px;
-  border: 4px solid #100b1a;
-  border-radius: 50%;
-  background: #9a8eac;
-}
-
-.discord-identity .eyebrow {
-  margin: 0 0 8px;
-  font-size: 9px;
-}
-
-.discord-identity h3 {
-  margin: 0;
-  font: 700 23px Orbitron, sans-serif;
-  overflow-wrap: anywhere;
-}
-
-.discord-tag {
-  margin: 9px 0 0;
-  color: #9e8eb9;
-  font: 600 9px Orbitron, sans-serif;
-  letter-spacing: 0.6px;
-  line-height: 1.8;
-}
-
-.discord-profile-divider {
-  height: 1px;
-  margin: 21px 0;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(173, 104, 255, 0.55),
-    transparent
-  );
-}
-
-.discord-bio {
-  color: #c6bdd8;
-  line-height: 1.65;
-  margin: 0;
-}
-
-.discord-profile-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 18px 0 23px;
-}
-
-.discord-profile-tags span {
-  padding: 7px 9px;
-  border: 1px solid rgba(173, 104, 255, 0.3);
-  border-radius: 5px;
-  background: rgba(130, 65, 210, 0.1);
-  color: #d4b6f7;
-  font: 600 8px Orbitron, sans-serif;
-  letter-spacing: 0.4px;
-}
-
-.discord-profile-button {
-  box-shadow: 0 0 22px rgba(142, 55, 216, 0.2);
-}
-
-.discord-profile-footnote {
-  margin: 13px 0 0;
-  text-align: center;
-  color: #7f7195;
-  font: 600 8px Orbitron, sans-serif;
-  letter-spacing: 1.2px;
-}
-
-.discord-profile-card,
-.discord-avatar,
-.discord-profile-button {
-  transition:
-    border-color 0.25s ease,
-    box-shadow 0.25s ease,
-    transform 0.25s ease;
-}
-
-.discord-card:hover .discord-avatar {
-  box-shadow:
-    0 0 0 1px #d09aff,
-    0 0 35px rgba(155, 77, 255, 0.6);
-}
-
-.discord-card:hover .discord-profile-card {
-  border-color: rgba(190, 119, 255, 0.45);
-}
-
-.discord-profile-button:focus-visible {
-  outline: 2px solid #7de7ff;
-  outline-offset: 4px;
-}
-
-@media (max-width: 620px) {
   .discord-profile-banner {
     min-height: 105px;
   }
@@ -276,19 +1879,17 @@
     padding: 0 19px 22px;
   }
 
-  .discord-avatar-wrap,
-  .discord-avatar {
+  .discord-avatar-wrap {
     width: 78px;
     height: 78px;
-  }
-
-  .discord-avatar-wrap {
     margin-top: -37px;
   }
 
-  .discord-avatar {
+  .discord-avatar,
+  img.discord-avatar {
+    width: 78px;
+    height: 78px;
     border-radius: 22px;
-    font-size: 25px;
   }
 
   .discord-identity h3 {
@@ -296,124 +1897,111 @@
   }
 
   .discord-profile-tags {
-    /* Custom XTREMETOY Discord avatar */
-img.discord-avatar {
-  display: block;
-  width: 88px;
-  height: 88px;
-  padding: 0;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 25px;
-}
     gap: 6px;
+  }
+
+  .discord-profile-tags span {
+    font-size: 8px;
+  }
+
+  .final-section h2 {
+    font-size: clamp(32px, 8vw, 46px);
+  }
+
+  footer {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 22px 16px;
+  }
+
+  footer p {
+    order: 3;
+    width: 100%;
+    text-align: center;
+    line-height: 1.7;
+  }
+
+  .intro h1 {
+    letter-spacing: -1px;
+  }
+
+  .intro-mark {
+    width: 70px;
+    height: 70px;
+    font-size: 38px;
   }
 }
 
-/* ==========================================
-   XTREMETOY — CYBERPUNK DISCORD CARD
-   ========================================== */
+/* -------------------------
+   16. EXTRA SMALL SCREENS
+   ------------------------- */
 
-.discord-card {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  border: 1px solid rgba(177, 105, 255, 0.55);
-  border-radius: 24px;
-  background:
-    radial-gradient(
-      circle at 90% 10%,
-      rgba(142, 55, 255, 0.2),
-      transparent 40%
-    ),
-    linear-gradient(
-      135deg,
-      rgba(24, 15, 48, 0.97),
-      rgba(12, 10, 27, 0.98)
-    );
-  box-shadow:
-    0 0 25px rgba(133, 57, 255, 0.15),
-    inset 0 0 25px rgba(151, 79, 255, 0.05);
-  backdrop-filter: blur(14px);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
-}
+@media (max-width: 380px) {
+  .brand {
+    font-size: 10px;
+  }
 
-.discord-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(205, 160, 255, 0.9);
-  box-shadow:
-    0 0 18px rgba(157, 73, 255, 0.3),
-    0 0 45px rgba(112, 43, 255, 0.15);
-}
+  .brand small {
+    font-size: 6px;
+  }
 
-/* Custom avatar image */
-img.discord-avatar {
-  display: block;
-  width: 88px;
-  height: 88px;
-  flex-shrink: 0;
-  padding: 3px;
-  object-fit: cover;
-  object-position: center;
-  border: 2px solid #c084fc;
-  border-radius: 24px;
-  background: #1b1035;
-  box-shadow:
-    0 0 12px rgba(192, 132, 252, 0.65),
-    0 0 28px rgba(139, 92, 246, 0.25);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
+  .music-toggle {
+    padding: 8px 6px;
+  }
 
-.discord-card:hover img.discord-avatar {
-  transform: scale(1.04);
-  box-shadow:
-    0 0 18px rgba(192, 132, 252, 0.85),
-    0 0 35px rgba(139, 92, 246, 0.4);
-}
+  .menu-toggle {
+    padding: 8px;
+    font-size: 14px;
+  }
 
-/* Username */
-.discord-card h3 {
-  color: #ffffff;
-  text-shadow: 0 0 12px rgba(192, 132, 252, 0.25);
-}
+  .hero h2 {
+    font-size: 32px;
+  }
 
-/* Role and profile badges */
-.discord-card .badge,
-.discord-card .role-badge {
-  border: 1px solid rgba(192, 132, 252, 0.3);
-  border-radius: 999px;
-  background: rgba(139, 92, 246, 0.12);
-  color: #e9d5ff;
-}
+  .hero-x {
+    font-size: 140px;
+  }
 
-/* Discord profile button */
-.discord-card a {
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    filter 0.25s ease;
-}
+  .orbit-one {
+    width: 240px;
+    height: 240px;
+  }
 
-.discord-card a:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.12);
-}
+  .orbit-two {
+    width: 205px;
+    height: 205px;
+  }
 
-/* Mobile layout */
-@media (max-width: 600px) {
-  .discord-card {
-    border-radius: 18px;
+  .role-card {
     padding: 18px;
   }
 
-  img.discord-avatar {
-    width: 72px;
-    height: 72px;
-    border-radius: 20px;
+  .role-stats {
+    gap: 6px;
+  }
+
+  .stat-number {
+    font-size: 17px;
+  }
+
+  .discord-profile-main {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
+/* -------------------------
+   17. REDUCED MOTION
+   ------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }
