@@ -2358,3 +2358,583 @@ a:focus-visible {
     transition: none;
   }
 }
+
+/* ============================================
+   XTREMETOY — CYBERPUNK GAMER PROFILE
+   Applies to the new .xt-player- HTML section
+   ============================================ */
+
+.xt-player-section {
+  position: relative;
+  width: 100%;
+  max-width: 780px;
+  margin: 75px auto 40px;
+  padding: 20px;
+  isolation: isolate;
+}
+
+.xt-player-card {
+  --xt-purple: #b34dff;
+  --xt-pink: #ff48c8;
+  --xt-cyan: #8cecff;
+  --xt-white: #fff5ff;
+  --xt-muted: #b9a8cb;
+
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(179, 77, 255, 0.55);
+  border-radius: 22px;
+  background:
+    radial-gradient(
+      ellipse at 95% 0%,
+      rgba(255, 72, 200, 0.12),
+      transparent 36%
+    ),
+    linear-gradient(145deg, #170d25 0%, #0c0813 55%, #10091c 100%);
+  color: var(--xt-white);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.025),
+    0 20px 65px rgba(0, 0, 0, 0.35),
+    0 0 35px rgba(179, 77, 255, 0.12);
+  font-family: "Rajdhani", sans-serif;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.xt-player-card:hover {
+  border-color: rgba(255, 72, 200, 0.8);
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.45),
+    0 0 38px rgba(179, 77, 255, 0.2),
+    0 0 65px rgba(255, 72, 200, 0.07);
+}
+
+/* Top information strip */
+.xt-player-topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 18px 23px;
+  border-bottom: 1px solid rgba(179, 77, 255, 0.2);
+  background: rgba(255, 255, 255, 0.015);
+  font-family: "Orbitron", sans-serif;
+  font-size: 10px;
+  letter-spacing: 1.6px;
+}
+
+.xt-player-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #f6ddff;
+}
+
+.xt-player-live-dot {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--xt-pink);
+  box-shadow: 0 0 12px var(--xt-pink);
+  animation: xtPlayerPulse 2s ease-in-out infinite;
+}
+
+.xt-player-id {
+  color: #b98bdf;
+}
+
+/* Custom geometric banner — no image needed */
+.xt-player-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 190px;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      115deg,
+      transparent 25%,
+      rgba(255, 72, 200, 0.08) 25.2%,
+      transparent 25.6%
+    ),
+    linear-gradient(135deg, #250e39, #48145c 48%, #150b25);
+  border-bottom: 1px solid rgba(255, 72, 200, 0.35);
+}
+
+.xt-player-banner::before,
+.xt-player-banner::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.xt-player-banner::before {
+  inset: 0;
+  opacity: 0.45;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 27px 27px;
+  mask-image: linear-gradient(90deg, transparent, black, transparent);
+}
+
+.xt-player-banner::after {
+  right: -30px;
+  bottom: -100px;
+  width: 270px;
+  height: 190px;
+  border: 1px solid rgba(255, 72, 200, 0.32);
+  border-radius: 50%;
+  transform: rotate(-28deg);
+  box-shadow:
+    0 0 0 18px rgba(255, 72, 200, 0.025),
+    0 0 0 38px rgba(179, 77, 255, 0.045);
+}
+
+.xt-player-banner-grid {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 40%,
+    rgba(179, 77, 255, 0.15) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  animation: xtPlayerSweep 7s ease-in-out infinite;
+}
+
+.xt-player-banner-orb {
+  position: absolute;
+  top: 15px;
+  right: 16%;
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  background: rgba(179, 77, 255, 0.22);
+  filter: blur(38px);
+}
+
+.xt-player-banner-label {
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  z-index: 1;
+  color: #e4baff;
+  font-family: "Orbitron", sans-serif;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+
+.xt-player-banner-symbol {
+  position: relative;
+  z-index: 1;
+  color: #fff1ff;
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(100px, 20vw, 160px);
+  font-weight: 800;
+  line-height: 1;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 22px rgba(255, 72, 200, 0.9),
+    0 0 55px rgba(179, 77, 255, 0.85);
+  animation: xtPlayerGlow 4s ease-in-out infinite;
+}
+
+/* Profile identity */
+.xt-player-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 27px 26px;
+}
+
+.xt-player-identity {
+  display: flex;
+  align-items: center;
+  gap: 21px;
+  margin-top: -46px;
+}
+
+.xt-player-avatar {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 94px;
+  height: 94px;
+  flex: 0 0 94px;
+  border: 3px solid #120a1b;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #ff48c8, #7927d9 55%, #201032);
+  box-shadow:
+    0 0 0 1px #d77bff,
+    0 0 23px rgba(179, 77, 255, 0.45);
+  transform: rotate(-3deg);
+  transition: transform 0.3s ease;
+}
+
+.xt-player-avatar:hover {
+  transform: rotate(0deg) scale(1.04);
+}
+
+.xt-player-avatar span {
+  color: white;
+  font-family: "Orbitron", sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+.xt-player-avatar-status {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  width: 19px;
+  height: 19px;
+  border: 3px solid #10091a;
+  border-radius: 50%;
+  background: #bd6cff;
+  box-shadow: 0 0 10px #bd6cff;
+}
+
+.xt-player-nameblock {
+  min-width: 0;
+  padding-top: 37px;
+}
+
+.xt-player-kicker,
+.xt-player-section-label {
+  color: #d5a0ff;
+  font-family: "Orbitron", sans-serif;
+  font-size: 9px;
+  letter-spacing: 1.4px;
+}
+
+.xt-player-nameblock h2 {
+  margin: 8px 0 5px;
+  color: var(--xt-white);
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(21px, 4vw, 30px);
+  overflow-wrap: anywhere;
+}
+
+.xt-player-star {
+  margin-left: 8px;
+  color: var(--xt-pink);
+  font-size: 16px;
+  vertical-align: top;
+}
+
+.xt-player-description {
+  margin: 0;
+  color: var(--xt-muted);
+  font-size: 15px;
+}
+
+/* Dividers and bio */
+.xt-player-divider {
+  height: 1px;
+  margin: 25px 0;
+  background: linear-gradient(
+    90deg,
+    rgba(179, 77, 255, 0.7),
+    rgba(255, 72, 200, 0.35),
+    transparent
+  );
+}
+
+.xt-player-about,
+.xt-player-roles {
+  margin-top: 22px;
+}
+
+.xt-player-about p {
+  max-width: 590px;
+  margin: 10px 0 0;
+  color: #d2c3df;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+/* Role badges */
+.xt-player-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 13px;
+}
+
+.xt-player-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 12px;
+  border: 1px solid rgba(179, 77, 255, 0.3);
+  border-radius: 8px;
+  background: rgba(179, 77, 255, 0.075);
+  color: #f0ddff;
+  font-size: 13px;
+  font-weight: 600;
+  transition: transform 0.25s ease, border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.xt-player-badge:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 72, 200, 0.8);
+  background: rgba(255, 72, 200, 0.1);
+}
+
+.xt-player-badge.admin {
+  border-color: rgba(255, 72, 200, 0.4);
+}
+
+.xt-player-badge.manager {
+  border-color: rgba(179, 77, 255, 0.5);
+}
+
+.xt-player-badge.moderator {
+  border-color: rgba(140, 236, 255, 0.35);
+}
+
+.xt-player-badge.gambler {
+  border-color: rgba(255, 190, 120, 0.35);
+}
+
+/* Working links */
+.xt-player-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.xt-player-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-width: 0;
+  padding: 15px 16px;
+  border: 1px solid rgba(179, 77, 255, 0.4);
+  border-radius: 10px;
+  color: #fff4ff;
+  text-decoration: none;
+  font-family: "Orbitron", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.xt-player-link-primary {
+  background: linear-gradient(110deg, #7522ad, #b32a94);
+  border-color: rgba(255, 135, 226, 0.65);
+}
+
+.xt-player-link-secondary {
+  background: rgba(179, 77, 255, 0.07);
+}
+
+.xt-player-link:hover {
+  transform: translateY(-3px);
+  border-color: #ff8de0;
+  box-shadow: 0 0 24px rgba(255, 72, 200, 0.18);
+}
+
+.xt-player-link-icon {
+  color: #ffb9ec;
+  font-size: 18px;
+}
+
+.xt-player-link-arrow {
+  margin-left: auto;
+  color: #ffb9ec;
+  font-size: 16px;
+}
+
+/* Bottom signature */
+.xt-player-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 23px;
+  border-top: 1px solid rgba(179, 77, 255, 0.23);
+  background: rgba(0, 0, 0, 0.15);
+  color: #9d83b4;
+  font-family: "Orbitron", sans-serif;
+  font-size: 8px;
+  letter-spacing: 1.3px;
+}
+
+.xt-player-footer b {
+  color: var(--xt-pink);
+}
+
+/* Animations */
+@keyframes xtPlayerPulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 12px #ff48c8;
+  }
+  50% {
+    opacity: 0.55;
+    box-shadow: 0 0 4px #ff48c8;
+  }
+}
+
+@keyframes xtPlayerSweep {
+  0%, 65% {
+    transform: translateX(-100%);
+  }
+  85%, 100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes xtPlayerGlow {
+  0%, 100% {
+    text-shadow: 0 0 5px #fff,
+      0 0 22px rgba(255, 72, 200, 0.7),
+      0 0 55px rgba(179, 77, 255, 0.7);
+  }
+  50% {
+    text-shadow: 0 0 9px #fff,
+      0 0 30px rgba(255, 72, 200, 1),
+      0 0 75px rgba(179, 77, 255, 0.95);
+  }
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+  .xt-player-section {
+    margin: 45px auto 25px;
+    padding: 12px;
+  }
+
+  .xt-player-card {
+    border-radius: 16px;
+  }
+
+  .xt-player-topline {
+    padding: 15px;
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .xt-player-banner {
+    min-height: 145px;
+  }
+
+  .xt-player-banner-symbol {
+    font-size: 112px;
+  }
+
+  .xt-player-banner-label {
+    left: 15px;
+    top: 15px;
+    font-size: 7px;
+  }
+
+  .xt-player-content {
+    padding: 0 16px 20px;
+  }
+
+  .xt-player-identity {
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: -34px;
+  }
+
+  .xt-player-avatar {
+    width: 72px;
+    height: 72px;
+    flex-basis: 72px;
+    border-radius: 17px;
+  }
+
+  .xt-player-avatar span {
+    font-size: 37px;
+  }
+
+  .xt-player-avatar-status {
+    width: 16px;
+    height: 16px;
+  }
+
+  .xt-player-nameblock {
+    padding-top: 39px;
+  }
+
+  .xt-player-kicker {
+    font-size: 7px;
+    letter-spacing: 0.7px;
+  }
+
+  .xt-player-nameblock h2 {
+    font-size: 19px;
+  }
+
+  .xt-player-description {
+    font-size: 13px;
+  }
+
+  .xt-player-about p {
+    font-size: 15px;
+  }
+
+  .xt-player-badges {
+    gap: 7px;
+  }
+
+  .xt-player-badge {
+    padding: 8px 9px;
+    font-size: 11px;
+  }
+
+  .xt-player-links {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .xt-player-footer {
+    padding: 14px;
+    font-size: 7px;
+    letter-spacing: 0.6px;
+  }
+}
+
+@media (max-width: 360px) {
+  .xt-player-identity {
+    flex-direction: column;
+  }
+
+  .xt-player-nameblock {
+    padding-top: 0;
+  }
+
+  .xt-player-avatar {
+    margin-top: 0;
+  }
+
+  .xt-player-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .xt-player-live-dot,
+  .xt-player-banner-grid,
+  .xt-player-banner-symbol {
+    animation: none;
+  }
+
+  .xt-player-card,
+  .xt-player-avatar,
+  .xt-player-badge,
+  .xt-player-link {
+    transition: none;
+  }
+}
