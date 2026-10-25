@@ -1,67 +1,361 @@
+
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#090712">
   <meta name="description" content="The gaming corner of xtremetoy.">
   <title>xtremetoy — player profile</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="locked">
+
   <div class="particles" id="particles" aria-hidden="true"></div>
+
+  <!-- Intro screen -->
   <div class="intro" id="intro">
-    <div class="intro-mark">X</div><p class="eyebrow">PLAYER PROFILE // XTREMETOY</p>
+    <div class="intro-mark">X</div>
+    <p class="eyebrow">PLAYER PROFILE // XTREMETOY</p>
     <h1>WELCOME TO<br><span>MY WORLD</span></h1>
     <p class="intro-copy">Games, good vibes, and a little chaos.</p>
-    <button class="enter-button" id="enterButton">ENTER EXPERIENCE <span>↗</span></button>
+    <button class="enter-button" id="enterButton">
+      ENTER EXPERIENCE <span>↗</span>
+    </button>
     <p class="small-note">Sound is optional. You stay in control.</p>
   </div>
 
+  <!-- Background music -->
   <audio id="bgMusic" loop preload="none">
-    <!-- Add your own audio file named music.mp3 to this folder if you have permission to use it. -->
     <source src="music.mp3" type="audio/mpeg">
   </audio>
 
+  <!-- Navigation -->
   <header class="topbar">
-    <a class="brand" href="#home"><span class="brand-icon">X</span><span>xtremetoy<small>PLAYER ONE</small></span></a>
-    <nav id="navLinks"><a href="#home" class="active">Home</a><a href="#about">My Infos</a><a href="#roles">My Roles</a><a href="#gaming">Gaming</a><a href="#connect">Connect</a></nav>
-    <button class="music-toggle" id="musicToggle" aria-label="Toggle background music"><span id="musicIcon">♫</span><span id="musicText">MUSIC OFF</span></button>
-    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">☰</button>
+    <a class="brand" href="#home">
+      <span class="brand-icon">X</span>
+      <span>xtremetoy<small>PLAYER ONE</small></span>
+    </a>
+
+    <nav id="navLinks">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">My Infos</a>
+      <a href="#roles">My Roles</a>
+      <a href="#gaming">Gaming</a>
+      <a href="#connect">Connect</a>
+    </nav>
+
+    <button class="music-toggle" id="musicToggle" aria-label="Toggle background music">
+      <span id="musicIcon">♫</span>
+      <span id="musicText">MUSIC OFF</span>
+    </button>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+      ☰
+    </button>
   </header>
 
   <main id="siteContent">
+
+    <!-- Home -->
     <section class="hero section" id="home">
-      <div class="hero-copy"><p class="eyebrow"><span class="status-dot"></span> ONLINE IN MY OWN WORLD</p>
-        <h2>HEY, I'M<br><span class="gradient-text">XTREMETOY</span><span class="cursor">_</span></h2>
-        <p class="lead">Just a gamer doing my thing.<br>Welcome to my corner of the internet.</p>
-        <div class="hero-actions"><a class="button primary" href="#connect">LET'S CONNECT <span>↗</span></a><a class="button secondary" href="#gaming">EXPLORE MY WORLD <span>↓</span></a></div>
-        <div class="hero-tags"><span>✦ GAMING</span><span>✦ ROBLOX</span><span>✦ COMMUNITY</span></div>
+      <div class="hero-copy">
+        <p class="eyebrow">
+          <span class="status-dot"></span>
+          ONLINE IN MY OWN WORLD
+        </p>
+
+        <h2>
+          HEY, I'M<br>
+          <span class="gradient-text">XTREMETOY</span>
+          <span class="cursor">_</span>
+        </h2>
+
+        <p class="lead">
+          Just a gamer doing my thing.<br>
+          Welcome to my corner of the internet.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button primary" href="#connect">
+            LET'S CONNECT <span>↗</span>
+          </a>
+          <a class="button secondary" href="#gaming">
+            EXPLORE MY WORLD <span>↓</span>
+          </a>
+        </div>
+
+        <div class="hero-tags">
+          <span>✦ GAMING</span>
+          <span>✦ ROBLOX</span>
+          <span>✦ COMMUNITY</span>
+        </div>
       </div>
-      <div class="hero-visual"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="hero-x">X</div><div class="visual-label label-top">PLAYER PROFILE <b>001</b></div><div class="visual-label label-bottom"><span class="status-dot"></span> READY TO PLAY</div></div>
-      <a class="scroll-hint" href="#about">SCROLL TO EXPLORE <span>↓</span></a>
+
+      <div class="hero-visual">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="hero-x">X</div>
+        <div class="visual-label label-top">
+          PLAYER PROFILE <b>001</b>
+        </div>
+        <div class="visual-label label-bottom">
+          <span class="status-dot"></span> READY TO PLAY
+        </div>
+      </div>
+
+      <a class="scroll-hint" href="#about">
+        SCROLL TO EXPLORE <span>↓</span>
+      </a>
     </section>
 
-    <section class="section about-section" id="about"><div class="section-heading"><p class="eyebrow">01 / A LITTLE ABOUT ME</p><h2>MY <span class="gradient-text">INFOS</span></h2><p class="section-desc">A small intro to the player behind the screen.</p></div>
-      <div class="about-grid"><div class="panel profile-panel"><div class="profile-top"><div class="avatar">X</div><div><span class="online-pill"><i></i> PLAYER ACTIVE</span><h3>xtremetoy</h3><p class="muted">Gamer · Creator · Just vibing</p></div></div><div class="panel-line"></div><p class="bio">Hey! I'm <strong>xtremetoy</strong>. This is my personal gaming space where I can share my profiles, favourite games, and ways to connect. Stay a while ✦</p><div class="info-chips"><span>🎮 Gaming</span><span>🌌 Purple vibes</span><span>✨ Good energy</span></div></div>
-      <div class="quote-panel"><span class="quote-mark">“</span><h3>PLAY YOUR WAY.</h3><p>Explore, create, and enjoy the game. Every player has a story — this is a little piece of mine.</p><div class="quote-decoration">XT / 001</div></div></div>
+    <!-- About -->
+    <section class="section about-section" id="about">
+      <div class="section-heading">
+        <p class="eyebrow">01 / A LITTLE ABOUT ME</p>
+        <h2>MY <span class="gradient-text">INFOS</span></h2>
+        <p class="section-desc">
+          A small intro to the player behind the screen.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="panel profile-panel">
+          <div class="profile-top">
+            <div class="avatar">X</div>
+            <div>
+              <span class="online-pill"><i></i> PLAYER ACTIVE</span>
+              <h3>xtremetoy</h3>
+              <p class="muted">Gamer · Creator · Just vibing</p>
+            </div>
+          </div>
+
+          <div class="panel-line"></div>
+
+          <p class="bio">
+            Hey! I'm <strong>xtremetoy</strong>. This is my personal
+            gaming space where I can share my profiles, favourite games,
+            and ways to connect. Stay a while ✦
+          </p>
+
+          <div class="info-chips">
+            <span>🎮 Gaming</span>
+            <span>🌌 Purple vibes</span>
+            <span>✨ Good energy</span>
+          </div>
+        </div>
+
+        <div class="quote-panel">
+          <span class="quote-mark">“</span>
+          <h3>PLAY YOUR WAY.</h3>
+          <p>
+            Explore, create, and enjoy the game. Every player has a story —
+            this is a little piece of mine.
+          </p>
+          <div class="quote-decoration">XT / 001</div>
+        </div>
+      </div>
     </section>
 
-    <section class="section roles-section" id="roles"><div class="section-heading"><p class="eyebrow">02 / PLAYER LOADOUT</p><h2>MY <span class="gradient-text">ROLES</span></h2><p class="section-desc">The things that make up my online world.</p></div><div class="role-grid">
-        <article class="role-card"><div class="role-icon">⌘</div><p class="role-number">ROLE 01</p><h3>ADMINISTRATOR</h3><p>Helping manage the community and keep things organized.</p></article>
-        <article class="role-card featured"><div class="role-icon">✧</div><p class="role-number">ROLE 02</p><h3>STAFF MANAGER</h3><p>Supporting the staff team and coordinating community work.</p></article>
-        <article class="role-card"><div class="role-icon">◈</div><p class="role-number">ROLE 03</p><h3>MODERATOR</h3><p>Helping maintain a welcoming and respectful community.</p></article>
-        <article class="role-card"><div class="role-icon">♢</div><p class="role-number">ROLE 04</p><h3>GAMBLER</h3><p>A role in my online gaming world.</p></article>
-      </div></section>
+    <!-- Roles with statistics -->
+    <section class="section roles-section" id="roles">
+      <div class="section-heading">
+        <p class="eyebrow">02 / PLAYER LOADOUT</p>
+        <h2>MY <span class="gradient-text">ROLES</span></h2>
+        <p class="section-desc">
+          The things that make up my online world.
+        </p>
+      </div>
 
-    <section class="section gaming-section" id="gaming"><div class="section-heading"><p class="eyebrow">03 / GAME SELECT</p><h2>MY <span class="gradient-text">GAMING</span></h2><p class="section-desc">Pick a portal and check out my profile.</p></div><div class="game-grid"><article class="game-card roblox-card"><div class="game-art roblox-art"><div class="art-glow"></div><div class="roblox-diamond">◇</div><span class="art-caption">YOUR NEXT ADVENTURE</span></div><div class="game-info"><div><p class="eyebrow">GAME PLATFORM 01</p><h3>ROBLOX</h3><p>Explore my Roblox profile, games, and creations.</p></div>
-<a class="button primary full" id="robloxLink" href="https://www.roblox.com/users/1682110959/profile" target="_blank" rel="noopener noreferrer">OPEN MY PROFILE <span>↗</span></a>
-</div></article>
-      <article class="game-card discord-card" id="connect"><div class="game-art discord-art"><div class="art-glow"></div><div class="discord-symbol">◉</div><span class="art-caption">YOUR COMMUNITY PORTAL</span></div><div class="game-info"><div><p class="eyebrow">COMMUNITY 02</p><h3>DISCORD</h3><p>Discord profile for <strong>xtremetoy</strong>. Open my profile to view the account details Discord makes available.</p></div><a class="button primary full" id="discordLink" href="https://discord.com/users/1315545130199027782" target="_blank" rel="noopener noreferrer">XTREMETOY · VIEW PROFILE <span>↗</span></a></div></article></div>
-      <div class="discord-note"><div class="discord-note-icon">◉</div><div><h3>XTREMETOY ON DISCORD</h3><p>Open my Discord profile in a new tab. My exact Discord username is not shown here because it has not been provided; the profile link is connected.</p></div><a class="text-link" id="discordTextLink" href="https://discord.com/users/1315545130199027782" target="_blank" rel="noopener noreferrer">OPEN PROFILE ↗</a></div>
+      <div class="role-grid">
+
+        <!-- Administrator -->
+        <article class="role-card">
+          <div class="role-icon">⌘</div>
+          <p class="role-number">ROLE 01</p>
+          <h3>ADMINISTRATOR</h3>
+          <p>
+            Helping manage communities and keep things organized.
+          </p>
+
+          <div class="role-stats">
+            <div class="role-stat">
+              <span class="stat-number">5</span>
+              <span class="stat-label">Servers</span>
+            </div>
+            <div class="role-stat">
+              <span class="stat-number">40,000</span>
+              <span class="stat-label">Members reached</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Staff Manager -->
+        <article class="role-card featured">
+          <div class="role-icon">✧</div>
+          <p class="role-number">ROLE 02</p>
+          <h3>STAFF MANAGER</h3>
+          <p>
+            Supporting the staff team and coordinating community work.
+          </p>
+
+          <div class="role-stats">
+            <div class="role-stat">
+              <span class="stat-number">3</span>
+              <span class="stat-label">Servers</span>
+            </div>
+            <div class="role-stat">
+              <span class="stat-number">10,000</span>
+              <span class="stat-label">Members reached</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Moderator -->
+        <article class="role-card">
+          <div class="role-icon">◈</div>
+          <p class="role-number">ROLE 03</p>
+          <h3>MODERATOR</h3>
+          <p>
+            Helping maintain a welcoming and respectful community.
+          </p>
+
+          <div class="role-stats">
+            <div class="role-stat">
+              <span class="stat-number">10</span>
+              <span class="stat-label">Servers</span>
+            </div>
+            <div class="role-stat">
+              <span class="stat-number">40,000</span>
+              <span class="stat-label">Members reached</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Gambler: intentionally no statistics -->
+        <article class="role-card">
+          <div class="role-icon">♢</div>
+          <p class="role-number">ROLE 04</p>
+          <h3>GAMBLER</h3>
+          <p>A role in my online gaming world.</p>
+        </article>
+
+      </div>
     </section>
 
-    <section class="section final-section"><div class="final-glow"></div><p class="eyebrow">END OF TRANSMISSION</p><h2>SEE YOU IN<br><span class="gradient-text">THE GAME.</span></h2><a class="button primary" href="#home">BACK TO TOP ↑</a></section>
+    <!-- Gaming and profile links -->
+    <section class="section gaming-section" id="gaming">
+      <div class="section-heading">
+        <p class="eyebrow">03 / GAME SELECT</p>
+        <h2>MY <span class="gradient-text">GAMING</span></h2>
+        <p class="section-desc">
+          Pick a portal and check out my profile.
+        </p>
+      </div>
+
+      <div class="game-grid">
+
+        <!-- Roblox -->
+        <article class="game-card roblox-card">
+          <div class="game-art roblox-art">
+            <div class="art-glow"></div>
+            <div class="roblox-diamond">◇</div>
+            <span class="art-caption">YOUR NEXT ADVENTURE</span>
+          </div>
+
+          <div class="game-info">
+            <div>
+              <p class="eyebrow">GAME PLATFORM 01</p>
+              <h3>ROBLOX</h3>
+              <p>Explore my Roblox profile, games, and creations.</p>
+            </div>
+
+            <a
+              class="button primary full"
+              id="robloxLink"
+              href="https://www.roblox.com/users/1682110959/profile"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              OPEN MY PROFILE <span>↗</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Discord -->
+        <article class="game-card discord-card" id="connect">
+          <div class="game-art discord-art">
+            <div class="art-glow"></div>
+            <div class="discord-symbol">◉</div>
+            <span class="art-caption">YOUR COMMUNITY PORTAL</span>
+          </div>
+
+          <div class="game-info">
+            <div>
+              <p class="eyebrow">COMMUNITY 02</p>
+              <h3>DISCORD</h3>
+              <p>
+                Open my Discord profile to view the account details
+                Discord makes available.
+              </p>
+            </div>
+
+            <a
+              class="button primary full"
+              id="discordLink"
+              href="https://discord.com/users/1315545130199027782"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              XTREMETOY · VIEW PROFILE <span>↗</span>
+            </a>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="discord-note">
+        <div class="discord-note-icon">◉</div>
+        <div>
+          <h3>XTREMETOY ON DISCORD</h3>
+          <p>
+            Open my Discord profile in a new tab. My exact Discord
+            username is not displayed here.
+          </p>
+        </div>
+
+        <a
+          class="text-link"
+          id="discordTextLink"
+          href="https://discord.com/users/1315545130199027782"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          OPEN PROFILE ↗
+        </a>
+      </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="section final-section">
+      <div class="final-glow"></div>
+      <p class="eyebrow">END OF TRANSMISSION</p>
+      <h2>SEE YOU IN<br><span class="gradient-text">THE GAME.</span></h2>
+      <a class="button primary" href="#home">BACK TO TOP ↑</a>
+    </section>
+
   </main>
-  <footer><a class="brand footer-brand" href="#home"><span class="brand-icon">X</span><span>xtremetoy<small>PLAYER ONE</small></span></a><p>MADE FOR THE LOVE OF GAMING <span>✦</span></p><a href="#home" class="back-top">TOP ↑</a></footer>
+
+  <footer>
+    <a class="brand footer-brand" href="#home">
+      <span class="brand-icon">X</span>
+      <span>xtremetoy<small>PLAYER ONE</small></span>
+    </a>
+    <p>MADE FOR THE LOVE OF GAMING <span>✦</span></p>
+    <a href="#home" class="back-top">TOP ↑</a>
+  </footer>
+
   <script src="script.js"></script>
-</body></html>
+</body>
+</html>
+
