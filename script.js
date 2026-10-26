@@ -6,83 +6,67 @@
 
 "use strict";
 
-// ==========================================
-// 1. PROFILE LINKS
-// ==========================================
-
 const SITE_LINKS = {
   discord: "https://discord.com/users/1315545130199027782",
   roblox: "https://www.roblox.com/users/1682110959/profile"
 };
 
-// ==========================================
-// 2. INITIALIZE THE WEBSITE
-// ==========================================
-
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.body;
-
-  // Intro elements
   const intro = document.getElementById("intro");
   const enterButton = document.getElementById("enterButton");
+  const siteContent = document.getElementById("siteContent");
 
-  // Music elements
   const music = document.getElementById("bgMusic");
   const musicToggle = document.getElementById("musicToggle");
   const musicIcon = document.getElementById("musicIcon");
   const musicText = document.getElementById("musicText");
   const introMusicToggle = document.getElementById("introMusicToggle");
 
-  // Navigation elements
   const menuToggle = document.getElementById("menuToggle");
   const navLinks = document.getElementById("navLinks");
 
-  // ========================================
-  // 3. KEEP PROFILE LINKS CONSISTENT
-  // ========================================
+  // ------------------------------------------
+  // 1. PROFILE LINKS
+  // ------------------------------------------
 
   document.querySelectorAll("#discordLink, #discordTextLink").forEach(link => {
     link.href = SITE_LINKS.discord;
   });
 
   const robloxLink = document.getElementById("robloxLink");
+  if (robloxLink) robloxLink.href = SITE_LINKS.roblox;
 
-  if (robloxLink) {
-    robloxLink.href = SITE_LINKS.roblox;
-  }
-
-  // ========================================
-  // 4. BACKGROUND PARTICLES
-  // ========================================
+  // ------------------------------------------
+  // 2. BACKGROUND PARTICLES
+  // ------------------------------------------
 
   const particleLayer = document.getElementById("particles");
 
-  if (particleLayer && !particleLayer.children.length) {
-    const particleFragment = document.createDocumentFragment();
+  if (particleLayer && particleLayer.children.length === 0) {
+    const fragment = document.createDocumentFragment();
 
     for (let i = 0; i < 34; i++) {
       const particle = document.createElement("span");
+      const size = 2 + Math.random() * 2.5;
 
       particle.className = "particle";
       particle.style.left = `${Math.random() * 100}%`;
       particle.style.animationDuration = `${9 + Math.random() * 17}s`;
       particle.style.animationDelay = `${-Math.random() * 22}s`;
       particle.style.opacity = `${0.2 + Math.random() * 0.6}`;
-
-      const size = 2 + Math.random() * 2.5;
-
       particle.style.width = `${size}px`;
       particle.style.height = `${size}px`;
 
-      particleFragment.appendChild(particle);
+      fragment.appendChild(particle);
     }
 
-    particleLayer.appendChild(particleFragment);
+    particleLayer.appendChild(fragment);
   }
 
-  // ========================================
-  // 5. CINEMATIC INTRO / ENTER BUTTON
-  // ========================================
+  // ------------------------------------------
+  // 3. ENTER WEBSITE
+  // ------------------------------------------
 
   let introExited = false;
 
@@ -93,59 +77,64 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (enterButton) {
       enterButton.disabled = true;
+      enterButton.setAttribute("aria-busy", "true");
     }
 
-    // Start the exit animation.
     if (intro) {
-      intro.classList.add("intro-exit", "hide");
       intro.setAttribute("aria-hidden", "true");
+      intro.classList.add("intro-exit", "hide");
     }
 
-    // Unlock scrolling immediately.
+    // Unlock the main page.
     body.classList.remove("locked");
 
-    // Hide the intro after the animation completes.
+    // Make sure the website can receive clicks and be seen.
+    if (siteContent) {
+      siteContent.style.visibility = "visible";
+      siteContent.style.pointerEvents = "auto";
+    }
+
+    // Finish removing the intro after its exit animation.
     window.setTimeout(() => {
       if (intro) {
         intro.style.display = "none";
-      }
-
-      // Restore keyboard and screen-reader access to the page.
-      const siteContent = document.getElementById("siteContent");
-
-      if (siteContent) {
-        siteContent.style.visibility = "visible";
-        siteContent.style.pointerEvents = "auto";
+        intro.style.pointerEvents = "none";
       }
 
       if (enterButton) {
         enterButton.disabled = false;
+        enterButton.removeAttribute("aria-busy");
       }
-    }, 950);
+    }, 1000);
   }
 
   if (enterButton) {
-    enterButton.addEventListener("click", enterWebsite);
+    enterButton.addEventListener("click", event => {
+      event.preventDefault();
+      enterWebsite();
+    });
   } else {
-    console.warn("XTREMETOY: #enterButton was not found.");
+    console.error(
+      'XTREMETOY: Cannot find #enterButton. Check the button ID in index.html.'
+    );
   }
 
-  // Allow the Enter key to dismiss the intro.
+  // Allow keyboard users to enter the website.
   document.addEventListener("keydown", event => {
     if (
       event.key === "Enter" &&
-      intro &&
-      !introExited &&
       !event.repeat &&
+      !introExited &&
+      intro &&
       !event.target.closest("button, a, input, textarea, select")
     ) {
       enterWebsite();
     }
   });
 
-  // ========================================
-  // 6. SYNCHRONIZED MUSIC CONTROLS
-  // ========================================
+  // ------------------------------------------
+  // 4. MUSIC CONTROLS
+  // ------------------------------------------
 
   let musicOn = false;
 
@@ -159,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (musicIcon) {
-      musicIcon.textContent = musicOn ? "♫" : "♫";
+      musicIcon.textContent = "♫";
     }
 
     if (musicText) {
@@ -173,11 +162,8 @@ document.addEventListener("DOMContentLoaded", () => {
         musicOn ? "Turn background music off" : "Turn background music on"
       );
 
-      const introLabel = introMusicToggle.querySelector(".intro-music-label");
-
-      if (introLabel) {
-        introLabel.textContent = musicOn ? "SOUND ON" : "SOUND OFF";
-      }
+      const label = introMusicToggle.querySelector(".intro-music-label");
+      if (label) label.textContent = musicOn ? "SOUND ON" : "SOUND OFF";
     }
 
     body.classList.toggle("music-playing", musicOn);
@@ -204,12 +190,10 @@ document.addEventListener("DOMContentLoaded", () => {
       musicOn = false;
       updateMusicControls();
 
-      if (musicText) {
-        musicText.textContent = "AUDIO UNAVAILABLE";
-      }
+      if (musicText) musicText.textContent = "AUDIO UNAVAILABLE";
 
       console.warn(
-        "XTREMETOY: Music could not play. Check that music.mp3 exists and is a valid audio file.",
+        "XTREMETOY: Music could not play. Check that music.mp3 exists.",
         error
       );
     }
@@ -223,17 +207,14 @@ document.addEventListener("DOMContentLoaded", () => {
     introMusicToggle.addEventListener("click", toggleMusic);
   }
 
-  // Keep controls synchronized if audio is paused or ends unexpectedly.
   if (music) {
-    music.addEventListener("pause", () => {
-      if (musicOn) {
-        musicOn = false;
-        updateMusicControls();
-      }
-    });
-
     music.addEventListener("play", () => {
       musicOn = true;
+      updateMusicControls();
+    });
+
+    music.addEventListener("pause", () => {
+      musicOn = false;
       updateMusicControls();
     });
 
@@ -245,9 +226,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateMusicControls();
 
-  // ========================================
-  // 7. MOBILE NAVIGATION MENU
-  // ========================================
+  // ------------------------------------------
+  // 5. MOBILE NAVIGATION
+  // ------------------------------------------
 
   function closeMobileMenu() {
     if (!navLinks || !menuToggle) return;
@@ -260,22 +241,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (menuToggle && navLinks) {
     menuToggle.addEventListener("click", () => {
-      const opened = navLinks.classList.toggle("open");
+      const isOpen = navLinks.classList.toggle("open");
 
-      menuToggle.setAttribute("aria-expanded", String(opened));
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
       menuToggle.setAttribute(
         "aria-label",
-        opened ? "Close navigation" : "Open navigation"
+        isOpen ? "Close navigation" : "Open navigation"
       );
-
-      menuToggle.textContent = opened ? "✕" : "☰";
+      menuToggle.textContent = isOpen ? "✕" : "☰";
     });
 
     navLinks.querySelectorAll("a").forEach(link => {
       link.addEventListener("click", closeMobileMenu);
     });
 
-    // Close the menu when the user clicks elsewhere.
     document.addEventListener("click", event => {
       if (
         navLinks.classList.contains("open") &&
@@ -286,65 +265,51 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Escape closes the mobile menu.
     document.addEventListener("keydown", event => {
-      if (event.key === "Escape") {
-        closeMobileMenu();
-      }
+      if (event.key === "Escape") closeMobileMenu();
     });
 
-    // Avoid leaving the mobile menu open after resizing to desktop.
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 900) {
-        closeMobileMenu();
-      }
+      if (window.innerWidth > 900) closeMobileMenu();
     });
   }
 
-  // ========================================
-  // 8. ACTIVE NAVIGATION WHILE SCROLLING
-  // ========================================
+  // ------------------------------------------
+  // 6. ACTIVE SECTION NAVIGATION
+  // ------------------------------------------
 
   const sections = document.querySelectorAll("main section[id]");
 
   if ("IntersectionObserver" in window && navLinks) {
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
 
-          navLinks.querySelectorAll("a").forEach(link => {
-            const isActive =
-              link.getAttribute("href") === `#${entry.target.id}`;
-
-            link.classList.toggle("active", isActive);
-          });
+        navLinks.querySelectorAll("a").forEach(link => {
+          link.classList.toggle(
+            "active",
+            link.getAttribute("href") === `#${entry.target.id}`
+          );
         });
-      },
-      {
-        rootMargin: "-35% 0px -55% 0px",
-        threshold: 0
-      }
-    );
+      });
+    }, {
+      rootMargin: "-35% 0px -55% 0px",
+      threshold: 0
+    });
 
     sections.forEach(section => observer.observe(section));
   }
 
-  // ========================================
-  // 9. PROFILE IMAGE FALLBACK
-  // ========================================
+  // ------------------------------------------
+  // 7. DISCORD AVATAR FALLBACK
+  // ------------------------------------------
 
   const avatarImage = document.querySelector(".xt-player-avatar-image");
   const avatarFallback = document.querySelector(".xt-player-avatar-fallback");
 
   function showAvatarFallback() {
-    if (avatarImage) {
-      avatarImage.style.display = "none";
-    }
-
-    if (avatarFallback) {
-      avatarFallback.style.display = "grid";
-    }
+    if (avatarImage) avatarImage.style.display = "none";
+    if (avatarFallback) avatarFallback.style.display = "grid";
   }
 
   if (avatarImage) {
@@ -354,12 +319,6 @@ document.addEventListener("DOMContentLoaded", () => {
       showAvatarFallback();
     }
   }
-
-  // ========================================
-  // 10. INITIAL PAGE STATE
-  // ========================================
-
-  updateMusicControls();
 
   console.log("XTREMETOY website initialized successfully.");
 });
