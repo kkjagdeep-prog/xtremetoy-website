@@ -3505,3 +3505,36 @@ a:focus-visible {
     scroll-behavior: auto !important;
   }
 }
+
+/* XTREMETOY — Intro Enter Button Fix */
+document.addEventListener("DOMContentLoaded", function () {
+  const enterButton = document.getElementById("enterButton");
+  const intro = document.getElementById("intro");
+  const siteContent = document.getElementById("siteContent");
+
+  if (!enterButton || !intro) {
+    console.error("Intro or Enter button not found. Check the HTML IDs.");
+    return;
+  }
+
+  enterButton.addEventListener("click", function () {
+    // Prevent repeated clicks
+    if (enterButton.dataset.entered === "true") return;
+    enterButton.dataset.entered = "true";
+
+    // Start the cinematic exit
+    intro.classList.add("intro-exit");
+
+    // Reveal the website
+    if (siteContent) {
+      siteContent.style.visibility = "visible";
+      siteContent.style.opacity = "1";
+      siteContent.style.pointerEvents = "auto";
+    }
+
+    // Remove the intro after the transition
+    window.setTimeout(function () {
+      intro.style.display = "none";
+    }, 900);
+  });
+});
