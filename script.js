@@ -35,7 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const robloxLink = document.getElementById("robloxLink");
-  if (robloxLink) robloxLink.href = SITE_LINKS.roblox;
+  if (robloxLink) {
+    robloxLink.href = SITE_LINKS.roblox;
+  }
 
   // ------------------------------------------
   // 2. BACKGROUND PARTICLES
@@ -65,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ------------------------------------------
-  // 3. ENTER WEBSITE
+  // 3. ENTER WEBSITE — ROBUST HANDLING
   // ------------------------------------------
 
   let introExited = false;
@@ -75,30 +77,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
     introExited = true;
 
-    if (enterButton) {
-      enterButton.disabled = true;
-      enterButton.setAttribute("aria-busy", "true");
+    // Unlock the main page immediately.
+    body.classList.remove("locked");
+
+    if (siteContent) {
+      siteContent.style.visibility = "visible";
+      siteContent.style.pointerEvents = "auto";
+      siteContent.removeAttribute("aria-hidden");
     }
 
     if (intro) {
       intro.setAttribute("aria-hidden", "true");
       intro.classList.add("intro-exit", "hide");
+
+      // Prevent the intro from blocking homepage clicks.
+      intro.style.pointerEvents = "none";
     }
 
-    // Unlock the main page.
-    body.classList.remove("locked");
-
-    // Make sure the website can receive clicks and be seen.
-    if (siteContent) {
-      siteContent.style.visibility = "visible";
-      siteContent.style.pointerEvents = "auto";
+    if (enterButton) {
+      enterButton.disabled = true;
+      enterButton.setAttribute("aria-busy", "true");
     }
 
-    // Finish removing the intro after its exit animation.
+    // Remove the intro after its exit animation.
     window.setTimeout(() => {
       if (intro) {
         intro.style.display = "none";
-        intro.style.pointerEvents = "none";
       }
 
       if (enterButton) {
@@ -109,25 +113,49 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (enterButton) {
+    // Keep the button above decorative intro elements.
+    enterButton.style.position = "relative";
+    enterButton.style.zIndex = "9999";
+    enterButton.style.pointerEvents = "auto";
+
+    // Normal mouse, touch, and keyboard activation.
     enterButton.addEventListener("click", event => {
       event.preventDefault();
       enterWebsite();
     });
+
+    // Backup for pointer activation if another listener
+    // interferes with the normal click event.
+    enterButton.addEventListener("pointerup", event => {
+      if (event.pointerType === "touch" || event.pointerType === "pen") {
+        return;
+      }
+
+      if (!introExited) {
+        event.preventDefault();
+        enterWebsite();
+      }
+    });
   } else {
     console.error(
-      'XTREMETOY: Cannot find #enterButton. Check the button ID in index.html.'
+      "XTREMETOY: Cannot find #enterButton. Check the button ID in index.html."
     );
   }
 
-  // Allow keyboard users to enter the website.
+  // Allow Enter or Space to open the website when focus
+  // is not already inside an interactive element.
   document.addEventListener("keydown", event => {
+    const target = event.target;
+
     if (
-      event.key === "Enter" &&
-      !event.repeat &&
       !introExited &&
       intro &&
-      !event.target.closest("button, a, input, textarea, select")
+      !event.repeat &&
+      (event.key === "Enter" || event.key === " ") &&
+      target instanceof Element &&
+      !target.closest("button, a, input, textarea, select")
     ) {
+      event.preventDefault();
       enterWebsite();
     }
   });
@@ -163,7 +191,9 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
       const label = introMusicToggle.querySelector(".intro-music-label");
-      if (label) label.textContent = musicOn ? "SOUND ON" : "SOUND OFF";
+      if (label) {
+        label.textContent = musicOn ? "SOUND ON" : "SOUND OFF";
+      }
     }
 
     body.classList.toggle("music-playing", musicOn);
@@ -190,7 +220,9 @@ document.addEventListener("DOMContentLoaded", () => {
       musicOn = false;
       updateMusicControls();
 
-      if (musicText) musicText.textContent = "AUDIO UNAVAILABLE";
+      if (musicText) {
+        musicText.textContent = "AUDIO UNAVAILABLE";
+      }
 
       console.warn(
         "XTREMETOY: Music could not play. Check that music.mp3 exists.",
@@ -266,11 +298,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.addEventListener("keydown", event => {
-      if (event.key === "Escape") closeMobileMenu();
+      if (event.key === "Escape") {
+        closeMobileMenu();
+      }
     });
 
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 900) closeMobileMenu();
+      if (window.innerWidth > 900) {
+        closeMobileMenu();
+      }
     });
   }
 
@@ -308,8 +344,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const avatarFallback = document.querySelector(".xt-player-avatar-fallback");
 
   function showAvatarFallback() {
-    if (avatarImage) avatarImage.style.display = "none";
-    if (avatarFallback) avatarFallback.style.display = "grid";
+    if (avatarImage) {
+      avatarImage.style.display = "none";
+    }
+
+    if (avatarFallback) {
+      avatarFallback.style.display = "grid";
+    }
   }
 
   if (avatarImage) {
