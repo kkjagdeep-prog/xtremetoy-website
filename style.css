@@ -6399,3 +6399,23 @@ body {
     opacity: 0.2;
   }
 }
+
+/* XTREMETOY — FORCE HOMEPAGE CURSOR VISIBILITY */
+.hero-copy h2 .cursor {
+  display: inline-block !important;
+  visibility: visible !important;
+  position: relative !important;
+  color: #22d3ee !important;
+  -webkit-text-fill-color: #22d3ee !important;
+  opacity: 1 !important;
+  font-size: 1em !important;
+  font-weight: 900 !important;
+  margin-left: 5px !important;
+  text-shadow: 0 0 8px #22d3ee, 0 0 18px #22d3ee !important;
+  animation: xtCursorBlink 1s steps(2, start) infinite !important;
+}
+
+@keyframes xtCursorBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0.25; }
+}
