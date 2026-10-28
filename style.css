@@ -2993,3 +2993,93 @@ footer p,
         transform: translateX(2px);
     }
 }
+
+/* ===== XTREMETOY ANIMATED CYBERPUNK GRID ===== */
+
+.neon-intro {
+    isolation: isolate;
+    background-color: #080611;
+    background-image:
+        linear-gradient(rgba(41, 243, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(41, 243, 255, 0.045) 1px, transparent 1px),
+        radial-gradient(ellipse at 50% 48%,
+            rgba(155, 77, 255, 0.18), transparent 65%);
+    background-size: 42px 42px, 42px 42px, auto;
+    animation: xt-grid-drift 18s linear infinite;
+}
+
+/* Keep the grid behind the intro content */
+.neon-intro > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Soft cyan and pink lighting around the intro screen */
+.neon-intro::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(
+            90deg,
+            transparent 49.8%,
+            rgba(41, 243, 255, 0.12) 50%,
+            transparent 50.2%
+        ),
+        radial-gradient(
+            ellipse at 50% 100%,
+            rgba(255, 63, 180, 0.12),
+            transparent 58%
+        );
+    animation: xt-neon-pulse 4s ease-in-out infinite alternate;
+}
+
+/* Animated glow around the intro emblem */
+.neon-intro .intro-emblem {
+    filter:
+        drop-shadow(0 0 8px rgba(41, 243, 255, 0.35))
+        drop-shadow(0 0 16px rgba(255, 63, 180, 0.2));
+    animation: xt-emblem-glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes xt-grid-drift {
+    from {
+        background-position: 0 0, 0 0, center;
+    }
+    to {
+        background-position: 42px 42px, 42px 42px, center;
+    }
+}
+
+@keyframes xt-neon-pulse {
+    from {
+        opacity: 0.55;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes xt-emblem-glow {
+    from {
+        filter:
+            drop-shadow(0 0 5px rgba(41, 243, 255, 0.3))
+            drop-shadow(0 0 10px rgba(255, 63, 180, 0.15));
+    }
+    to {
+        filter:
+            drop-shadow(0 0 12px rgba(41, 243, 255, 0.65))
+            drop-shadow(0 0 22px rgba(255, 63, 180, 0.4));
+    }
+}
+
+/* Respect visitors who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .neon-intro,
+    .neon-intro::before,
+    .neon-intro .intro-emblem {
+        animation: none;
+    }
+}
