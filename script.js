@@ -363,3 +363,88 @@ document.addEventListener("DOMContentLoaded", () => {
 
   console.log("XTREMETOY website initialized successfully.");
 });
+
+/* ==========================================
+   XTREMETOY ACHIEVEMENT POPUPS
+   ========================================== */
+(() => {
+  const modal = document.getElementById("achievementModal");
+
+  if (!modal || modal.dataset.initialized === "true") return;
+  modal.dataset.initialized = "true";
+
+  const title = document.getElementById("achievementModalTitle");
+  const description = document.getElementById(
+    "achievementModalDescription"
+  );
+  const icon = document.getElementById("achievementModalIcon");
+  const closeButton = modal.querySelector(".achievement-close");
+
+  const achievements = {
+    admin: {
+      title: "Administrator",
+      icon: "♛",
+      description:
+        "Managing communities, servers, and overall operations. Your existing role information lists 5 servers and 40,000 members."
+    },
+    manager: {
+      title: "Staff Manager",
+      icon: "✦",
+      description:
+        "Coordinating staff teams and supporting community management. Your existing role information lists 3 servers and 10,000 members."
+    },
+    moderator: {
+      title: "Moderator",
+      icon: "◈",
+      description:
+        "Helping maintain community rules and a positive environment. Your existing role information lists 10 servers and 40,000 members."
+    },
+    gambler: {
+      title: "Gambler",
+      icon: "🎲",
+      description:
+        "A part of your gaming identity and online community."
+    }
+  };
+
+  let previousFocus = null;
+
+  function openAchievement(key, trigger) {
+    const item = achievements[key];
+    if (!item) return;
+
+    previousFocus = trigger;
+    title.textContent = item.title;
+    description.textContent = item.description;
+    icon.textContent = item.icon;
+
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+    closeButton.focus();
+  }
+
+  function closeAchievement() {
+    if (modal.hidden) return;
+
+    modal.hidden = true;
+    document.body.style.overflow = "";
+
+    if (previousFocus && previousFocus.isConnected) {
+      previousFocus.focus();
+    }
+  }
+
+  document.querySelectorAll("[data-achievement]").forEach(button => {
+    button.addEventListener("click", () => {
+      openAchievement(button.dataset.achievement, button);
+    });
+  });
+
+  modal.querySelectorAll("[data-close-achievement]").forEach(button => {
+    button.addEventListener("click", closeAchievement);
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") closeAchievement();
+  });
+})();
