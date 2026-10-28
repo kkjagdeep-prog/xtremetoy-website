@@ -3565,3 +3565,564 @@ html body #intro.neon-intro .intro-content {
         right: 16px;
     }
 }
+
+/* ==========================================
+   XTREMETOY — FUTURISTIC GAMER ID CARD
+   CSS-only layout fix. Preserve existing HTML.
+   ========================================== */
+
+/* Main card */
+.xt-player-section .xt-player-card {
+    position: relative;
+    width: min(100%, 1150px);
+    max-width: 1150px;
+    margin: 0 auto;
+    height: auto;
+    min-height: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 1px solid rgba(41, 243, 255, 0.9);
+    border-radius: 28px;
+    background:
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(255, 63, 180, 0.10),
+            transparent 35%
+        ),
+        linear-gradient(145deg, #170e28, #0a0714 85%);
+    box-shadow:
+        0 0 24px rgba(41, 243, 255, 0.12),
+        0 0 45px rgba(155, 77, 255, 0.12);
+}
+
+/* Top strip: PLAYER PROFILE / XT 001 */
+.xt-player-section .xt-player-topline {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    min-height: 68px;
+    padding: 18px 28px;
+    box-sizing: border-box;
+    background: rgba(17, 10, 30, 0.94);
+    border-bottom: 1px solid rgba(41, 243, 255, 0.14);
+}
+
+.xt-player-section .xt-player-live,
+.xt-player-section .xt-player-id {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin: 0;
+    color: #f7f0ff;
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    line-height: 1.4;
+}
+
+.xt-player-section .xt-player-id {
+    color: #29f3ff;
+    white-space: nowrap;
+    font-size: 0.85rem;
+}
+
+/* Short, futuristic gradient banner */
+.xt-player-section .xt-player-banner {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    height: 112px;
+    min-height: 112px;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            115deg,
+            rgba(74, 31, 139, 0.98),
+            rgba(133, 35, 170, 0.98) 52%,
+            rgba(210, 35, 139, 0.96)
+        );
+}
+
+/* Keep the existing banner effects behind the text */
+.xt-player-section .xt-player-banner-grid {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.xt-player-section .xt-player-banner-orb {
+    position: absolute;
+    right: 9%;
+    top: -85px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(
+        circle,
+        rgba(255, 63, 180, 0.32),
+        rgba(155, 77, 255, 0.08) 55%,
+        transparent 72%
+    );
+}
+
+.xt-player-section .xt-player-banner-label {
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: auto;
+    max-width: calc(100% - 100px);
+    margin: 0;
+    padding: 20px 28px;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    overflow-wrap: anywhere;
+    box-sizing: border-box;
+}
+
+.xt-player-section .xt-player-banner-symbol {
+    position: absolute;
+    z-index: 1;
+    right: 28px;
+    bottom: 12px;
+    top: auto;
+    left: auto;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.4rem;
+    font-weight: 900;
+    line-height: 1;
+    pointer-events: none;
+}
+
+/* Four-column gamer ID information layout */
+.xt-player-section .xt-player-content {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns:
+        minmax(190px, 1.05fr)
+        minmax(220px, 1.25fr)
+        minmax(175px, 0.95fr)
+        minmax(145px, 0.75fr);
+    align-items: start;
+    gap: 28px;
+    width: 100%;
+    padding: 30px 28px 24px;
+    box-sizing: border-box;
+    background: transparent;
+}
+
+/* Avatar and username */
+.xt-player-section .xt-player-identity {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    min-width: 0;
+    margin: 0;
+}
+
+.xt-player-section .xt-player-avatar {
+    position: relative;
+    flex: 0 0 auto;
+    width: 116px;
+    height: 116px;
+    margin: 0;
+    border: 3px solid #9b4dff;
+    border-radius: 50%;
+    background: #160c25;
+    box-shadow:
+        0 0 0 6px rgba(155, 77, 255, 0.13),
+        0 0 25px rgba(155, 77, 255, 0.28);
+}
+
+.xt-player-section .xt-player-avatar-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.xt-player-section .xt-player-avatar-fallback {
+    border-radius: 50%;
+}
+
+.xt-player-section .xt-player-avatar-status {
+    position: absolute;
+    right: -2px;
+    bottom: 4px;
+    width: 15px;
+    height: 15px;
+    border: 3px solid #170e28;
+    border-radius: 50%;
+    background: #42f5a1;
+    box-sizing: content-box;
+}
+
+.xt-player-section .xt-player-nameblock {
+    width: 100%;
+    min-width: 0;
+}
+
+.xt-player-section .xt-player-kicker {
+    margin: 0 0 8px;
+    color: #bfb0d5;
+    font-size: 0.75rem;
+    font-weight: 800;
+    line-height: 1.7;
+    letter-spacing: 1px;
+    overflow-wrap: anywhere;
+}
+
+.xt-player-section .xt-player-nameblock h2 {
+    margin: 0 0 8px;
+    color: #ffffff;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    overflow-wrap: anywhere;
+}
+
+.xt-player-section .xt-player-star {
+    display: inline-block;
+    margin-left: 4px;
+    color: #29f3ff;
+}
+
+.xt-player-section .xt-player-description {
+    margin: 0;
+    color: #c5b8d7;
+    font-size: 0.92rem;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+/* Remove the old divider from the grid layout */
+.xt-player-section .xt-player-divider {
+    display: none;
+}
+
+/* Bio and roles */
+.xt-player-section .xt-player-about,
+.xt-player-section .xt-player-roles {
+    min-width: 0;
+    margin: 0;
+}
+
+.xt-player-section .xt-player-section-label {
+    display: block;
+    margin: 0 0 14px;
+    color: #f7f0ff;
+    font-size: 0.95rem;
+    font-weight: 900;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+    overflow-wrap: anywhere;
+}
+
+.xt-player-section .xt-player-about p {
+    margin: 0;
+    color: #ded5eb;
+    font-size: 0.95rem;
+    line-height: 1.85;
+    overflow-wrap: anywhere;
+}
+
+/* Role badges */
+.xt-player-section .xt-player-badges {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    margin: 0;
+}
+
+.xt-player-section .xt-player-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 7px;
+    max-width: 100%;
+    min-height: 36px;
+    margin: 0;
+    padding: 8px 11px;
+    border: 1px solid rgba(41, 243, 255, 0.28);
+    border-radius: 9px;
+    background: rgba(41, 243, 255, 0.06);
+    color: #29f3ff;
+    font-size: 0.73rem;
+    font-weight: 900;
+    line-height: 1.4;
+    letter-spacing: 0.5px;
+    overflow-wrap: anywhere;
+    box-sizing: border-box;
+}
+
+/* Discord and Roblox links */
+.xt-player-section .xt-player-links {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+}
+
+.xt-player-section .xt-player-link {
+    position: relative;
+    display: grid;
+    grid-template-columns: 20px minmax(0, 1fr) 14px;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 68px;
+    margin: 0;
+    padding: 13px 12px;
+    box-sizing: border-box;
+    border: 1px solid rgba(155, 77, 255, 0.38);
+    border-radius: 12px;
+    background: rgba(155, 77, 255, 0.1);
+    color: #ffffff;
+    text-align: center;
+    font-size: 0.76rem;
+    font-weight: 900;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.xt-player-section .xt-player-link:hover {
+    transform: translateY(-3px);
+    border-color: #29f3ff;
+    background: rgba(41, 243, 255, 0.09);
+    box-shadow: 0 0 18px rgba(41, 243, 255, 0.14);
+}
+
+.xt-player-section .xt-player-link-icon {
+    color: #29f3ff;
+    font-size: 1rem;
+}
+
+.xt-player-section .xt-player-link-arrow {
+    color: #29f3ff;
+    font-size: 0.95rem;
+}
+
+/* Footer stays inside the card */
+.xt-player-section .xt-player-footer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    width: 100%;
+    min-height: 54px;
+    margin: 0;
+    padding: 14px 28px;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(41, 243, 255, 0.17);
+    background: rgba(10, 7, 20, 0.72);
+    color: #bba8d5;
+    font-size: 0.75rem;
+    font-weight: 800;
+    line-height: 1.5;
+    letter-spacing: 0.8px;
+}
+
+.xt-player-section .xt-player-footer span {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+.xt-player-section .xt-player-footer b {
+    color: #29f3ff;
+}
+
+/* ==========================================
+   RESPONSIVE TABLET LAYOUT
+   ========================================== */
+@media (max-width: 1000px) {
+    .xt-player-section .xt-player-content {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 30px 26px;
+        padding: 28px 24px 22px;
+    }
+
+    .xt-player-section .xt-player-identity {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+    }
+
+    .xt-player-section .xt-player-about {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .xt-player-section .xt-player-roles {
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    .xt-player-section .xt-player-links {
+        grid-column: 2;
+        grid-row: 2 / span 2;
+    }
+
+    .xt-player-section .xt-player-identity {
+        gap: 18px;
+    }
+
+    .xt-player-section .xt-player-avatar {
+        width: 104px;
+        height: 104px;
+    }
+}
+
+/* ==========================================
+   RESPONSIVE MOBILE LAYOUT
+   ========================================== */
+@media (max-width: 600px) {
+    .xt-player-section .xt-player-card {
+        border-radius: 20px;
+    }
+
+    .xt-player-section .xt-player-topline {
+        min-height: 58px;
+        padding: 15px 17px;
+        gap: 10px;
+    }
+
+    .xt-player-section .xt-player-live {
+        font-size: 0.78rem;
+        letter-spacing: 0.5px;
+    }
+
+    .xt-player-section .xt-player-id {
+        font-size: 0.73rem;
+    }
+
+    .xt-player-section .xt-player-banner {
+        height: 88px;
+        min-height: 88px;
+    }
+
+    .xt-player-section .xt-player-banner-label {
+        max-width: calc(100% - 65px);
+        padding: 17px;
+        font-size: 0.83rem;
+        letter-spacing: 0.5px;
+    }
+
+    .xt-player-section .xt-player-banner-symbol {
+        right: 17px;
+        bottom: 12px;
+        font-size: 1.15rem;
+    }
+
+    .xt-player-section .xt-player-content {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 28px;
+        padding: 25px 20px;
+    }
+
+    .xt-player-section .xt-player-identity,
+    .xt-player-section .xt-player-about,
+    .xt-player-section .xt-player-roles,
+    .xt-player-section .xt-player-links {
+        grid-column: 1;
+        grid-row: auto;
+        width: 100%;
+    }
+
+    .xt-player-section .xt-player-identity {
+        align-items: center;
+        text-align: center;
+        gap: 18px;
+    }
+
+    .xt-player-section .xt-player-avatar {
+        width: 108px;
+        height: 108px;
+    }
+
+    .xt-player-section .xt-player-nameblock {
+        text-align: center;
+    }
+
+    .xt-player-section .xt-player-kicker {
+        font-size: 0.72rem;
+    }
+
+    .xt-player-section .xt-player-about p {
+        font-size: 0.92rem;
+        line-height: 1.8;
+    }
+
+    .xt-player-section .xt-player-badges {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 9px;
+    }
+
+    .xt-player-section .xt-player-badge {
+        font-size: 0.7rem;
+    }
+
+    .xt-player-section .xt-player-links {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 10px;
+    }
+
+    .xt-player-section .xt-player-link {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        align-content: center;
+        gap: 5px;
+        min-height: 88px;
+        padding: 12px 8px;
+        font-size: 0.7rem;
+    }
+
+    .xt-player-section .xt-player-link-arrow {
+        display: none;
+    }
+
+    .xt-player-section .xt-player-footer {
+        justify-content: center;
+        text-align: center;
+        padding: 14px 18px;
+        font-size: 0.68rem;
+    }
+}
+
+/* Respect reduced-motion settings */
+@media (prefers-reduced-motion: reduce) {
+    .xt-player-section .xt-player-link {
+        transition: none;
+    }
+}
