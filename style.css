@@ -3083,3 +3083,54 @@ footer p,
         animation: none;
     }
 }
+
+/* ===== FIX INTRO HUD LABEL POSITIONS ===== */
+
+.neon-intro {
+    position: relative;
+}
+
+.neon-intro .intro-hud-top,
+.neon-intro .intro-hud-bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding-left: clamp(16px, 2vw, 36px);
+    padding-right: clamp(16px, 2vw, 36px);
+    pointer-events: none;
+}
+
+.neon-intro .intro-hud-top {
+    top: 28px;
+}
+
+.neon-intro .intro-hud-bottom {
+    bottom: 24px;
+}
+
+.neon-intro .intro-hud-top > *,
+.neon-intro .intro-hud-bottom > * {
+    position: static;
+    margin: 0;
+    flex: 0 1 auto;
+}
+
+.neon-intro .intro-content {
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 600px) {
+    .neon-intro .intro-hud-top,
+    .neon-intro .intro-hud-bottom {
+        font-size: 11px;
+        gap: 8px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}
