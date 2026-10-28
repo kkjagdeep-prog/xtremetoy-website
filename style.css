@@ -5257,3 +5257,213 @@ html body #intro.neon-intro .intro-content {
     transition: none;
   }
 }
+
+/* =========================================
+   XTREMETOY — CYBERPUNK EFFECTS PACK
+   Add this at the END of style.css
+========================================= */
+
+:root {
+  --xt-neon-purple: #b44cff;
+  --xt-neon-pink: #ff3fd2;
+  --xt-neon-cyan: #39e7ff;
+}
+
+/* Keep effects above the page background */
+body {
+  isolation: isolate;
+}
+
+#xt-cursor-glow,
+#xt-cursor-dot,
+#xt-cursor-trail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99990;
+  opacity: 0;
+}
+
+#xt-cursor-glow {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(180, 76, 255, 0.14) 0%,
+    rgba(255, 63, 210, 0.07) 35%,
+    transparent 72%
+  );
+  transform: translate(-50%, -50%);
+  transition: opacity 180ms ease;
+  mix-blend-mode: screen;
+}
+
+#xt-cursor-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--xt-neon-cyan);
+  box-shadow: 0 0 10px var(--xt-neon-cyan),
+              0 0 24px var(--xt-neon-purple);
+  transform: translate(-50%, -50%);
+}
+
+#xt-cursor-trail {
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(255, 63, 210, 0.75);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 14px rgba(180, 76, 255, 0.25);
+  transition:
+    width 160ms ease,
+    height 160ms ease,
+    border-color 160ms ease;
+}
+
+/* Cursor effects only on mouse/trackpad devices */
+@media (hover: hover) and (pointer: fine) {
+  body.xt-effects-ready {
+    cursor: none;
+  }
+
+  body.xt-effects-ready a,
+  body.xt-effects-ready button,
+  body.xt-effects-ready [role="button"] {
+    cursor: none;
+  }
+
+  body.xt-effects-ready #xt-cursor-glow,
+  body.xt-effects-ready #xt-cursor-dot,
+  body.xt-effects-ready #xt-cursor-trail {
+    opacity: 1;
+  }
+
+  #xt-cursor-trail.xt-cursor-hover {
+    width: 48px;
+    height: 48px;
+    border-color: var(--xt-neon-cyan);
+  }
+}
+
+/* Neon click ripple */
+.xt-click-ripple {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 5;
+  background: rgba(57, 231, 255, 0.3);
+  border: 1px solid rgba(255, 63, 210, 0.9);
+  box-shadow:
+    0 0 12px rgba(180, 76, 255, 0.65),
+    inset 0 0 8px rgba(57, 231, 255, 0.5);
+  transform: translate(-50%, -50%) scale(0);
+  animation: xtRippleExpand 600ms ease-out forwards;
+}
+
+@keyframes xtRippleExpand {
+  0% {
+    opacity: 0.95;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(13);
+  }
+}
+
+/* Card tilt support */
+.xt-tilt-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.xt-tilt-card:hover {
+  border-color: rgba(180, 76, 255, 0.55);
+  box-shadow:
+    0 0 18px rgba(180, 76, 255, 0.12),
+    0 10px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Scroll reveal */
+.xt-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 650ms ease,
+    transform 650ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.xt-reveal.xt-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* A subtle moving scan line for selected cards */
+.xt-scan-target {
+  position: relative;
+  isolation: isolate;
+}
+
+.xt-scan-target::after {
+  content: "";
+  position: absolute;
+  top: -35%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(57, 231, 255, 0.7),
+    rgba(255, 63, 210, 0.75),
+    transparent
+  );
+  box-shadow: 0 0 12px rgba(180, 76, 255, 0.45);
+}
+
+.xt-scan-target.xt-scan-active::after {
+  opacity: 1;
+  animation: xtScanSweep 900ms ease-out;
+}
+
+@keyframes xtScanSweep {
+  from { top: -5%; }
+  to   { top: 105%; }
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  #xt-cursor-glow,
+  #xt-cursor-dot,
+  #xt-cursor-trail {
+    display: none !important;
+  }
+
+  .xt-tilt-card,
+  .xt-reveal {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .xt-reveal {
+    opacity: 1 !important;
+  }
+
+  .xt-click-ripple,
+  .xt-scan-target.xt-scan-active::after {
+    animation: none !important;
+    display: none !important;
+  }
+}
