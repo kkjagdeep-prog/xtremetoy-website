@@ -3450,3 +3450,42 @@ html body #intro.neon-intro .intro-content {
         overflow-wrap: anywhere;
     }
 }
+
+/* ===== FIX PLAYER PROFILE HEADER LABELS ===== */
+
+.xt-player-card {
+    overflow: hidden;
+}
+
+.xt-player-card .xt-player-header,
+.xt-player-card .xt-player-topbar,
+.xt-player-card .xt-player-meta {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.xt-player-card .xt-player-header {
+    padding: 16px 24px;
+}
+
+.xt-player-card .xt-player-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    padding: 12px 24px;
+}
+
+.xt-player-card .xt-player-meta {
+    padding: 10px 24px;
+}
+
+@media (max-width: 600px) {
+    .xt-player-card .xt-player-header,
+    .xt-player-card .xt-player-topbar,
+    .xt-player-card .xt-player-meta {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
