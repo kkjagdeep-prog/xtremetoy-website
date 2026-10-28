@@ -3229,3 +3229,86 @@ html body #intro.neon-intro .intro-content {
         max-width: 150px;
     }
 }
+
+/* ===== XTREMETOY NEON CARD HOVER EFFECTS ===== */
+
+/* Smooth transitions for existing cards */
+.role-card,
+.gaming-card,
+.social-card,
+.connect-card,
+.xt-player-card,
+.discord-card,
+.info-card {
+    position: relative;
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background-color 0.3s ease;
+}
+
+/* Purple and cyan neon glow on hover */
+.role-card:hover,
+.gaming-card:hover,
+.social-card:hover,
+.connect-card:hover,
+.xt-player-card:hover,
+.discord-card:hover,
+.info-card:hover {
+    transform: translateY(-6px);
+    border-color: #29f3ff;
+    box-shadow:
+        0 0 0 1px rgba(41, 243, 255, 0.16),
+        0 0 18px rgba(41, 243, 255, 0.15),
+        0 0 32px rgba(155, 77, 255, 0.16);
+}
+
+/* Make links and buttons feel responsive */
+.button,
+.enter-button,
+.xt-player-links a,
+.discord-profile-actions a,
+.connect-buttons a,
+.social-links a {
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+}
+
+.button:hover,
+.enter-button:hover,
+.xt-player-links a:hover,
+.discord-profile-actions a:hover,
+.connect-buttons a:hover,
+.social-links a:hover {
+    filter: brightness(1.12);
+}
+
+/* Keyboard accessibility */
+.role-card:focus-within,
+.gaming-card:focus-within,
+.social-card:focus-within,
+.connect-card:focus-within,
+.xt-player-card:focus-within,
+.discord-card:focus-within,
+.info-card:focus-within {
+    outline: 1px solid #29f3ff;
+    outline-offset: 3px;
+}
+
+/* Reduce motion when requested */
+@media (prefers-reduced-motion: reduce) {
+    .role-card,
+    .gaming-card,
+    .social-card,
+    .connect-card,
+    .xt-player-card,
+    .discord-card,
+    .info-card,
+    .button,
+    .enter-button {
+        transition: none;
+    }
+}
