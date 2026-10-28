@@ -5784,7 +5784,13 @@ body {
    Neon scan + animated holographic border
    ========================================== */
 
-/* Prepare cards for the effects */
+
+/* ==========================================
+   XTREMETOY — UNIFIED HOLOGRAPHIC EFFECT
+   One scan animation + animated neon border
+   ========================================== */
+
+/* Cards that support the holographic treatment */
 .role-card,
 .game-card,
 .achievement-card,
@@ -5793,10 +5799,20 @@ body {
 .game-stat-card {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
 }
 
-/* Holographic neon border */
+/* Keep the card's content above its decorative effects */
+.role-card > *,
+.game-card > *,
+.achievement-card > *,
+.xt-player-card > *,
+.stats-dash-card > *,
+.game-stat-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Animated purple/cyan border */
 .role-card::before,
 .game-card::before,
 .achievement-card::before,
@@ -5806,24 +5822,21 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  padding: 1px;
+  padding: 1.5px;
   border-radius: inherit;
   background: linear-gradient(
-    125deg,
-    transparent 10%,
-    rgba(168, 85, 247, 0.8) 30%,
-    rgba(34, 211, 238, 0.95) 48%,
-    rgba(236, 72, 153, 0.85) 65%,
-    transparent 85%
+    120deg,
+    #a855f7,
+    #22d3ee,
+    #ec4899,
+    #a855f7
   );
-  background-size: 250% 250%;
-  background-position: 0% 50%;
-  pointer-events: none;
+  background-size: 300% 300%;
   opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 3;
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.25s ease;
 
-  /* Keep the glow inside the card border */
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
@@ -5831,7 +5844,7 @@ body {
   mask-composite: exclude;
 }
 
-/* Activate the border on hover */
+/* Border animates only while the card is hovered */
 .role-card:hover::before,
 .game-card:hover::before,
 .achievement-card:hover::before,
@@ -5839,32 +5852,19 @@ body {
 .stats-dash-card:hover::before,
 .game-stat-card:hover::before {
   opacity: 1;
-  animation: xtHoloBorder 2.4s linear infinite;
+  animation: xtHoloBorder 3s linear infinite;
 }
 
 @keyframes xtHoloBorder {
-  0% {
+  from {
     background-position: 0% 50%;
   }
-  100% {
-    background-position: 250% 50%;
+  to {
+    background-position: 300% 50%;
   }
 }
 
-/* Neon glow while hovering */
-.role-card:hover,
-.game-card:hover,
-.achievement-card:hover,
-.xt-player-card:hover,
-.stats-dash-card:hover,
-.game-stat-card:hover {
-  box-shadow:
-    0 0 16px rgba(168, 85, 247, 0.2),
-    0 0 28px rgba(34, 211, 238, 0.12);
-  transition: box-shadow 0.3s ease;
-}
-
-/* Enhanced scan sweep */
+/* One shared scan layer */
 .role-card::after,
 .game-card::after,
 .achievement-card::after,
@@ -5879,29 +5879,23 @@ body {
   background: linear-gradient(
     180deg,
     transparent,
-    rgba(168, 85, 247, 0.04) 25%,
-    rgba(168, 85, 247, 0.22) 45%,
-    rgba(34, 211, 238, 0.38) 50%,
-    rgba(168, 85, 247, 0.12) 58%,
+    rgba(168, 85, 247, 0.12),
+    rgba(34, 211, 238, 0.38),
+    rgba(168, 85, 247, 0.16),
     transparent
   );
   transform: rotate(-12deg);
-  pointer-events: none;
   opacity: 0;
+  pointer-events: none;
   z-index: 2;
 }
 
-/* Trigger the scan when hovering */
-.role-card:hover::after,
-.game-card:hover::after,
-.achievement-card:hover::after,
-.stats-dash-card:hover::after,
-.game-stat-card:hover::after {
-  opacity: 1;
-  animation: xtHoloScan 1.1s ease-out 1;
+/* JavaScript triggers this class once per hover */
+.xt-scan-target.xt-scan-active::after {
+  animation: xtScanSweep 1.1s ease-out 1;
 }
 
-@keyframes xtHoloScan {
+@keyframes xtScanSweep {
   0% {
     top: -120%;
     opacity: 0;
@@ -5918,7 +5912,29 @@ body {
   }
 }
 
-/* Respect reduced-motion settings */
+/* Gentle glow, without changing card dimensions */
+.role-card:hover,
+.game-card:hover,
+.achievement-card:hover,
+.xt-player-card:hover,
+.stats-dash-card:hover,
+.game-stat-card:hover {
+  box-shadow:
+    0 0 16px rgba(168, 85, 247, 0.16),
+    0 0 24px rgba(34, 211, 238, 0.09);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Avoid competing scan animations */
+.role-card:hover::after,
+.game-card:hover::after,
+.achievement-card:hover::after,
+.stats-dash-card:hover::after,
+.game-stat-card:hover::after {
+  animation: none;
+}
+
+/* Accessibility: respect reduced-motion preferences */
 @media (prefers-reduced-motion: reduce) {
   .role-card::before,
   .game-card::before,
@@ -5926,11 +5942,7 @@ body {
   .xt-player-card::before,
   .stats-dash-card::before,
   .game-stat-card::before,
-  .role-card::after,
-  .game-card::after,
-  .achievement-card::after,
-  .stats-dash-card::after,
-  .game-stat-card::after {
+  .xt-scan-target.xt-scan-active::after {
     animation: none !important;
     transition: none !important;
   }
