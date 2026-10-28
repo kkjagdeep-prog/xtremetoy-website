@@ -3312,3 +3312,40 @@ html body #intro.neon-intro .intro-content {
         transition: none;
     }
 }
+
+/* ===== XTREMETOY HOVERING NEON BORDER ===== */
+
+.role-card:hover,
+.gaming-card:hover,
+.social-card:hover,
+.connect-card:hover,
+.xt-player-card:hover,
+.discord-card:hover,
+.info-card:hover {
+    animation: xt-card-neon-pulse 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes xt-card-neon-pulse {
+    from {
+        box-shadow:
+            0 0 8px rgba(41, 243, 255, 0.12),
+            0 0 16px rgba(155, 77, 255, 0.12);
+    }
+    to {
+        box-shadow:
+            0 0 14px rgba(41, 243, 255, 0.28),
+            0 0 28px rgba(155, 77, 255, 0.24);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .role-card:hover,
+    .gaming-card:hover,
+    .social-card:hover,
+    .connect-card:hover,
+    .xt-player-card:hover,
+    .discord-card:hover,
+    .info-card:hover {
+        animation: none;
+    }
+}
