@@ -20,7 +20,7 @@
   <!-- BACKGROUND PARTICLES -->
   <div class="particles" id="particles" aria-hidden="true"></div>
 
-  <!-- NEON CYBERPUNK INTRO -->
+  <!-- CYBERPUNK INTRO / BOOT SCREEN -->
   <div class="intro neon-intro" id="intro" role="dialog"
        aria-label="Welcome to XTREMETOY's website">
 
@@ -37,11 +37,12 @@
     </div>
 
     <div class="intro-hud intro-hud-top">
-      <span><i class="intro-hud-dot"></i> SYSTEM ONLINE</span>
+      <span><i class="intro-hud-dot"></i> SYSTEM INITIALIZING</span>
       <span>XT // PLAYER 001</span>
     </div>
 
     <div class="intro-content">
+
       <div class="intro-emblem" aria-hidden="true">
         <span>X</span>
         <div class="emblem-ring emblem-ring-one"></div>
@@ -57,15 +58,50 @@
       <p class="intro-copy">GAMES. GOOD VIBES. A LITTLE CHAOS.</p>
       <p class="intro-subcopy">YOUR WORLD. YOUR RULES. YOUR NEXT ADVENTURE.</p>
 
+      <!-- NEW: HACKER-STYLE BOOT TERMINAL -->
+      <div class="xt-boot-terminal">
+        <div class="xt-boot-topbar">
+          <span class="xt-boot-dot xt-dot-pink"></span>
+          <span class="xt-boot-dot xt-dot-purple"></span>
+          <span class="xt-boot-dot xt-dot-cyan"></span>
+          <span class="xt-boot-title">XTREMETOY // SYSTEM BOOT</span>
+        </div>
+
+        <div class="xt-boot-body">
+          <p class="xt-boot-label">
+            PLAYER TERMINAL <span>v2.0</span>
+          </p>
+
+          <div id="xtBootMessages" aria-live="polite">
+            <p class="xt-boot-line">AWAITING INITIALIZATION...</p>
+          </div>
+
+          <div class="xt-boot-progress-track">
+            <div id="xtBootProgress"></div>
+          </div>
+
+          <div class="xt-boot-status">
+            <span id="xtBootStatus">INITIALIZING</span>
+            <span id="xtBootPercent">0%</span>
+          </div>
+
+          <p class="xt-boot-prompt">
+            SYSTEM READY<span class="xt-boot-cursor">_</span>
+          </p>
+        </div>
+      </div>
+      <!-- END BOOT TERMINAL -->
+
+      <!-- EXISTING ENTER BUTTON: SAME ID FOR JAVASCRIPT -->
       <button class="enter-button neon-enter-button" id="enterButton" type="button">
         <span class="enter-button-icon" aria-hidden="true">↗</span>
-        <span>ENTER MY WORLD</span>
+        <span>SKIP / ENTER XTREMETOY</span>
         <span class="enter-button-arrow" aria-hidden="true">→</span>
       </button>
 
       <p class="intro-hint">
         <span class="intro-hint-line" aria-hidden="true"></span>
-        CLICK TO INITIALIZE
+        INITIALIZE YOUR EXPERIENCE
         <span class="intro-hint-line" aria-hidden="true"></span>
       </p>
     </div>
@@ -450,7 +486,7 @@
       </section>
     </section>
 
-    <!-- EXISTING COMMUNITY STATISTICS DASHBOARD -->
+    <!-- COMMUNITY STATISTICS DASHBOARD -->
     <section class="section stats-dashboard" id="statistics">
       <div class="section-heading">
         <p class="eyebrow">05 / XT ANALYTICS SYSTEM</p>
@@ -586,7 +622,7 @@
       </div>
     </section>
 
-    <!-- NEW: GAME STATISTICS -->
+    <!-- GAME STATISTICS -->
     <section class="section game-stats-section" id="game-stats">
       <div class="game-stats-container">
 
@@ -598,7 +634,6 @@
 
         <div class="game-stats-grid">
 
-          <!-- BLOX FRUITS -->
           <article class="game-stat-card blox-card">
             <div class="game-card-top">
               <span class="game-status-dot"></span>
@@ -612,27 +647,19 @@
             <div class="game-stat-list">
               <div class="game-stat-row">
                 <span>LEVEL</span>
-                <strong class="editable-stat" contenteditable="true"
-                        role="textbox" aria-label="Blox Fruits level"
-                        spellcheck="false">—</strong>
+                <strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Blox Fruits level" spellcheck="false">—</strong>
               </div>
               <div class="game-stat-row">
                 <span>HONOR</span>
-                <strong class="editable-stat" contenteditable="true"
-                        role="textbox" aria-label="Blox Fruits honor"
-                        spellcheck="false">—</strong>
+                <strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Blox Fruits honor" spellcheck="false">—</strong>
               </div>
               <div class="game-stat-row">
                 <span>MAIN FRUIT</span>
-                <strong class="editable-stat" contenteditable="true"
-                        role="textbox" aria-label="Blox Fruits main fruit"
-                        spellcheck="false">—</strong>
+                <strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Blox Fruits main fruit" spellcheck="false">—</strong>
               </div>
               <div class="game-stat-row">
                 <span>WIN RATE</span>
-                <strong class="editable-stat" contenteditable="true"
-                        role="textbox" aria-label="Blox Fruits win rate"
-                        spellcheck="false">—</strong>
+                <strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Blox Fruits win rate" spellcheck="false">—</strong>
               </div>
             </div>
 
@@ -642,7 +669,6 @@
             </div>
           </article>
 
-          <!-- RIVALS -->
           <article class="game-stat-card rivals-card">
             <div class="game-card-top">
               <span class="game-status-dot"></span>
@@ -656,27 +682,19 @@
             <div class="game-stat-list">
               <div class="game-stat-row">
                 <span>WINS</span>
-                <strong class="editable-stat" contenteditable="true"
-                        role="textbox" aria-label="Rivals wins"
-                        spellcheck="false">—</strong>
+                <strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Rivals wins" spellcheck="false">—</strong>
               </div>
               <div class="game-stat-row">
                 <span>KILLS</span>
-                <strong class="editable-stat" contenteditable="true"
-                        role="textbox" aria-label="Rivals kills"
-                        spellcheck="false">—</strong>
+                <strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Rivals kills" spellcheck="false">—</strong>
               </div>
               <div class="game-stat-row">
                 <span>K/D RATIO</span>
-                <strong class="editable-stat" contenteditable="true"
-                        role="textbox" aria-label="Rivals kill death ratio"
-                        spellcheck="false">—</strong>
+                <strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Rivals kill death ratio" spellcheck="false">—</strong>
               </div>
               <div class="game-stat-row">
                 <span>WEAPON OF CHOICE</span>
-                <strong class="editable-stat" contenteditable="true"
-                        role="textbox" aria-label="Rivals weapon of choice"
-                        spellcheck="false">—</strong>
+                <strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Rivals weapon of choice" spellcheck="false">—</strong>
               </div>
             </div>
 
@@ -686,7 +704,6 @@
             </div>
           </article>
 
-          <!-- FORTNITE -->
           <article class="game-stat-card fortnite-card">
             <div class="game-card-top">
               <span class="game-status-dot"></span>
@@ -700,27 +717,19 @@
             <div class="game-stat-list">
               <div class="game-stat-row">
                 <span>WINS</span>
-                <strong class="editable-stat" contenteditable="true"
-                        role="textbox" aria-label="Fortnite wins"
-                        spellcheck="false">—</strong>
+                <strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Fortnite wins" spellcheck="false">—</strong>
               </div>
               <div class="game-stat-row">
                 <span>KILLS</span>
-                <strong class="editable-stat" contenteditable="true"
-                        role="textbox" aria-label="Fortnite kills"
-                        spellcheck="false">—</strong>
+                <strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Fortnite kills" spellcheck="false">—</strong>
               </div>
               <div class="game-stat-row">
                 <span>K/D RATIO</span>
-                <strong class="editable-stat" contenteditable="true"
-                        role="textbox" aria-label="Fortnite kill death ratio"
-                        spellcheck="false">—</strong>
+                <strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Fortnite kill death ratio" spellcheck="false">—</strong>
               </div>
               <div class="game-stat-row">
                 <span>RANK</span>
-                <strong class="editable-stat" contenteditable="true"
-                        role="textbox" aria-label="Fortnite rank"
-                        spellcheck="false">—</strong>
+                <strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Fortnite rank" spellcheck="false">—</strong>
               </div>
             </div>
 
