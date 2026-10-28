@@ -5467,3 +5467,314 @@ body {
     display: none !important;
   }
 }
+
+/* ==========================================
+   XTREMETOY — MY INFOS LAYOUT FIX
+   Responsive profile + quote panels
+   ========================================== */
+
+#about.about-section {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 100px 32px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+#about .section-heading {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto 52px;
+  text-align: center;
+}
+
+#about .section-heading h2 {
+  margin: 16px 0;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+}
+
+#about .section-desc {
+  margin: 0 auto;
+  max-width: 600px;
+  line-height: 1.8;
+  color: #b8aecb;
+}
+
+/* Two-column layout */
+
+#about .about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  align-items: stretch;
+  gap: 28px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Profile panel */
+
+#about .profile-panel {
+  min-width: 0;
+  padding: 32px;
+  box-sizing: border-box;
+  border: 1px solid rgba(190, 92, 255, 0.25);
+  border-radius: 20px;
+  background:
+    radial-gradient(
+      circle at 0% 0%,
+      rgba(155, 54, 255, 0.13),
+      transparent 55%
+    ),
+    rgba(18, 12, 34, 0.86);
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.2),
+    inset 0 0 25px rgba(160, 60, 255, 0.025);
+}
+
+#about .profile-top {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  min-width: 0;
+}
+
+#about .avatar {
+  display: grid;
+  place-items: center;
+  flex: 0 0 76px;
+  width: 76px;
+  height: 76px;
+  border: 1px solid rgba(255, 63, 196, 0.7);
+  border-radius: 20px;
+  background: linear-gradient(135deg, #7b2cff, #ff35bd);
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: 900;
+  box-shadow: 0 0 28px rgba(209, 45, 255, 0.2);
+}
+
+#about .profile-top > div:last-child {
+  min-width: 0;
+}
+
+#about .online-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  color: #72f5bd;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+#about .online-pill i {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: #72f5bd;
+  box-shadow: 0 0 12px rgba(114, 245, 189, 0.75);
+}
+
+#about .profile-top h3 {
+  margin: 0 0 7px;
+  color: #fff;
+  font-size: 1.5rem;
+  overflow-wrap: anywhere;
+}
+
+#about .muted {
+  margin: 0;
+  color: #b8aecb;
+  line-height: 1.7;
+}
+
+#about .panel-line {
+  width: 100%;
+  height: 1px;
+  margin: 28px 0;
+  background: linear-gradient(
+    90deg,
+    rgba(196, 66, 255, 0.7),
+    rgba(255, 53, 189, 0.15),
+    transparent
+  );
+}
+
+#about .bio {
+  margin: 0;
+  color: #ded6ed;
+  font-size: 1rem;
+  line-height: 1.95;
+  overflow-wrap: anywhere;
+}
+
+#about .bio strong {
+  color: #ff70dc;
+}
+
+#about .info-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+#about .info-chips span {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 13px;
+  border: 1px solid rgba(183, 105, 255, 0.24);
+  border-radius: 999px;
+  background: rgba(132, 55, 190, 0.12);
+  color: #e8ddfa;
+  font-size: 0.83rem;
+  line-height: 1.4;
+}
+
+/* Quote panel */
+
+#about .quote-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-width: 0;
+  min-height: 280px;
+  padding: 36px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid rgba(255, 58, 202, 0.25);
+  border-radius: 20px;
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(255, 49, 196, 0.13),
+      transparent 55%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(27, 15, 48, 0.96),
+      rgba(14, 9, 28, 0.96)
+    );
+}
+
+#about .quote-mark {
+  display: block;
+  height: 65px;
+  color: #d94dff;
+  font-family: Georgia, serif;
+  font-size: 6rem;
+  line-height: 1;
+  opacity: 0.9;
+}
+
+#about .quote-panel h3 {
+  position: relative;
+  margin: 10px 0 14px;
+  color: #fff;
+  font-size: clamp(1.25rem, 2.2vw, 1.8rem);
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  line-height: 1.3;
+}
+
+#about .quote-panel p {
+  position: relative;
+  margin: 0;
+  color: #c7badb;
+  font-size: 1rem;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+#about .quote-decoration {
+  margin-top: 28px;
+  padding-top: 15px;
+  width: 100%;
+  border-top: 1px solid rgba(194, 105, 255, 0.22);
+  color: #d65cff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+/* Tablet */
+
+@media (max-width: 850px) {
+  #about.about-section {
+    padding: 80px 24px;
+  }
+
+  #about .about-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    max-width: 650px;
+  }
+
+  #about .profile-panel,
+  #about .quote-panel {
+    padding: 28px;
+  }
+
+  #about .quote-panel {
+    min-height: 250px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+  #about.about-section {
+    padding: 64px 16px;
+  }
+
+  #about .section-heading {
+    margin-bottom: 32px;
+  }
+
+  #about .profile-panel,
+  #about .quote-panel {
+    padding: 22px;
+    border-radius: 16px;
+  }
+
+  #about .profile-top {
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  #about .avatar {
+    flex-basis: 58px;
+    width: 58px;
+    height: 58px;
+    border-radius: 15px;
+    font-size: 2rem;
+  }
+
+  #about .profile-top h3 {
+    font-size: 1.25rem;
+  }
+
+  #about .muted {
+    font-size: 0.85rem;
+  }
+
+  #about .info-chips {
+    gap: 8px;
+  }
+
+  #about .info-chips span {
+    padding: 8px 10px;
+    font-size: 0.76rem;
+  }
+
+  #about .quote-panel {
+    min-height: 230px;
+  }
+}
