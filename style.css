@@ -5947,3 +5947,412 @@ body {
     transition: none !important;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   XTREMETOY — PREMIUM CYBER BOOT SCREEN
+   ========================================== */
+
+.boot-screen {
+  position: fixed !important;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 28px 20px;
+  overflow-y: auto;
+  isolation: isolate;
+  box-sizing: border-box;
+  background:
+    radial-gradient(ellipse at 50% 48%, rgba(109, 40, 217, .20), transparent 42%),
+    radial-gradient(ellipse at 50% 100%, rgba(217, 70, 239, .10), transparent 45%),
+    #070610 !important;
+  color: #f4f0ff;
+  font-family: Consolas, "Courier New", monospace;
+}
+
+.boot-screen[hidden] {
+  display: none !important;
+}
+
+.boot-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: .22;
+  background-image:
+    linear-gradient(rgba(167, 139, 250, .12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, .10) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(transparent, black 20%, black 80%, transparent);
+}
+
+.boot-scanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: .07;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    #000 4px
+  );
+}
+
+.boot-topbar,
+.boot-footer {
+  position: relative;
+  z-index: 6;
+  width: min(820px, 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: #8d88a9;
+  font-size: 10px;
+  letter-spacing: 1.4px;
+}
+
+.boot-topbar > span:first-child {
+  color: #c4b5fd;
+}
+
+.boot-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: #22d3ee;
+  box-shadow: 0 0 12px #22d3ee;
+  animation: bootPulse 1.5s infinite;
+}
+
+.boot-window {
+  position: relative;
+  z-index: 2;
+  width: min(820px, 100%);
+  overflow: hidden;
+  border: 1px solid rgba(167, 139, 250, .38);
+  border-radius: 12px;
+  background: rgba(10, 9, 24, .94);
+  box-shadow:
+    0 0 0 1px rgba(34, 211, 238, .05),
+    0 18px 70px rgba(0, 0, 0, .5),
+    0 0 45px rgba(139, 92, 246, .13);
+  animation: bootWindowIn .7s ease both;
+}
+
+.boot-window-header {
+  min-height: 42px;
+  padding: 0 17px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid rgba(167, 139, 250, .2);
+  background: linear-gradient(90deg, rgba(139, 92, 246, .14), rgba(34, 211, 238, .04));
+  color: #c4b5fd;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+}
+
+.boot-window-controls {
+  color: #22d3ee;
+  white-space: nowrap;
+}
+
+.boot-terminal {
+  min-height: 205px;
+  padding: 24px 28px;
+  font-size: 12px;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+.boot-terminal p {
+  margin: 0 0 5px;
+}
+
+.boot-muted {
+  color: #77728f;
+}
+
+.boot-purple {
+  color: #c084fc;
+  text-shadow: 0 0 12px rgba(192, 132, 252, .25);
+}
+
+.boot-cyan {
+  color: #22d3ee;
+  text-shadow: 0 0 12px rgba(34, 211, 238, .25);
+}
+
+.boot-typing-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 13px;
+  color: #f5f3ff;
+}
+
+.boot-prompt {
+  color: #22d3ee;
+}
+
+.boot-caret {
+  color: #22d3ee;
+  animation: bootBlink .8s steps(2, start) infinite;
+}
+
+.boot-progress {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 22px;
+  color: #a5a0bd;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.boot-progress-track {
+  flex: 1;
+  height: 5px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #211b36;
+}
+
+.boot-progress-track span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #8b5cf6, #d946ef, #22d3ee);
+  box-shadow: 0 0 14px rgba(34, 211, 238, .6);
+  transition: width .12s linear;
+}
+
+.boot-ready {
+  margin-top: 13px !important;
+  color: #22d3ee;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.boot-ready.is-ready {
+  opacity: 1;
+}
+
+.boot-brand {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  animation: bootWindowIn .8s .1s both;
+}
+
+.boot-kicker {
+  margin: 0 0 10px;
+  color: #c4b5fd;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.boot-brand h1 {
+  margin: 0;
+  color: #f8f7ff;
+  font-family: Arial, sans-serif;
+  font-size: clamp(35px, 5vw, 55px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 4px;
+  text-shadow: 0 0 30px rgba(168, 85, 247, .28);
+}
+
+.boot-brand h1 span {
+  color: #22d3ee;
+}
+
+.boot-brand > p:last-child {
+  margin: 12px 0 0;
+  color: #a5a0bd;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.boot-enter {
+  position: relative;
+  z-index: 7;
+  min-height: 50px;
+  padding: 0 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  border: 1px solid rgba(34, 211, 238, .75);
+  border-radius: 7px;
+  background: linear-gradient(100deg, #6d28d9, #a21caf 65%, #c0268d);
+  color: white;
+  font: 700 11px Consolas, "Courier New", monospace;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  box-shadow: 0 0 28px rgba(168, 85, 247, .2);
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.boot-enter:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.13);
+  box-shadow: 0 0 35px rgba(168, 85, 247, .4);
+}
+
+.boot-enter:focus-visible {
+  outline: 2px solid #22d3ee;
+  outline-offset: 5px;
+}
+
+.boot-footer {
+  padding-top: 3px;
+}
+
+.boot-screen .intro-music-toggle {
+  position: relative;
+  z-index: 7;
+  flex-shrink: 0;
+}
+
+.boot-screen.is-exiting {
+  animation: bootFadeOut .45s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes bootBlink {
+  50% { opacity: 0; }
+}
+
+@keyframes bootPulse {
+  50% { opacity: .4; }
+}
+
+@keyframes bootWindowIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bootFadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@media (max-width: 600px) {
+  .boot-screen {
+    gap: 16px;
+    padding: 18px 14px;
+  }
+
+  .boot-topbar,
+  .boot-footer {
+    font-size: 8px;
+    letter-spacing: .5px;
+  }
+
+  .boot-window-header {
+    min-height: 38px;
+    padding: 0 12px;
+    font-size: 9px;
+  }
+
+  .boot-terminal {
+    min-height: 190px;
+    padding: 17px 14px;
+    font-size: 10px;
+  }
+
+  .boot-progress {
+    gap: 8px;
+    font-size: 8px;
+  }
+
+  .boot-brand h1 {
+    font-size: clamp(30px, 9vw, 44px);
+    letter-spacing: 2px;
+  }
+
+  .boot-kicker {
+    font-size: 8px;
+    letter-spacing: 1.8px;
+  }
+
+  .boot-brand > p:last-child {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .boot-enter {
+    width: min(100%, 310px);
+    padding: 0 13px;
+    font-size: 10px;
+  }
+}
+
+@media (max-height: 760px) and (min-width: 601px) {
+  .boot-screen {
+    gap: 12px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .boot-terminal {
+    min-height: 150px;
+    padding: 14px 24px;
+  }
+
+  .boot-brand h1 {
+    font-size: 38px;
+  }
+
+  .boot-brand > p:last-child {
+    margin-top: 7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .boot-dot,
+  .boot-caret,
+  .boot-window,
+  .boot-brand {
+    animation: none !important;
+  }
+
+  .boot-screen.is-exiting {
+    animation-duration: .01ms;
+  }
+}
