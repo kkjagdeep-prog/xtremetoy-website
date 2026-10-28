@@ -6433,3 +6433,11 @@ body {
   position: relative !important;
   z-index: 999 !important;
 }
+/* Restore the intro button's clickability */
+#enterButton {
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
+  cursor: pointer;
+  isolation: isolate;
+}
