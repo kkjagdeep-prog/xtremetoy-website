@@ -21,9 +21,7 @@
   <!-- BACKGROUND PARTICLES -->
   <div class="particles" id="particles" aria-hidden="true"></div>
 
-  <!-- =========================
-       NEON CYBERPUNK INTRO
-  ========================== -->
+  <!-- NEON CYBERPUNK INTRO -->
   <div class="intro neon-intro" id="intro" role="dialog"
        aria-label="Welcome to XTREMETOY's website">
 
@@ -45,7 +43,6 @@
     </div>
 
     <div class="intro-content">
-
       <div class="intro-emblem" aria-hidden="true">
         <span>X</span>
         <div class="emblem-ring emblem-ring-one"></div>
@@ -102,17 +99,13 @@
     </div>
   </div>
 
-  <!-- =========================
-       BACKGROUND MUSIC
-  ========================== -->
+  <!-- BACKGROUND MUSIC -->
   <audio id="bgMusic" loop preload="none">
     <source src="music.mp3" type="audio/mpeg">
     Your browser does not support audio playback.
   </audio>
 
-  <!-- =========================
-       NAVIGATION
-  ========================== -->
+  <!-- NAVIGATION -->
   <header class="topbar">
     <a class="brand" href="#home" aria-label="xtremetoy home">
       <span class="brand-icon" aria-hidden="true">X</span>
@@ -124,6 +117,7 @@
       <a href="#about">My Infos</a>
       <a href="#roles">My Roles</a>
       <a href="#gaming">Gaming</a>
+      <a href="#achievements">Achievements</a>
       <a href="#connect">Connect</a>
     </nav>
 
@@ -146,9 +140,7 @@
     </button>
   </header>
 
-  <!-- =========================
-       MAIN WEBSITE CONTENT
-  ========================== -->
+  <!-- MAIN WEBSITE CONTENT -->
   <main id="siteContent">
 
     <!-- HOME -->
@@ -318,7 +310,7 @@
               <span class="stat-label">SERVERS</span>
             </div>
             <div class="role-stat">
-              <span class="stat-number">40,000</span>
+              <div class="stat-number">40,000</div>
               <span class="stat-label">MEMBERS</span>
             </div>
           </div>
@@ -530,6 +522,98 @@
       </section>
     </section>
 
+    <!-- ACHIEVEMENT SHOWCASE -->
+    <section class="section achievement-section" id="achievements">
+      <div class="section-heading">
+        <p class="eyebrow">04 / TROPHY DATABASE</p>
+        <h2>ACHIEVEMENT <span class="gradient-text">SHOWCASE</span></h2>
+        <p class="section-desc">
+          Explore my roles and gaming community experience.
+          Select a badge to inspect it.
+        </p>
+      </div>
+
+      <div class="achievement-grid">
+
+        <button class="achievement-card admin"
+                type="button"
+                data-achievement="admin"
+                aria-haspopup="dialog">
+          <span class="achievement-icon" aria-hidden="true">♛</span>
+          <span class="achievement-name">Administrator</span>
+          <span class="achievement-type">ROLE BADGE</span>
+          <span class="achievement-open">CLICK TO INSPECT ↗</span>
+        </button>
+
+        <button class="achievement-card manager"
+                type="button"
+                data-achievement="manager"
+                aria-haspopup="dialog">
+          <span class="achievement-icon" aria-hidden="true">✦</span>
+          <span class="achievement-name">Staff Manager</span>
+          <span class="achievement-type">ROLE BADGE</span>
+          <span class="achievement-open">CLICK TO INSPECT ↗</span>
+        </button>
+
+        <button class="achievement-card moderator"
+                type="button"
+                data-achievement="moderator"
+                aria-haspopup="dialog">
+          <span class="achievement-icon" aria-hidden="true">◈</span>
+          <span class="achievement-name">Moderator</span>
+          <span class="achievement-type">ROLE BADGE</span>
+          <span class="achievement-open">CLICK TO INSPECT ↗</span>
+        </button>
+
+        <button class="achievement-card gambler"
+                type="button"
+                data-achievement="gambler"
+                aria-haspopup="dialog">
+          <span class="achievement-icon" aria-hidden="true">🎲</span>
+          <span class="achievement-name">Gambler</span>
+          <span class="achievement-type">ROLE BADGE</span>
+          <span class="achievement-open">CLICK TO INSPECT ↗</span>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENT DETAILS POPUP -->
+    <div class="achievement-modal"
+         id="achievementModal"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="achievementModalTitle"
+         aria-describedby="achievementModalDescription"
+         hidden>
+
+      <div class="achievement-modal-backdrop"
+           data-close-achievement></div>
+
+      <div class="achievement-modal-panel">
+        <button class="achievement-close"
+                type="button"
+                aria-label="Close achievement details"
+                data-close-achievement>×</button>
+
+        <div class="achievement-modal-icon"
+             id="achievementModalIcon"
+             aria-hidden="true">♛</div>
+
+        <p class="achievement-modal-label">
+          XTREMETOY // ROLE DATABASE
+        </p>
+
+        <h3 id="achievementModalTitle">Administrator</h3>
+
+        <p id="achievementModalDescription">
+          Select an achievement badge to view its details.
+        </p>
+
+        <span class="achievement-modal-status">EXISTING ROLE</span>
+      </div>
+    </div>
+
     <!-- CONNECT -->
     <section class="section final-section" id="connect">
       <div class="final-glow" aria-hidden="true"></div>
@@ -553,9 +637,7 @@
 
   </main>
 
-  <!-- =========================
-       FOOTER
-  ========================== -->
+  <!-- FOOTER -->
   <footer>
     <a class="brand footer-brand" href="#home">
       <span class="brand-icon" aria-hidden="true">X</span>
