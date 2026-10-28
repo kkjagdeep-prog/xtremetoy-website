@@ -1,4 +1,4 @@
-
+   
 /* =========================================================
    XTREMETOY — COMPLETE WEBSITE STYLESHEET
    Theme: Dark Cyberpunk / Neon Purple / Pink / Cyan
@@ -3385,5 +3385,68 @@ html body #intro.neon-intro .intro-content {
     .discord-card:hover,
     .info-card:hover {
         animation: none;
+    }
+}
+
+/* ===== XTREMETOY PROFILE LAYOUT POLISH ===== */
+
+/* Give the player profile a little more room */
+.xt-player-card {
+    width: min(920px, calc(100% - 32px));
+    margin-inline: auto;
+}
+
+/* Improve spacing inside the player profile */
+.xt-player-content {
+    gap: 28px;
+    padding-right: 32px;
+    padding-left: 32px;
+}
+
+/* Prevent the player name from breaking awkwardly */
+.xt-player-nameblock {
+    flex: 1;
+    min-width: 0;
+}
+
+.xt-player-nameblock h2 {
+    overflow-wrap: normal;
+    word-break: normal;
+    line-height: 1.25;
+}
+
+/* Keep profile links aligned and evenly spaced */
+.xt-player-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    padding-right: 32px;
+    padding-left: 32px;
+}
+
+/* Improve the profile card on smaller screens */
+@media (max-width: 760px) {
+    .xt-player-card {
+        width: calc(100% - 24px);
+    }
+
+    .xt-player-content {
+        gap: 18px;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .xt-player-links {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+}
+
+/* Keep long names readable on narrow screens */
+@media (max-width: 420px) {
+    .xt-player-nameblock h2 {
+        font-size: 1.25rem;
+        overflow-wrap: anywhere;
     }
 }
