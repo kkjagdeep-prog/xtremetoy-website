@@ -4956,3 +4956,304 @@ html body #intro.neon-intro .intro-content {
     transition: none;
   }
 }
+/* =========================================
+   XTREMETOY - CYBERPUNK GAME STATISTICS
+========================================= */
+
+.game-stats-section {
+  position: relative;
+  padding: 100px 6%;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 15% 15%, rgba(157, 43, 255, 0.12), transparent 40%),
+    radial-gradient(ellipse at 85% 85%, rgba(0, 225, 255, 0.08), transparent 40%),
+    #090711;
+  color: #f7f4ff;
+  isolation: isolate;
+}
+
+.game-stats-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.15;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(180, 120, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(180, 120, 255, 0.12) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.game-stats-container {
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+.game-stats-heading {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.game-stats-eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: #00e5ff;
+  font-family: monospace;
+  font-size: 0.78rem;
+  letter-spacing: 3px;
+}
+
+.game-stats-heading h2 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-shadow: 0 0 22px rgba(170, 70, 255, 0.35);
+}
+
+.game-stats-heading h2 span {
+  color: #c15bff;
+}
+
+.game-stats-heading p {
+  margin: 14px 0 0;
+  color: #aaa4bd;
+  font-size: 1rem;
+}
+
+.game-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+.game-stat-card {
+  --game-accent: #c15bff;
+  position: relative;
+  padding: 25px;
+  overflow: hidden;
+  background: linear-gradient(155deg, #191326, #0e0c17 75%);
+  border: 1px solid color-mix(in srgb, var(--game-accent) 55%, transparent);
+  border-radius: 16px;
+  box-shadow: 0 0 22px color-mix(in srgb, var(--game-accent) 10%, transparent);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.game-stat-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  height: 2px;
+  background: var(--game-accent);
+  box-shadow: 0 0 16px var(--game-accent);
+}
+
+.game-stat-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--game-accent) 23%, transparent);
+}
+
+.blox-card {
+  --game-accent: #c15bff;
+}
+
+.rivals-card {
+  --game-accent: #00e5ff;
+}
+
+.fortnite-card {
+  --game-accent: #ff4fd8;
+}
+
+.game-card-top {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 25px;
+}
+
+.game-status-dot,
+.demo-pulse {
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--game-accent, #00e5ff);
+  box-shadow: 0 0 10px currentColor;
+}
+
+.game-card-label {
+  color: #a7a0ba;
+  font-family: monospace;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+}
+
+.game-card-number {
+  margin-left: auto;
+  color: var(--game-accent);
+  font-family: monospace;
+  font-size: 1.2rem;
+  font-weight: 900;
+  opacity: 0.9;
+}
+
+.game-stat-card h3 {
+  margin: 0;
+  font-size: clamp(1.6rem, 2.5vw, 2rem);
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.game-stat-card h3 span {
+  color: var(--game-accent);
+}
+
+.game-card-description {
+  min-height: 22px;
+  margin: 8px 0 25px;
+  color: #928ba5;
+  font-size: 0.85rem;
+}
+
+.game-stat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.game-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  min-height: 55px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.game-stat-row > span {
+  color: #aaa4bd;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.game-stat-row strong {
+  max-width: 58%;
+  color: var(--game-accent);
+  font-family: monospace;
+  font-size: 0.95rem;
+  text-align: right;
+  overflow-wrap: anywhere;
+  outline: none;
+  border-radius: 4px;
+}
+
+.game-stat-row strong[contenteditable="true"] {
+  cursor: text;
+  padding: 4px 6px;
+  border: 1px dashed transparent;
+}
+
+.game-stat-row strong[contenteditable="true"]:hover,
+.game-stat-row strong[contenteditable="true"]:focus {
+  border-color: var(--game-accent);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.game-stat-row strong:empty::before {
+  content: attr(data-placeholder);
+  color: #777084;
+  font-family: Arial, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.game-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+  font-family: monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.5px;
+}
+
+.game-card-footer > span:first-child {
+  color: #827b94;
+}
+
+.game-profile-status {
+  color: #ffcc70;
+  text-align: right;
+}
+
+.game-stats-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 35px;
+  color: #938ca5;
+  font-family: monospace;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.demo-pulse {
+  background: #00e5ff;
+  box-shadow: 0 0 12px #00e5ff;
+  animation: gameStatsPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes gameStatsPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.75);
+  }
+}
+
+@media (max-width: 1000px) {
+  .game-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .game-stats-section {
+    padding: 70px 5%;
+  }
+
+  .game-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .game-stat-card {
+    padding: 22px;
+  }
+
+  .game-stats-bottom {
+    font-size: 0.65rem;
+    line-height: 1.7;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-stat-card,
+  .demo-pulse {
+    animation: none;
+    transition: none;
+  }
+}
