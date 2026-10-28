@@ -873,3 +873,93 @@ document.addEventListener("DOMContentLoaded", () => {
     startXTEffects();
   }
 })();
+
+// ==========================================
+// XTREMETOY — HACKER BOOT SEQUENCE
+// ==========================================
+(() => {
+  const intro = document.getElementById("intro");
+  const enterButton = document.getElementById("enterButton");
+  const typingText = document.getElementById("bootTypingText");
+  const progressBar = document.getElementById("bootProgressBar");
+  const progressText = document.getElementById("bootProgressText");
+  const readyText = document.getElementById("bootReadyText");
+
+  if (!intro || !enterButton || !typingText || !progressBar || !progressText) {
+    return;
+  }
+
+  const messages = [
+    "accessing player profile...",
+    "loading XTREMETOY interface...",
+    "welcome, player one."
+  ];
+
+  let messageIndex = 0;
+  let characterIndex = 0;
+  let progress = 0;
+  let typingTimer = null;
+  let progressTimer = null;
+  let hasEntered = false;
+
+  function typeNextCharacter() {
+    if (hasEntered) return;
+
+    const message = messages[messageIndex];
+    typingText.textContent = message.slice(0, characterIndex);
+    characterIndex++;
+
+    if (characterIndex <= message.length) {
+      typingTimer = setTimeout(typeNextCharacter, 34);
+    } else {
+      messageIndex++;
+      characterIndex = 0;
+
+      if (messageIndex < messages.length) {
+        typingTimer = setTimeout(typeNextCharacter, 350);
+      }
+    }
+  }
+
+  function updateProgress() {
+    if (hasEntered) return;
+
+    progress = Math.min(progress + 2, 100);
+    progressBar.style.width = progress + "%";
+    progressText.textContent = "INITIALIZING " + progress + "%";
+
+    if (progress >= 100) {
+      if (readyText) readyText.classList.add("is-ready");
+      progressText.textContent = "SYSTEM ONLINE";
+    } else {
+      progressTimer = setTimeout(updateProgress, 45);
+    }
+  }
+
+  function enterWebsite() {
+    if (hasEntered) return;
+    hasEntered = true;
+
+    clearTimeout(typingTimer);
+    clearTimeout(progressTimer);
+
+    // Finish the startup bar immediately when Skip is clicked.
+    progressBar.style.width = "100%";
+    progressText.textContent = "SYSTEM ONLINE";
+
+    intro.classList.add("is-exiting");
+    document.body.classList.remove("locked");
+
+    // Allow the fade-out animation to finish before hiding the intro.
+    setTimeout(() => {
+      intro.hidden = true;
+      intro.classList.remove("is-exiting");
+    }, 450);
+  }
+
+  enterButton.addEventListener("click", enterWebsite);
+
+  // Begin the terminal animation.
+  typeNextCharacter();
+  updateProgress();
+})();
