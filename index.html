@@ -20,92 +20,70 @@
   <!-- BACKGROUND PARTICLES -->
   <div class="particles" id="particles" aria-hidden="true"></div>
 
-  <!-- CYBERPUNK INTRO / BOOT SCREEN -->
-  <div class="intro neon-intro" id="intro" role="dialog"
+  <!-- HACKER-STYLE BOOT SCREEN -->
+  <div class="intro neon-intro boot-screen" id="intro"
+       role="dialog" aria-modal="true"
        aria-label="Welcome to XTREMETOY's website">
 
-    <div class="intro-grid" aria-hidden="true"></div>
-    <div class="intro-vignette" aria-hidden="true"></div>
+    <div class="boot-grid" aria-hidden="true"></div>
+    <div class="boot-scanlines" aria-hidden="true"></div>
 
-    <div class="intro-particles" aria-hidden="true">
-      <span></span><span></span><span></span><span></span>
-      <span></span><span></span><span></span><span></span>
-      <span></span><span></span><span></span><span></span>
-      <span></span><span></span><span></span><span></span>
-      <span></span><span></span><span></span><span></span>
-      <span></span><span></span><span></span><span></span>
+    <div class="boot-topbar">
+      <span><i class="boot-dot"></i> XT_KERNEL // BOOT SEQUENCE</span>
+      <span>BUILD 001.26</span>
     </div>
 
-    <div class="intro-hud intro-hud-top">
-      <span><i class="intro-hud-dot"></i> SYSTEM INITIALIZING</span>
-      <span>XT // PLAYER 001</span>
-    </div>
-
-    <div class="intro-content">
-
-      <div class="intro-emblem" aria-hidden="true">
-        <span>X</span>
-        <div class="emblem-ring emblem-ring-one"></div>
-        <div class="emblem-ring emblem-ring-two"></div>
+    <div class="boot-window">
+      <div class="boot-window-header">
+        <span>TERMINAL — XTREMETOY</span>
+        <span class="boot-window-controls">_ □ ×</span>
       </div>
 
-      <p class="eyebrow intro-eyebrow">WELCOME TO THE DIGITAL FRONTIER</p>
+      <div class="boot-terminal">
+        <p class="boot-muted">Initializing XT interface...</p>
+        <p><span class="boot-purple">[SYSTEM]</span> Loading player profile</p>
+        <p><span class="boot-cyan">[NETWORK]</span> Preparing digital connection</p>
+        <p><span class="boot-purple">[VISUALS]</span> Calibrating neon interface</p>
 
-      <h1 class="intro-title" data-text="XTREMETOY">XTREMETOY</h1>
-
-      <div class="intro-title-line" aria-hidden="true"></div>
-
-      <p class="intro-copy">GAMES. GOOD VIBES. A LITTLE CHAOS.</p>
-      <p class="intro-subcopy">YOUR WORLD. YOUR RULES. YOUR NEXT ADVENTURE.</p>
-
-      <!-- NEW: HACKER-STYLE BOOT TERMINAL -->
-      <div class="xt-boot-terminal">
-        <div class="xt-boot-topbar">
-          <span class="xt-boot-dot xt-dot-pink"></span>
-          <span class="xt-boot-dot xt-dot-purple"></span>
-          <span class="xt-boot-dot xt-dot-cyan"></span>
-          <span class="xt-boot-title">XTREMETOY // SYSTEM BOOT</span>
+        <div class="boot-typing-line">
+          <span class="boot-prompt">XT@PLAYER:~$</span>
+          <span id="bootTypingText"></span>
+          <span class="boot-caret" aria-hidden="true">▋</span>
         </div>
 
-        <div class="xt-boot-body">
-          <p class="xt-boot-label">
-            PLAYER TERMINAL <span>v2.0</span>
-          </p>
-
-          <div id="xtBootMessages" aria-live="polite">
-            <p class="xt-boot-line">AWAITING INITIALIZATION...</p>
+        <div class="boot-progress">
+          <div class="boot-progress-track">
+            <span id="bootProgressBar"></span>
           </div>
-
-          <div class="xt-boot-progress-track">
-            <div id="xtBootProgress"></div>
-          </div>
-
-          <div class="xt-boot-status">
-            <span id="xtBootStatus">INITIALIZING</span>
-            <span id="xtBootPercent">0%</span>
-          </div>
-
-          <p class="xt-boot-prompt">
-            SYSTEM READY<span class="xt-boot-cursor">_</span>
-          </p>
+          <span id="bootProgressText">INITIALIZING 0%</span>
         </div>
+
+        <p class="boot-ready" id="bootReadyText">
+          SYSTEM READY — AWAITING INPUT
+        </p>
       </div>
-      <!-- END BOOT TERMINAL -->
-
-      <!-- EXISTING ENTER BUTTON: SAME ID FOR JAVASCRIPT -->
-      <button class="enter-button neon-enter-button" id="enterButton" type="button">
-        <span class="enter-button-icon" aria-hidden="true">↗</span>
-        <span>SKIP / ENTER XTREMETOY</span>
-        <span class="enter-button-arrow" aria-hidden="true">→</span>
-      </button>
-
-      <p class="intro-hint">
-        <span class="intro-hint-line" aria-hidden="true"></span>
-        INITIALIZE YOUR EXPERIENCE
-        <span class="intro-hint-line" aria-hidden="true"></span>
-      </p>
     </div>
 
+    <div class="boot-brand">
+      <p class="boot-kicker">WELCOME TO THE DIGITAL FRONTIER</p>
+      <h1>XT<span>REME</span>TOY</h1>
+      <p>GAMES. GOOD VIBES. A LITTLE CHAOS.</p>
+    </div>
+
+    <!-- KEEP THIS ID: THE JAVASCRIPT USES IT -->
+    <button class="enter-button neon-enter-button boot-enter"
+            id="enterButton" type="button">
+      <span aria-hidden="true">↗</span>
+      <span id="bootButtonText">SKIP BOOT &amp; ENTER</span>
+      <span aria-hidden="true">→</span>
+    </button>
+
+    <p class="boot-footer">
+      <span>SECURE SESSION: LOCAL</span>
+      <span>PLAYER ONE // ONLINE</span>
+    </p>
+
+    <!-- INTRO MUSIC CONTROL -->
     <button class="intro-music-toggle" id="introMusicToggle"
             type="button" aria-label="Turn background music on"
             aria-pressed="false">
@@ -115,12 +93,6 @@
         <i></i><i></i><i></i><i></i>
       </span>
     </button>
-
-    <div class="intro-hud intro-hud-bottom">
-      <span>EST. XT</span>
-      <span>CLICK <b>✦</b> START YOUR STORY</span>
-      <span>V.001</span>
-    </div>
   </div>
 
   <!-- BACKGROUND MUSIC -->
@@ -158,7 +130,7 @@
             aria-controls="navLinks">☰</button>
   </header>
 
-  <!-- MAIN WEBSITE CONTENT -->
+  <!-- MAIN WEBSITE -->
   <main id="siteContent">
 
     <!-- HOME -->
@@ -199,7 +171,6 @@
         <div class="orbit orbit-one"></div>
         <div class="orbit orbit-two"></div>
         <div class="hero-x" aria-hidden="true">X</div>
-
         <div class="visual-label label-top">PLAYER PROFILE <b>001</b></div>
         <div class="visual-label label-bottom">
           <span class="status-dot"></span> READY TO PLAY
@@ -272,14 +243,8 @@
           <h3>ADMINISTRATOR</h3>
           <p>Managing communities, servers, and overall operations.</p>
           <div class="role-stats">
-            <div class="role-stat">
-              <span class="stat-number">5</span>
-              <span class="stat-label">SERVERS</span>
-            </div>
-            <div class="role-stat">
-              <span class="stat-number">40,000</span>
-              <span class="stat-label">MEMBERS</span>
-            </div>
+            <div class="role-stat"><span class="stat-number">5</span><span class="stat-label">SERVERS</span></div>
+            <div class="role-stat"><span class="stat-number">40,000</span><span class="stat-label">MEMBERS</span></div>
           </div>
         </article>
 
@@ -289,14 +254,8 @@
           <h3>STAFF MANAGER</h3>
           <p>Coordinating staff teams and supporting community management.</p>
           <div class="role-stats">
-            <div class="role-stat">
-              <span class="stat-number">3</span>
-              <span class="stat-label">SERVERS</span>
-            </div>
-            <div class="role-stat">
-              <span class="stat-number">10,000</span>
-              <span class="stat-label">MEMBERS</span>
-            </div>
+            <div class="role-stat"><span class="stat-number">3</span><span class="stat-label">SERVERS</span></div>
+            <div class="role-stat"><span class="stat-number">10,000</span><span class="stat-label">MEMBERS</span></div>
           </div>
         </article>
 
@@ -306,14 +265,8 @@
           <h3>MODERATOR</h3>
           <p>Helping maintain community rules and a positive environment.</p>
           <div class="role-stats">
-            <div class="role-stat">
-              <span class="stat-number">10</span>
-              <span class="stat-label">SERVERS</span>
-            </div>
-            <div class="role-stat">
-              <span class="stat-number">40,000</span>
-              <span class="stat-label">MEMBERS</span>
-            </div>
+            <div class="role-stat"><span class="stat-number">10</span><span class="stat-label">SERVERS</span></div>
+            <div class="role-stat"><span class="stat-number">40,000</span><span class="stat-label">MEMBERS</span></div>
           </div>
         </article>
 
@@ -323,14 +276,8 @@
           <h3>GAMBLER</h3>
           <p>A part of my gaming identity and online community.</p>
           <div class="role-stats">
-            <div class="role-stat">
-              <span class="stat-number">—</span>
-              <span class="stat-label">SERVERS</span>
-            </div>
-            <div class="role-stat">
-              <span class="stat-number">—</span>
-              <span class="stat-label">MEMBERS</span>
-            </div>
+            <div class="role-stat"><span class="stat-number">—</span><span class="stat-label">SERVERS</span></div>
+            <div class="role-stat"><span class="stat-number">—</span><span class="stat-label">MEMBERS</span></div>
           </div>
         </article>
       </div>
@@ -399,18 +346,14 @@
         </div>
         <a class="text-link" id="discordTextLink"
            href="https://discord.com/users/1315545130199027782"
-           target="_blank" rel="noopener noreferrer">
-          OPEN PROFILE ↗
-        </a>
+           target="_blank" rel="noopener noreferrer">OPEN PROFILE ↗</a>
       </div>
 
       <!-- XTREMETOY GAMER PROFILE -->
       <section class="xt-player-section" aria-label="XTREMETOY gamer profile">
         <div class="xt-player-card">
           <div class="xt-player-topline">
-            <span class="xt-player-live">
-              <span class="xt-player-live-dot"></span> PLAYER PROFILE
-            </span>
+            <span class="xt-player-live"><span class="xt-player-live-dot"></span> PLAYER PROFILE</span>
             <span class="xt-player-id">XT / 001</span>
           </div>
 
@@ -424,10 +367,8 @@
           <div class="xt-player-content">
             <div class="xt-player-identity">
               <div class="xt-player-avatar">
-                <img src="discord-avatar.png"
-                     alt="XTREMETOY profile picture"
-                     class="xt-player-avatar-image"
-                     width="94" height="94" loading="eager">
+                <img src="discord-avatar.png" alt="XTREMETOY profile picture"
+                     class="xt-player-avatar-image" width="94" height="94" loading="eager">
                 <span class="xt-player-avatar-fallback">X</span>
                 <i class="xt-player-avatar-status" aria-label="Status indicator"></i>
               </div>
@@ -443,10 +384,7 @@
 
             <div class="xt-player-about">
               <span class="xt-player-section-label">01 / PLAYER BIO</span>
-              <p>
-                Welcome to my gaming space. Explore my profiles,
-                discover my roles, and connect with me in the digital world.
-              </p>
+              <p>Welcome to my gaming space. Explore my profiles, discover my roles, and connect with me in the digital world.</p>
             </div>
 
             <div class="xt-player-roles">
@@ -486,21 +424,17 @@
       </section>
     </section>
 
-    <!-- COMMUNITY STATISTICS DASHBOARD -->
+    <!-- PLAYER STATISTICS -->
     <section class="section stats-dashboard" id="statistics">
       <div class="section-heading">
         <p class="eyebrow">05 / XT ANALYTICS SYSTEM</p>
         <h2>PLAYER <span class="gradient-text">STATISTICS</span></h2>
-        <p class="section-desc">
-          A snapshot of my gaming roles and community experience.
-        </p>
+        <p class="section-desc">A snapshot of my gaming roles and community experience.</p>
       </div>
 
       <div class="stats-system-header">
         <div>
-          <span class="stats-system-label">
-            <span class="stats-live-dot"></span> SYSTEM STATUS: ONLINE
-          </span>
+          <span class="stats-system-label"><span class="stats-live-dot"></span> SYSTEM STATUS: ONLINE</span>
           <h3>COMMUNITY OVERVIEW</h3>
         </div>
         <span class="stats-system-id">XT // DATA-001</span>
@@ -508,53 +442,33 @@
 
       <div class="stats-dashboard-grid">
         <article class="stats-dash-card purple">
-          <div class="stats-card-top">
-            <span class="stats-card-icon" aria-hidden="true">♛</span>
-            <span class="stats-card-code">STAT_01</span>
-          </div>
+          <div class="stats-card-top"><span class="stats-card-icon" aria-hidden="true">♛</span><span class="stats-card-code">STAT_01</span></div>
           <p class="stats-card-label">GAMING ROLES</p>
-          <div class="stats-card-number">
-            <span class="stats-counter" data-target="4">0</span>
-          </div>
+          <div class="stats-card-number"><span class="stats-counter" data-target="4">0</span></div>
           <p class="stats-card-note">ROLE CATEGORIES</p>
           <div class="stats-card-track"><span style="--bar-width: 100%"></span></div>
         </article>
 
         <article class="stats-dash-card blue">
-          <div class="stats-card-top">
-            <span class="stats-card-icon" aria-hidden="true">◈</span>
-            <span class="stats-card-code">STAT_02</span>
-          </div>
+          <div class="stats-card-top"><span class="stats-card-icon" aria-hidden="true">◈</span><span class="stats-card-code">STAT_02</span></div>
           <p class="stats-card-label">SERVER ASSIGNMENTS</p>
-          <div class="stats-card-number">
-            <span class="stats-counter" data-target="18">0</span>
-          </div>
+          <div class="stats-card-number"><span class="stats-counter" data-target="18">0</span></div>
           <p class="stats-card-note">ACROSS LISTED ROLES</p>
           <div class="stats-card-track"><span style="--bar-width: 80%"></span></div>
         </article>
 
         <article class="stats-dash-card pink">
-          <div class="stats-card-top">
-            <span class="stats-card-icon" aria-hidden="true">✦</span>
-            <span class="stats-card-code">STAT_03</span>
-          </div>
+          <div class="stats-card-top"><span class="stats-card-icon" aria-hidden="true">✦</span><span class="stats-card-code">STAT_03</span></div>
           <p class="stats-card-label">COMBINED MEMBER REACH</p>
-          <div class="stats-card-number">
-            <span class="stats-counter" data-target="90000" data-format="compact">0</span>
-          </div>
+          <div class="stats-card-number"><span class="stats-counter" data-target="90000" data-format="compact">0</span></div>
           <p class="stats-card-note">ROLE-ASSOCIATED FIGURES</p>
           <div class="stats-card-track"><span style="--bar-width: 90%"></span></div>
         </article>
 
         <article class="stats-dash-card cyan">
-          <div class="stats-card-top">
-            <span class="stats-card-icon" aria-hidden="true">⌁</span>
-            <span class="stats-card-code">STAT_04</span>
-          </div>
+          <div class="stats-card-top"><span class="stats-card-icon" aria-hidden="true">⌁</span><span class="stats-card-code">STAT_04</span></div>
           <p class="stats-card-label">ROLES WITH STATISTICS</p>
-          <div class="stats-card-number">
-            <span class="stats-counter" data-target="3">0</span>
-          </div>
+          <div class="stats-card-number"><span class="stats-counter" data-target="3">0</span></div>
           <p class="stats-card-note">WITH NUMERICAL DATA</p>
           <div class="stats-card-track"><span style="--bar-width: 75%"></span></div>
         </article>
@@ -562,46 +476,31 @@
 
       <div class="stats-breakdown-panel">
         <div class="stats-breakdown-heading">
-          <div>
-            <p class="eyebrow">DATA STREAM // 02</p>
-            <h3>ROLE BREAKDOWN</h3>
-          </div>
+          <div><p class="eyebrow">DATA STREAM // 02</p><h3>ROLE BREAKDOWN</h3></div>
           <span class="stats-breakdown-tag">LIVE ANIMATION</span>
         </div>
 
         <div class="stats-role-list">
           <div class="stats-role-row">
-            <div class="stats-role-info">
-              <span class="stats-role-symbol admin">♛</span>
-              <div><h4>Administrator</h4><p>5 servers · 40,000 members</p></div>
-            </div>
+            <div class="stats-role-info"><span class="stats-role-symbol admin">♛</span><div><h4>Administrator</h4><p>5 servers · 40,000 members</p></div></div>
             <div class="stats-role-meter"><span class="stats-role-bar admin-bar" style="--role-width: 50%"></span></div>
             <span class="stats-role-rank">01</span>
           </div>
 
           <div class="stats-role-row">
-            <div class="stats-role-info">
-              <span class="stats-role-symbol manager">✦</span>
-              <div><h4>Staff Manager</h4><p>3 servers · 10,000 members</p></div>
-            </div>
+            <div class="stats-role-info"><span class="stats-role-symbol manager">✦</span><div><h4>Staff Manager</h4><p>3 servers · 10,000 members</p></div></div>
             <div class="stats-role-meter"><span class="stats-role-bar manager-bar" style="--role-width: 30%"></span></div>
             <span class="stats-role-rank">02</span>
           </div>
 
           <div class="stats-role-row">
-            <div class="stats-role-info">
-              <span class="stats-role-symbol moderator">◈</span>
-              <div><h4>Moderator</h4><p>10 servers · 40,000 members</p></div>
-            </div>
+            <div class="stats-role-info"><span class="stats-role-symbol moderator">◈</span><div><h4>Moderator</h4><p>10 servers · 40,000 members</p></div></div>
             <div class="stats-role-meter"><span class="stats-role-bar moderator-bar" style="--role-width: 100%"></span></div>
             <span class="stats-role-rank">03</span>
           </div>
 
           <div class="stats-role-row">
-            <div class="stats-role-info">
-              <span class="stats-role-symbol gambler">🎲</span>
-              <div><h4>Gambler</h4><p>No numerical statistics provided</p></div>
-            </div>
+            <div class="stats-role-info"><span class="stats-role-symbol gambler">🎲</span><div><h4>Gambler</h4><p>No numerical statistics provided</p></div></div>
             <div class="stats-role-meter"><span class="stats-role-bar gambler-bar" style="--role-width: 0%"></span></div>
             <span class="stats-role-rank">04</span>
           </div>
@@ -609,10 +508,10 @@
 
         <p class="stats-data-note">
           <span aria-hidden="true">ⓘ</span>
-          Member reach and server assignments are sums of the figures listed
-          for each role. The same people or servers may appear under multiple
-          roles, so these figures do not represent unique members or unique
-          servers. Values are manually entered, not live data from Discord or Roblox.
+          Member reach and server assignments are sums of the figures listed for each role.
+          The same people or servers may appear under multiple roles, so these figures do not
+          represent unique members or unique servers. Values are manually entered, not live
+          data from Discord or Roblox.
         </p>
       </div>
 
@@ -625,7 +524,6 @@
     <!-- GAME STATISTICS -->
     <section class="section game-stats-section" id="game-stats">
       <div class="game-stats-container">
-
         <div class="game-stats-heading">
           <span class="game-stats-eyebrow">// PLAYER DATA CENTER</span>
           <h2>GAME <span>STATISTICS</span></h2>
@@ -633,188 +531,86 @@
         </div>
 
         <div class="game-stats-grid">
-
           <article class="game-stat-card blox-card">
-            <div class="game-card-top">
-              <span class="game-status-dot"></span>
-              <span class="game-card-label">GAME PROFILE 01</span>
-              <span class="game-card-number">BF</span>
-            </div>
-
+            <div class="game-card-top"><span class="game-status-dot"></span><span class="game-card-label">GAME PROFILE 01</span><span class="game-card-number">BF</span></div>
             <h3>BLOX <span>FRUITS</span></h3>
             <p class="game-card-description">Pirate data // Character profile</p>
-
             <div class="game-stat-list">
-              <div class="game-stat-row">
-                <span>LEVEL</span>
-                <strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Blox Fruits level" spellcheck="false">—</strong>
-              </div>
-              <div class="game-stat-row">
-                <span>HONOR</span>
-                <strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Blox Fruits honor" spellcheck="false">—</strong>
-              </div>
-              <div class="game-stat-row">
-                <span>MAIN FRUIT</span>
-                <strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Blox Fruits main fruit" spellcheck="false">—</strong>
-              </div>
-              <div class="game-stat-row">
-                <span>WIN RATE</span>
-                <strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Blox Fruits win rate" spellcheck="false">—</strong>
-              </div>
+              <div class="game-stat-row"><span>LEVEL</span><strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Blox Fruits level" spellcheck="false">—</strong></div>
+              <div class="game-stat-row"><span>HONOR</span><strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Blox Fruits honor" spellcheck="false">—</strong></div>
+              <div class="game-stat-row"><span>MAIN FRUIT</span><strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Blox Fruits main fruit" spellcheck="false">—</strong></div>
+              <div class="game-stat-row"><span>WIN RATE</span><strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Blox Fruits win rate" spellcheck="false">—</strong></div>
             </div>
-
-            <div class="game-card-footer">
-              <span>PROFILE STATUS</span>
-              <span class="game-profile-status">AWAITING DATA</span>
-            </div>
+            <div class="game-card-footer"><span>PROFILE STATUS</span><span class="game-profile-status">AWAITING DATA</span></div>
           </article>
 
           <article class="game-stat-card rivals-card">
-            <div class="game-card-top">
-              <span class="game-status-dot"></span>
-              <span class="game-card-label">GAME PROFILE 02</span>
-              <span class="game-card-number">RV</span>
-            </div>
-
+            <div class="game-card-top"><span class="game-status-dot"></span><span class="game-card-label">GAME PROFILE 02</span><span class="game-card-number">RV</span></div>
             <h3>RI<span>VALS</span></h3>
             <p class="game-card-description">Combat data // Competitive profile</p>
-
             <div class="game-stat-list">
-              <div class="game-stat-row">
-                <span>WINS</span>
-                <strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Rivals wins" spellcheck="false">—</strong>
-              </div>
-              <div class="game-stat-row">
-                <span>KILLS</span>
-                <strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Rivals kills" spellcheck="false">—</strong>
-              </div>
-              <div class="game-stat-row">
-                <span>K/D RATIO</span>
-                <strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Rivals kill death ratio" spellcheck="false">—</strong>
-              </div>
-              <div class="game-stat-row">
-                <span>WEAPON OF CHOICE</span>
-                <strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Rivals weapon of choice" spellcheck="false">—</strong>
-              </div>
+              <div class="game-stat-row"><span>WINS</span><strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Rivals wins" spellcheck="false">—</strong></div>
+              <div class="game-stat-row"><span>KILLS</span><strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Rivals kills" spellcheck="false">—</strong></div>
+              <div class="game-stat-row"><span>K/D RATIO</span><strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Rivals kill death ratio" spellcheck="false">—</strong></div>
+              <div class="game-stat-row"><span>WEAPON OF CHOICE</span><strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Rivals weapon of choice" spellcheck="false">—</strong></div>
             </div>
-
-            <div class="game-card-footer">
-              <span>PROFILE STATUS</span>
-              <span class="game-profile-status">AWAITING DATA</span>
-            </div>
+            <div class="game-card-footer"><span>PROFILE STATUS</span><span class="game-profile-status">AWAITING DATA</span></div>
           </article>
 
           <article class="game-stat-card fortnite-card">
-            <div class="game-card-top">
-              <span class="game-status-dot"></span>
-              <span class="game-card-label">GAME PROFILE 03</span>
-              <span class="game-card-number">FN</span>
-            </div>
-
+            <div class="game-card-top"><span class="game-status-dot"></span><span class="game-card-label">GAME PROFILE 03</span><span class="game-card-number">FN</span></div>
             <h3>FORT<span>NITE</span></h3>
             <p class="game-card-description">Battle data // Victory profile</p>
-
             <div class="game-stat-list">
-              <div class="game-stat-row">
-                <span>WINS</span>
-                <strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Fortnite wins" spellcheck="false">—</strong>
-              </div>
-              <div class="game-stat-row">
-                <span>KILLS</span>
-                <strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Fortnite kills" spellcheck="false">—</strong>
-              </div>
-              <div class="game-stat-row">
-                <span>K/D RATIO</span>
-                <strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Fortnite kill death ratio" spellcheck="false">—</strong>
-              </div>
-              <div class="game-stat-row">
-                <span>RANK</span>
-                <strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Fortnite rank" spellcheck="false">—</strong>
-              </div>
+              <div class="game-stat-row"><span>WINS</span><strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Fortnite wins" spellcheck="false">—</strong></div>
+              <div class="game-stat-row"><span>KILLS</span><strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Fortnite kills" spellcheck="false">—</strong></div>
+              <div class="game-stat-row"><span>K/D RATIO</span><strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Fortnite kill death ratio" spellcheck="false">—</strong></div>
+              <div class="game-stat-row"><span>RANK</span><strong class="editable-stat" contenteditable="true" role="textbox" aria-label="Fortnite rank" spellcheck="false">—</strong></div>
             </div>
-
-            <div class="game-card-footer">
-              <span>PROFILE STATUS</span>
-              <span class="game-profile-status">AWAITING DATA</span>
-            </div>
+            <div class="game-card-footer"><span>PROFILE STATUS</span><span class="game-profile-status">AWAITING DATA</span></div>
           </article>
-
         </div>
 
-        <div class="game-stats-bottom">
-          <span class="demo-pulse"></span>
-          DEMO INTERFACE // CLICK ANY VALUE TO EDIT
-        </div>
+        <div class="game-stats-bottom"><span class="demo-pulse"></span> DEMO INTERFACE // CLICK ANY VALUE TO EDIT</div>
       </div>
     </section>
 
-    <!-- ACHIEVEMENT SHOWCASE -->
+    <!-- ACHIEVEMENTS -->
     <section class="section achievement-section" id="achievements">
       <div class="section-heading">
         <p class="eyebrow">04 / TROPHY DATABASE</p>
         <h2>ACHIEVEMENT <span class="gradient-text">SHOWCASE</span></h2>
-        <p class="section-desc">
-          Explore my roles and gaming community experience.
-          Select a badge to inspect it.
-        </p>
+        <p class="section-desc">Explore my roles and gaming community experience. Select a badge to inspect it.</p>
       </div>
 
       <div class="achievement-grid">
-        <button class="achievement-card admin" type="button"
-                data-achievement="admin" aria-haspopup="dialog">
-          <span class="achievement-icon" aria-hidden="true">♛</span>
-          <span class="achievement-name">Administrator</span>
-          <span class="achievement-type">ROLE BADGE</span>
-          <span class="achievement-open">CLICK TO INSPECT ↗</span>
+        <button class="achievement-card admin" type="button" data-achievement="admin" aria-haspopup="dialog">
+          <span class="achievement-icon" aria-hidden="true">♛</span><span class="achievement-name">Administrator</span><span class="achievement-type">ROLE BADGE</span><span class="achievement-open">CLICK TO INSPECT ↗</span>
         </button>
-
-        <button class="achievement-card manager" type="button"
-                data-achievement="manager" aria-haspopup="dialog">
-          <span class="achievement-icon" aria-hidden="true">✦</span>
-          <span class="achievement-name">Staff Manager</span>
-          <span class="achievement-type">ROLE BADGE</span>
-          <span class="achievement-open">CLICK TO INSPECT ↗</span>
+        <button class="achievement-card manager" type="button" data-achievement="manager" aria-haspopup="dialog">
+          <span class="achievement-icon" aria-hidden="true">✦</span><span class="achievement-name">Staff Manager</span><span class="achievement-type">ROLE BADGE</span><span class="achievement-open">CLICK TO INSPECT ↗</span>
         </button>
-
-        <button class="achievement-card moderator" type="button"
-                data-achievement="moderator" aria-haspopup="dialog">
-          <span class="achievement-icon" aria-hidden="true">◈</span>
-          <span class="achievement-name">Moderator</span>
-          <span class="achievement-type">ROLE BADGE</span>
-          <span class="achievement-open">CLICK TO INSPECT ↗</span>
+        <button class="achievement-card moderator" type="button" data-achievement="moderator" aria-haspopup="dialog">
+          <span class="achievement-icon" aria-hidden="true">◈</span><span class="achievement-name">Moderator</span><span class="achievement-type">ROLE BADGE</span><span class="achievement-open">CLICK TO INSPECT ↗</span>
         </button>
-
-        <button class="achievement-card gambler" type="button"
-                data-achievement="gambler" aria-haspopup="dialog">
-          <span class="achievement-icon" aria-hidden="true">🎲</span>
-          <span class="achievement-name">Gambler</span>
-          <span class="achievement-type">ROLE BADGE</span>
-          <span class="achievement-open">CLICK TO INSPECT ↗</span>
+        <button class="achievement-card gambler" type="button" data-achievement="gambler" aria-haspopup="dialog">
+          <span class="achievement-icon" aria-hidden="true">🎲</span><span class="achievement-name">Gambler</span><span class="achievement-type">ROLE BADGE</span><span class="achievement-open">CLICK TO INSPECT ↗</span>
         </button>
       </div>
     </section>
 
-    <!-- ACHIEVEMENT DETAILS POPUP -->
-    <div class="achievement-modal" id="achievementModal"
-         role="dialog" aria-modal="true"
-         aria-labelledby="achievementModalTitle"
+    <!-- ACHIEVEMENT POPUP -->
+    <div class="achievement-modal" id="achievementModal" role="dialog"
+         aria-modal="true" aria-labelledby="achievementModalTitle"
          aria-describedby="achievementModalDescription" hidden>
-
       <div class="achievement-modal-backdrop" data-close-achievement></div>
-
       <div class="achievement-modal-panel">
         <button class="achievement-close" type="button"
-                aria-label="Close achievement details"
-                data-close-achievement>×</button>
-
-        <div class="achievement-modal-icon"
-             id="achievementModalIcon" aria-hidden="true">♛</div>
-
+                aria-label="Close achievement details" data-close-achievement>×</button>
+        <div class="achievement-modal-icon" id="achievementModalIcon" aria-hidden="true">♛</div>
         <p class="achievement-modal-label">XTREMETOY // ROLE DATABASE</p>
         <h3 id="achievementModalTitle">Administrator</h3>
-        <p id="achievementModalDescription">
-          Select an achievement badge to view its details.
-        </p>
+        <p id="achievementModalDescription">Select an achievement badge to view its details.</p>
         <span class="achievement-modal-status">EXISTING ROLE</span>
       </div>
     </div>
@@ -822,16 +618,11 @@
     <!-- CONNECT -->
     <section class="section final-section" id="connect">
       <div class="final-glow" aria-hidden="true"></div>
-
       <p class="eyebrow">END OF TRANSMISSION</p>
       <h2>SEE YOU IN<br><span class="gradient-text">THE GAME.</span></h2>
 
       <div class="hero-actions">
-        <a class="button primary"
-           href="https://discord.com/users/1315545130199027782"
-           target="_blank" rel="noopener noreferrer">
-          CONNECT ON DISCORD ↗
-        </a>
+        <a class="button primary" href="https://discord.com/users/1315545130199027782" target="_blank" rel="noopener noreferrer">CONNECT ON DISCORD ↗</a>
         <a class="button secondary" href="#home">BACK TO TOP ↑</a>
       </div>
     </section>
@@ -844,7 +635,6 @@
       <span class="brand-icon" aria-hidden="true">X</span>
       <span>xtremetoy<small>PLAYER ONE</small></span>
     </a>
-
     <p>MADE FOR THE LOVE OF GAMING <span>✦</span></p>
     <a href="#home" class="back-top">TOP ↑</a>
   </footer>
