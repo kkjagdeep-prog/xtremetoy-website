@@ -1,7 +1,7 @@
 
 /* ==========================================
    XTREMETOY — MAIN JAVASCRIPT
-   Intro • Music • Mobile Menu • Navigation
+   Intro • Music • Navigation • Stats • Effects
    ========================================== */
 
 "use strict";
@@ -10,6 +10,10 @@ const SITE_LINKS = {
   discord: "https://discord.com/users/1315545130199027782",
   roblox: "https://www.roblox.com/users/1682110959/profile"
 };
+
+/* ==========================================
+   1. MAIN WEBSITE INITIALIZATION
+   ========================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.body;
@@ -26,22 +30,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById("menuToggle");
   const navLinks = document.getElementById("navLinks");
 
-  // ------------------------------------------
-  // 1. PROFILE LINKS
-  // ------------------------------------------
+  /* Profile links */
 
   document.querySelectorAll("#discordLink, #discordTextLink").forEach(link => {
     link.href = SITE_LINKS.discord;
   });
 
   const robloxLink = document.getElementById("robloxLink");
+
   if (robloxLink) {
     robloxLink.href = SITE_LINKS.roblox;
   }
 
-  // ------------------------------------------
-  // 2. BACKGROUND PARTICLES
-  // ------------------------------------------
+  /* Background particles */
 
   const particleLayer = document.getElementById("particles");
 
@@ -66,9 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
     particleLayer.appendChild(fragment);
   }
 
-  // ------------------------------------------
-  // 3. ENTER WEBSITE — ROBUST HANDLING
-  // ------------------------------------------
+  /* Enter website */
 
   let introExited = false;
 
@@ -77,7 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     introExited = true;
 
-    // Unlock the main page immediately.
     body.classList.remove("locked");
 
     if (siteContent) {
@@ -89,8 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (intro) {
       intro.setAttribute("aria-hidden", "true");
       intro.classList.add("intro-exit", "hide");
-
-      // Prevent the intro from blocking homepage clicks.
       intro.style.pointerEvents = "none";
     }
 
@@ -99,7 +95,6 @@ document.addEventListener("DOMContentLoaded", () => {
       enterButton.setAttribute("aria-busy", "true");
     }
 
-    // Remove the intro after its exit animation.
     window.setTimeout(() => {
       if (intro) {
         intro.style.display = "none";
@@ -113,19 +108,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (enterButton) {
-    // Keep the button above decorative intro elements.
     enterButton.style.position = "relative";
     enterButton.style.zIndex = "9999";
     enterButton.style.pointerEvents = "auto";
 
-    // Normal mouse, touch, and keyboard activation.
     enterButton.addEventListener("click", event => {
       event.preventDefault();
       enterWebsite();
     });
 
-    // Backup for pointer activation if another listener
-    // interferes with the normal click event.
     enterButton.addEventListener("pointerup", event => {
       if (event.pointerType === "touch" || event.pointerType === "pen") {
         return;
@@ -138,12 +129,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   } else {
     console.error(
-      "XTREMETOY: Cannot find #enterButton. Check the button ID in index.html."
+      "XTREMETOY: Cannot find #enterButton. Check the ID in index.html."
     );
   }
 
-  // Allow Enter or Space to open the website when focus
-  // is not already inside an interactive element.
   document.addEventListener("keydown", event => {
     const target = event.target;
 
@@ -160,9 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ------------------------------------------
-  // 4. MUSIC CONTROLS
-  // ------------------------------------------
+  /* Music controls */
 
   let musicOn = false;
 
@@ -191,6 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
       const label = introMusicToggle.querySelector(".intro-music-label");
+
       if (label) {
         label.textContent = musicOn ? "SOUND ON" : "SOUND OFF";
       }
@@ -258,9 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateMusicControls();
 
-  // ------------------------------------------
-  // 5. MOBILE NAVIGATION
-  // ------------------------------------------
+  /* Mobile navigation */
 
   function closeMobileMenu() {
     if (!navLinks || !menuToggle) return;
@@ -310,14 +296,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ------------------------------------------
-  // 6. ACTIVE SECTION NAVIGATION
-  // ------------------------------------------
+  /* Active section navigation */
 
   const sections = document.querySelectorAll("main section[id]");
 
   if ("IntersectionObserver" in window && navLinks) {
-    const observer = new IntersectionObserver(entries => {
+    const sectionObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
 
@@ -333,12 +317,10 @@ document.addEventListener("DOMContentLoaded", () => {
       threshold: 0
     });
 
-    sections.forEach(section => observer.observe(section));
+    sections.forEach(section => sectionObserver.observe(section));
   }
 
-  // ------------------------------------------
-  // 7. DISCORD AVATAR FALLBACK
-  // ------------------------------------------
+  /* Discord avatar fallback */
 
   const avatarImage = document.querySelector(".xt-player-avatar-image");
   const avatarFallback = document.querySelector(".xt-player-avatar-fallback");
@@ -364,9 +346,11 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("XTREMETOY website initialized successfully.");
 });
 
+
 /* ==========================================
-   XTREMETOY ACHIEVEMENT POPUPS
+   2. ACHIEVEMENT POPUPS
    ========================================== */
+
 (() => {
   const modal = document.getElementById("achievementModal");
 
@@ -374,9 +358,7 @@ document.addEventListener("DOMContentLoaded", () => {
   modal.dataset.initialized = "true";
 
   const title = document.getElementById("achievementModalTitle");
-  const description = document.getElementById(
-    "achievementModalDescription"
-  );
+  const description = document.getElementById("achievementModalDescription");
   const icon = document.getElementById("achievementModalIcon");
   const closeButton = modal.querySelector(".achievement-close");
 
@@ -402,8 +384,7 @@ document.addEventListener("DOMContentLoaded", () => {
     gambler: {
       title: "Gambler",
       icon: "🎲",
-      description:
-        "A part of your gaming identity and online community."
+      description: "A part of your gaming identity and online community."
     }
   };
 
@@ -414,13 +395,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!item) return;
 
     previousFocus = trigger;
-    title.textContent = item.title;
-    description.textContent = item.description;
-    icon.textContent = item.icon;
+
+    if (title) title.textContent = item.title;
+    if (description) description.textContent = item.description;
+    if (icon) icon.textContent = item.icon;
 
     modal.hidden = false;
     document.body.style.overflow = "hidden";
-    closeButton.focus();
+
+    if (closeButton) closeButton.focus();
   }
 
   function closeAchievement() {
@@ -449,9 +432,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 })();
 
-/* =========================================
-   XTREMETOY STATISTICS COUNTER ANIMATION
-========================================= */
+
+/* ==========================================
+   3. STATISTICS COUNTER ANIMATION
+   ========================================== */
 
 (() => {
   const dashboard = document.querySelector(".stats-dashboard");
@@ -470,10 +454,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const formatter = new Intl.NumberFormat("en-US");
 
   function formatValue(value, counter) {
-    if (counter.dataset.format === "compact" && value >= 1000) {
-      return formatter.format(value);
-    }
-
     return formatter.format(value);
   }
 
@@ -484,9 +464,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function animateCounter(counter) {
     const target = Number(counter.dataset.target);
 
-    if (!Number.isFinite(target) || target < 0) {
-      return;
-    }
+    if (!Number.isFinite(target) || target < 0) return;
 
     if (reducedMotion) {
       setCounter(counter, target);
@@ -502,7 +480,6 @@ document.addEventListener("DOMContentLoaded", () => {
         1
       );
 
-      // Ease-out effect: fast at first, smooth near the end.
       const easedProgress = 1 - Math.pow(1 - progress, 3);
       const currentValue = Math.round(target * easedProgress);
 
@@ -523,13 +500,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function startDashboardAnimation() {
     if (hasAnimated) return;
     hasAnimated = true;
-
     counters.forEach(animateCounter);
   }
 
   if ("IntersectionObserver" in window && !reducedMotion) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
           startDashboardAnimation();
           observer.disconnect();
@@ -544,21 +520,22 @@ document.addEventListener("DOMContentLoaded", () => {
     startDashboardAnimation();
   }
 })();
-/* =========================================
-   XTREMETOY - GAME STATISTICS DEMO
-========================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
+
+/* ==========================================
+   4. GAME STATISTICS DEMO
+   ========================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
   const gameCards = document.querySelectorAll(".game-stat-card");
 
-  gameCards.forEach(function (card) {
+  gameCards.forEach(card => {
     const statFields = card.querySelectorAll(".editable-stat");
     const statusLabel = card.querySelector(".game-profile-status");
 
     function updateStatus() {
-      const hasEnteredValue = Array.from(statFields).some(function (field) {
+      const hasEnteredValue = Array.from(statFields).some(field => {
         const value = field.textContent.trim();
-
         return value !== "" && value !== "—" && value !== "-";
       });
 
@@ -569,20 +546,17 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    statFields.forEach(function (field) {
-      // Allow Enter to finish editing without adding another line.
-      field.addEventListener("keydown", function (event) {
+    statFields.forEach(field => {
+      field.addEventListener("keydown", event => {
         if (event.key === "Enter") {
           event.preventDefault();
           field.blur();
         }
       });
 
-      // Update the card status as the value changes.
       field.addEventListener("input", updateStatus);
 
-      // Remove surrounding whitespace after editing.
-      field.addEventListener("blur", function () {
+      field.addEventListener("blur", () => {
         field.textContent = field.textContent.trim();
         updateStatus();
       });
@@ -591,29 +565,57 @@ document.addEventListener("DOMContentLoaded", function () {
     updateStatus();
   });
 
-  // Demo animation: reveal the cards when the section enters view.
+  /* Reveal game cards with a gentle animation */
+
   const gameStatsSection = document.querySelector("#game-stats");
 
   if (gameStatsSection && "IntersectionObserver" in window) {
-    const observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            gameCards.forEach(function (card, index) {
-              card.animate(
-                [
-                   
-/* =========================================
-   XTREMETOY — CYBERPUNK EFFECTS ENGINE
-   Add this at the END of script.js
-========================================= */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
 
-(function () {
+        gameCards.forEach((card, index) => {
+          card.animate(
+            [
+              {
+                opacity: 0.4,
+                transform: "translateY(18px)"
+              },
+              {
+                opacity: 1,
+                transform: "translateY(0)"
+              }
+            ],
+            {
+              duration: 450,
+              delay: index * 120,
+              easing: "ease-out",
+              fill: "both"
+            }
+          );
+        });
+
+        observer.unobserve(entry.target);
+      });
+    }, {
+      threshold: 0.15
+    });
+
+    observer.observe(gameStatsSection);
+  }
+});
+
+
+/* ==========================================
+   5. XTREMETOY CYBERPUNK EFFECTS ENGINE
+   ========================================== */
+
+(() => {
   "use strict";
 
   function startXTEffects() {
-    // Prevent accidental duplicate initialization.
     if (document.documentElement.dataset.xtEffects === "ready") return;
+
     document.documentElement.dataset.xtEffects = "ready";
 
     const reduceMotion = window.matchMedia(
@@ -624,9 +626,8 @@ document.addEventListener("DOMContentLoaded", function () {
       "(hover: hover) and (pointer: fine)"
     ).matches;
 
-    /* -------------------------------------
-       1. NEON CURSOR
-    ------------------------------------- */
+    /* Neon cursor */
+
     if (mouseDevice && !reduceMotion) {
       const glow = document.createElement("div");
       glow.id = "xt-cursor-glow";
@@ -668,7 +669,7 @@ document.addEventListener("DOMContentLoaded", function () {
         frameRequested = false;
       }
 
-      document.addEventListener("mousemove", function (event) {
+      document.addEventListener("mousemove", event => {
         mouseX = event.clientX;
         mouseY = event.clientY;
 
@@ -678,37 +679,42 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }, { passive: true });
 
-      document.addEventListener("mouseover", function (event) {
-        if (event.target.closest("a, button, [role='button']")) {
+      document.addEventListener("mouseover", event => {
+        const target = event.target;
+
+        if (
+          target instanceof Element &&
+          target.closest("a, button, [role='button']")
+        ) {
           trail.classList.add("xt-cursor-hover");
         } else {
           trail.classList.remove("xt-cursor-hover");
         }
       });
 
-      document.addEventListener("mouseleave", function () {
+      document.addEventListener("mouseleave", () => {
         document.body.classList.remove("xt-effects-ready");
       });
 
-      document.addEventListener("mouseenter", function () {
+      document.addEventListener("mouseenter", () => {
         document.body.classList.add("xt-effects-ready");
       });
 
       document.body.classList.add("xt-effects-ready");
     }
 
-    /* -------------------------------------
-       2. NEON CLICK RIPPLE
-    ------------------------------------- */
+    /* Neon click ripple */
+
     if (!reduceMotion) {
-      document.addEventListener("click", function (event) {
+      document.addEventListener("click", event => {
+        if (!(event.target instanceof Element)) return;
+
         const target = event.target.closest(
           "a, button, .button, .music-toggle"
         );
 
         if (!target) return;
 
-        // Avoid changing the layout or clipping the existing design.
         const rect = target.getBoundingClientRect();
         const ripple = document.createElement("span");
 
@@ -718,29 +724,29 @@ document.addEventListener("DOMContentLoaded", function () {
         ripple.style.left = (event.clientX - rect.left) + "px";
         ripple.style.top = (event.clientY - rect.top) + "px";
 
-        // Position the ripple relative to the clicked element.
         const previousPosition = target.style.position;
+
         if (getComputedStyle(target).position === "static") {
           target.style.position = "relative";
         }
 
         target.appendChild(ripple);
 
-        window.setTimeout(function () {
+        window.setTimeout(() => {
           ripple.remove();
 
-          // Restore only the inline position this effect added.
-          if (previousPosition === "" &&
-              target.style.position === "relative") {
+          if (
+            previousPosition === "" &&
+            target.style.position === "relative"
+          ) {
             target.style.removeProperty("position");
           }
         }, 700);
       });
     }
 
-    /* -------------------------------------
-       3. GENTLE 3D CARD TILT
-    ------------------------------------- */
+    /* Gentle 3D card tilt */
+
     if (mouseDevice && !reduceMotion) {
       const cardSelectors = [
         ".role-card",
@@ -752,11 +758,13 @@ document.addEventListener("DOMContentLoaded", function () {
         ".stat-card"
       ].join(",");
 
-      document.querySelectorAll(cardSelectors).forEach(function (card) {
+      document.querySelectorAll(cardSelectors).forEach(card => {
         card.classList.add("xt-tilt-card");
 
-        card.addEventListener("mousemove", function (event) {
+        card.addEventListener("mousemove", event => {
           const rect = card.getBoundingClientRect();
+
+          if (!rect.width || !rect.height) return;
 
           const x = (event.clientX - rect.left) / rect.width;
           const y = (event.clientY - rect.top) / rect.height;
@@ -769,15 +777,14 @@ document.addEventListener("DOMContentLoaded", function () {
             "rotateY(" + rotateY + "deg) translateY(-2px)";
         });
 
-        card.addEventListener("mouseleave", function () {
+        card.addEventListener("mouseleave", () => {
           card.style.transform = "";
         });
       });
     }
 
-    /* -------------------------------------
-       4. SCROLL REVEAL
-    ------------------------------------- */
+    /* Scroll reveal */
+
     const revealSelectors = [
       "#about",
       "#roles",
@@ -790,9 +797,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const revealItems = [];
 
-    revealSelectors.forEach(function (selector) {
-      document.querySelectorAll(selector).forEach(function (element) {
-        // Keep the hero and intro animation untouched.
+    revealSelectors.forEach(selector => {
+      document.querySelectorAll(selector).forEach(element => {
         if (!element.classList.contains("hero")) {
           revealItems.push(element);
         }
@@ -800,17 +806,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     if (reduceMotion || !("IntersectionObserver" in window)) {
-      revealItems.forEach(function (element) {
+      revealItems.forEach(element => {
         element.classList.add("xt-revealed");
       });
     } else {
-      revealItems.forEach(function (element) {
+      revealItems.forEach(element => {
         element.classList.add("xt-reveal");
       });
 
       const revealObserver = new IntersectionObserver(
-        function (entries, observer) {
-          entries.forEach(function (entry) {
+        (entries, observer) => {
+          entries.forEach(entry => {
             if (entry.isIntersecting) {
               entry.target.classList.add("xt-revealed");
               observer.unobserve(entry.target);
@@ -820,14 +826,13 @@ document.addEventListener("DOMContentLoaded", function () {
         { threshold: 0.12 }
       );
 
-      revealItems.forEach(function (element) {
+      revealItems.forEach(element => {
         revealObserver.observe(element);
       });
     }
 
-    /* -------------------------------------
-       5. SUBTLE CARD SCAN EFFECT
-    ------------------------------------- */
+    /* Subtle card scan effect */
+
     if (!reduceMotion) {
       const scanSelectors = [
         ".role-card",
@@ -837,18 +842,19 @@ document.addEventListener("DOMContentLoaded", function () {
         ".profile-card"
       ].join(",");
 
-      document.querySelectorAll(scanSelectors).forEach(function (card) {
+      document.querySelectorAll(scanSelectors).forEach(card => {
         card.classList.add("xt-scan-target");
 
-        card.addEventListener("mouseenter", function () {
+        card.addEventListener("mouseenter", () => {
           card.classList.remove("xt-scan-active");
 
           // Restart the scan animation.
           void card.offsetWidth;
+
           card.classList.add("xt-scan-active");
         });
 
-        card.addEventListener("animationend", function (event) {
+        card.addEventListener("animationend", event => {
           if (event.animationName === "xtScanSweep") {
             card.classList.remove("xt-scan-active");
           }
@@ -867,32 +873,3 @@ document.addEventListener("DOMContentLoaded", function () {
     startXTEffects();
   }
 })();
-
-                  {
-                    opacity: 0.4,
-                    transform: "translateY(18px)"
-                  },
-                  {
-                    opacity: 1,
-                    transform: "translateY(0)"
-                  }
-                ],
-                {
-                  duration: 450,
-                  delay: index * 120,
-                  easing: "ease-out",
-                  fill: "both"
-                }
-              );
-            });
-
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-
-    observer.observe(gameStatsSection);
-  }
-});
