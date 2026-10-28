@@ -6357,16 +6357,17 @@ body {
   }
 }
 
-/* Homepage blinking cursor */
-.cursor {
-  display: inline-block !important;
-  color: #22d3ee !important;
-  font-weight: 900;
-  opacity: 1;
-  margin-left: 4px;
-  animation: homepageCursorBlink 0.8s steps(2, start) infinite;
-  text-shadow: 0 0 12px #22d3ee;
-  vertical-align: baseline;
+/* Homepage cursor - diagnostic fix */
+.hero-copy h2 .cursor {
+  display: inline !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: #00ffff !important;
+  -webkit-text-fill-color: #00ffff !important;
+  animation: none !important;
+  text-shadow: 0 0 12px #00ffff !important;
+  position: relative;
+  z-index: 9999;
 }
 
 @keyframes homepageCursorBlink {
