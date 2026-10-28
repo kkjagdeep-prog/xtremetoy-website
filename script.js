@@ -448,3 +448,99 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.key === "Escape") closeAchievement();
   });
 })();
+
+/* =========================================
+   XTREMETOY STATISTICS COUNTER ANIMATION
+========================================= */
+
+(() => {
+  const dashboard = document.querySelector(".stats-dashboard");
+
+  if (!dashboard || dashboard.dataset.countersInitialized === "true") {
+    return;
+  }
+
+  dashboard.dataset.countersInitialized = "true";
+
+  const counters = dashboard.querySelectorAll(".stats-counter");
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  const formatter = new Intl.NumberFormat("en-US");
+
+  function formatValue(value, counter) {
+    if (counter.dataset.format === "compact" && value >= 1000) {
+      return formatter.format(value);
+    }
+
+    return formatter.format(value);
+  }
+
+  function setCounter(counter, value) {
+    counter.textContent = formatValue(value, counter);
+  }
+
+  function animateCounter(counter) {
+    const target = Number(counter.dataset.target);
+
+    if (!Number.isFinite(target) || target < 0) {
+      return;
+    }
+
+    if (reducedMotion) {
+      setCounter(counter, target);
+      return;
+    }
+
+    const duration = 1500;
+    const startTime = performance.now();
+
+    function updateCounter(currentTime) {
+      const progress = Math.min(
+        (currentTime - startTime) / duration,
+        1
+      );
+
+      // Ease-out effect: fast at first, smooth near the end.
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+      const currentValue = Math.round(target * easedProgress);
+
+      setCounter(counter, currentValue);
+
+      if (progress < 1) {
+        requestAnimationFrame(updateCounter);
+      } else {
+        setCounter(counter, target);
+      }
+    }
+
+    requestAnimationFrame(updateCounter);
+  }
+
+  let hasAnimated = false;
+
+  function startDashboardAnimation() {
+    if (hasAnimated) return;
+    hasAnimated = true;
+
+    counters.forEach(animateCounter);
+  }
+
+  if ("IntersectionObserver" in window && !reducedMotion) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          startDashboardAnimation();
+          observer.disconnect();
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    observer.observe(dashboard);
+  } else {
+    startDashboardAnimation();
+  }
+})();
