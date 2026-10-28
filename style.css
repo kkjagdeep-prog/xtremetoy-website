@@ -1,4 +1,3 @@
-   
 /* =========================================================
    XTREMETOY — COMPLETE WEBSITE STYLESHEET
    Theme: Dark Cyberpunk / Neon Purple / Pink / Cyan
@@ -559,7 +558,6 @@ section {
   cursor: pointer;
   transition: var(--transition);
 }
-
 .intro-music-toggle:hover {
   border-color: var(--pink);
   color: #fff;
@@ -1783,7 +1781,7 @@ footer p,
 
   .gaming-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+       }
 
   .topbar nav,
   .navbar nav,
@@ -2948,7 +2946,6 @@ footer p,
     clip-path: inset(65% 0 0 0);
     animation: xt-glitch-pink 2s infinite steps(1);
 }
-
 @keyframes xt-glitch-main {
     0%, 88%, 92%, 100% {
         transform: translateX(0);
@@ -3522,13 +3519,16 @@ html body #intro.neon-intro .intro-content {
 }
 
 .xt-player-card .xt-player-banner-label {
-    position: absolute;
-    top: 16px;
-    left: 22px;
+    position: relative;
+    display: block;
+    top: auto;
+    left: auto;
     right: auto;
     bottom: auto;
     z-index: 3;
-    max-width: calc(100% - 44px);
+    max-width: 100%;
+    padding: 16px 22px;
+    padding-right: 80px;
     overflow-wrap: anywhere;
     line-height: 1.4;
 }
@@ -3556,8 +3556,9 @@ html body #intro.neon-intro .intro-content {
     }
 
     .xt-player-card .xt-player-banner-label {
-        left: 16px;
-        max-width: calc(100% - 32px);
+        padding: 14px 16px;
+        padding-right: 64px;
+        max-width: 100%;
     }
 
     .xt-player-card .xt-player-banner-symbol {
