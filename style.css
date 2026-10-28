@@ -3489,3 +3489,78 @@ html body #intro.neon-intro .intro-content {
         padding-right: 16px;
     }
 }
+
+/* ===== FIX XTREMETOY PLAYER CARD HEADER ===== */
+
+.xt-player-card {
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.xt-player-card .xt-player-topline {
+    position: relative;
+    inset: auto;
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 22px;
+    margin: 0;
+}
+
+.xt-player-card .xt-player-banner {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.xt-player-card .xt-player-banner-label {
+    position: absolute;
+    top: 16px;
+    left: 22px;
+    right: auto;
+    bottom: auto;
+    z-index: 3;
+    max-width: calc(100% - 44px);
+    overflow-wrap: anywhere;
+    line-height: 1.4;
+}
+
+.xt-player-card .xt-player-banner-symbol {
+    position: absolute;
+    right: 24px;
+    bottom: 12px;
+    left: auto;
+    top: auto;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.xt-player-card .xt-player-content,
+.xt-player-card .xt-player-footer {
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+    .xt-player-card .xt-player-topline {
+        padding: 12px 16px;
+    }
+
+    .xt-player-card .xt-player-banner-label {
+        left: 16px;
+        max-width: calc(100% - 32px);
+    }
+
+    .xt-player-card .xt-player-banner-symbol {
+        right: 16px;
+    }
+}
