@@ -6377,3 +6377,25 @@ body {
     opacity: 0;
   }
 }
+
+/* FIX: Always show the homepage cursor */
+.hero-copy h2 .cursor {
+  display: inline-block !important;
+  visibility: visible !important;
+  color: #22d3ee !important;
+  opacity: 1 !important;
+  font-size: 1em;
+  font-weight: 900;
+  margin-left: 5px;
+  text-shadow: 0 0 8px #22d3ee, 0 0 18px rgba(34, 211, 238, 0.7);
+  animation: xtCursorBlink 0.8s steps(2, start) infinite !important;
+}
+
+@keyframes xtCursorBlink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0.2;
+  }
+}
