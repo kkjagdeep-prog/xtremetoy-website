@@ -544,3 +544,89 @@ document.addEventListener("DOMContentLoaded", () => {
     startDashboardAnimation();
   }
 })();
+/* =========================================
+   XTREMETOY - GAME STATISTICS DEMO
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+  const gameCards = document.querySelectorAll(".game-stat-card");
+
+  gameCards.forEach(function (card) {
+    const statFields = card.querySelectorAll(".editable-stat");
+    const statusLabel = card.querySelector(".game-profile-status");
+
+    function updateStatus() {
+      const hasEnteredValue = Array.from(statFields).some(function (field) {
+        const value = field.textContent.trim();
+
+        return value !== "" && value !== "—" && value !== "-";
+      });
+
+      if (statusLabel) {
+        statusLabel.textContent = hasEnteredValue
+          ? "DATA ENTERED"
+          : "AWAITING DATA";
+      }
+    }
+
+    statFields.forEach(function (field) {
+      // Allow Enter to finish editing without adding another line.
+      field.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          field.blur();
+        }
+      });
+
+      // Update the card status as the value changes.
+      field.addEventListener("input", updateStatus);
+
+      // Remove surrounding whitespace after editing.
+      field.addEventListener("blur", function () {
+        field.textContent = field.textContent.trim();
+        updateStatus();
+      });
+    });
+
+    updateStatus();
+  });
+
+  // Demo animation: reveal the cards when the section enters view.
+  const gameStatsSection = document.querySelector("#game-stats");
+
+  if (gameStatsSection && "IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            gameCards.forEach(function (card, index) {
+              card.animate(
+                [
+                  {
+                    opacity: 0.4,
+                    transform: "translateY(18px)"
+                  },
+                  {
+                    opacity: 1,
+                    transform: "translateY(0)"
+                  }
+                ],
+                {
+                  duration: 450,
+                  delay: index * 120,
+                  easing: "ease-out",
+                  fill: "both"
+                }
+              );
+            });
+
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(gameStatsSection);
+  }
+});
