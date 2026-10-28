@@ -4126,3 +4126,139 @@ html body #intro.neon-intro .intro-content {
         transition: none;
     }
 }
+
+/* ==========================================
+   XTREMETOY — FINAL SPACING FIX
+   Fix social buttons and top navigation logo
+   ========================================== */
+
+/* Give the social links enough room */
+.xt-player-section .xt-player-content {
+    grid-template-columns:
+        minmax(190px, 1fr)
+        minmax(230px, 1.2fr)
+        minmax(190px, 1fr)
+        minmax(180px, 0.9fr);
+    column-gap: 24px;
+}
+
+/* Keep each social button readable */
+.xt-player-section .xt-player-links {
+    width: 100%;
+    min-width: 0;
+}
+
+.xt-player-section .xt-player-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    min-width: 0;
+    min-height: 64px;
+    padding: 14px 12px;
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: normal;
+    text-align: center;
+    font-size: 0.78rem;
+    line-height: 1.45;
+}
+
+.xt-player-section .xt-player-link > span {
+    min-width: 0;
+}
+
+.xt-player-section .xt-player-link > span:nth-child(2) {
+    flex: 1 1 auto;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+}
+
+.xt-player-section .xt-player-link-icon,
+.xt-player-section .xt-player-link-arrow {
+    flex: 0 0 auto;
+}
+
+/* Keep the brand and PLAYER ONE separated */
+.topbar .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.topbar .brand > span:last-child {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    line-height: 1.2;
+}
+
+.topbar .brand small {
+    display: block;
+    margin: 0;
+    font-size: 0.65rem;
+    line-height: 1.3;
+    letter-spacing: 1.5px;
+}
+
+/* Tablet: use two columns for the profile details */
+@media (max-width: 1100px) {
+    .xt-player-section .xt-player-content {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 28px;
+    }
+
+    .xt-player-section .xt-player-links {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .xt-player-section .xt-player-link {
+        min-height: 60px;
+    }
+}
+
+/* Mobile: stack the profile and keep social links side by side */
+@media (max-width: 600px) {
+    .xt-player-section .xt-player-content {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 26px;
+    }
+
+    .xt-player-section .xt-player-identity,
+    .xt-player-section .xt-player-about,
+    .xt-player-section .xt-player-roles,
+    .xt-player-section .xt-player-links {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .xt-player-section .xt-player-links {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .xt-player-section .xt-player-link {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 6px;
+        min-height: 76px;
+        padding: 10px 6px;
+        font-size: 0.7rem;
+    }
+
+    .xt-player-section .xt-player-link-arrow {
+        display: none;
+    }
+
+    .topbar .brand {
+        gap: 7px;
+    }
+}
