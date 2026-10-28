@@ -602,6 +602,272 @@ document.addEventListener("DOMContentLoaded", function () {
             gameCards.forEach(function (card, index) {
               card.animate(
                 [
+                   
+/* =========================================
+   XTREMETOY — CYBERPUNK EFFECTS ENGINE
+   Add this at the END of script.js
+========================================= */
+
+(function () {
+  "use strict";
+
+  function startXTEffects() {
+    // Prevent accidental duplicate initialization.
+    if (document.documentElement.dataset.xtEffects === "ready") return;
+    document.documentElement.dataset.xtEffects = "ready";
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    const mouseDevice = window.matchMedia(
+      "(hover: hover) and (pointer: fine)"
+    ).matches;
+
+    /* -------------------------------------
+       1. NEON CURSOR
+    ------------------------------------- */
+    if (mouseDevice && !reduceMotion) {
+      const glow = document.createElement("div");
+      glow.id = "xt-cursor-glow";
+      glow.setAttribute("aria-hidden", "true");
+
+      const dot = document.createElement("div");
+      dot.id = "xt-cursor-dot";
+      dot.setAttribute("aria-hidden", "true");
+
+      const trail = document.createElement("div");
+      trail.id = "xt-cursor-trail";
+      trail.setAttribute("aria-hidden", "true");
+
+      document.body.append(glow, trail, dot);
+
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let trailX = mouseX;
+      let trailY = mouseY;
+      let glowX = mouseX;
+      let glowY = mouseY;
+      let frameRequested = false;
+
+      function renderCursor() {
+        trailX += (mouseX - trailX) * 0.16;
+        trailY += (mouseY - trailY) * 0.16;
+        glowX += (mouseX - glowX) * 0.09;
+        glowY += (mouseY - glowY) * 0.09;
+
+        dot.style.left = mouseX + "px";
+        dot.style.top = mouseY + "px";
+
+        trail.style.left = trailX + "px";
+        trail.style.top = trailY + "px";
+
+        glow.style.left = glowX + "px";
+        glow.style.top = glowY + "px";
+
+        frameRequested = false;
+      }
+
+      document.addEventListener("mousemove", function (event) {
+        mouseX = event.clientX;
+        mouseY = event.clientY;
+
+        if (!frameRequested) {
+          frameRequested = true;
+          requestAnimationFrame(renderCursor);
+        }
+      }, { passive: true });
+
+      document.addEventListener("mouseover", function (event) {
+        if (event.target.closest("a, button, [role='button']")) {
+          trail.classList.add("xt-cursor-hover");
+        } else {
+          trail.classList.remove("xt-cursor-hover");
+        }
+      });
+
+      document.addEventListener("mouseleave", function () {
+        document.body.classList.remove("xt-effects-ready");
+      });
+
+      document.addEventListener("mouseenter", function () {
+        document.body.classList.add("xt-effects-ready");
+      });
+
+      document.body.classList.add("xt-effects-ready");
+    }
+
+    /* -------------------------------------
+       2. NEON CLICK RIPPLE
+    ------------------------------------- */
+    if (!reduceMotion) {
+      document.addEventListener("click", function (event) {
+        const target = event.target.closest(
+          "a, button, .button, .music-toggle"
+        );
+
+        if (!target) return;
+
+        // Avoid changing the layout or clipping the existing design.
+        const rect = target.getBoundingClientRect();
+        const ripple = document.createElement("span");
+
+        ripple.className = "xt-click-ripple";
+        ripple.setAttribute("aria-hidden", "true");
+
+        ripple.style.left = (event.clientX - rect.left) + "px";
+        ripple.style.top = (event.clientY - rect.top) + "px";
+
+        // Position the ripple relative to the clicked element.
+        const previousPosition = target.style.position;
+        if (getComputedStyle(target).position === "static") {
+          target.style.position = "relative";
+        }
+
+        target.appendChild(ripple);
+
+        window.setTimeout(function () {
+          ripple.remove();
+
+          // Restore only the inline position this effect added.
+          if (previousPosition === "" &&
+              target.style.position === "relative") {
+            target.style.removeProperty("position");
+          }
+        }, 700);
+      });
+    }
+
+    /* -------------------------------------
+       3. GENTLE 3D CARD TILT
+    ------------------------------------- */
+    if (mouseDevice && !reduceMotion) {
+      const cardSelectors = [
+        ".role-card",
+        ".gaming-card",
+        ".social-card",
+        ".achievement-card",
+        ".profile-card",
+        ".game-card",
+        ".stat-card"
+      ].join(",");
+
+      document.querySelectorAll(cardSelectors).forEach(function (card) {
+        card.classList.add("xt-tilt-card");
+
+        card.addEventListener("mousemove", function (event) {
+          const rect = card.getBoundingClientRect();
+
+          const x = (event.clientX - rect.left) / rect.width;
+          const y = (event.clientY - rect.top) / rect.height;
+
+          const rotateY = (x - 0.5) * 5;
+          const rotateX = (0.5 - y) * 5;
+
+          card.style.transform =
+            "perspective(900px) rotateX(" + rotateX + "deg) " +
+            "rotateY(" + rotateY + "deg) translateY(-2px)";
+        });
+
+        card.addEventListener("mouseleave", function () {
+          card.style.transform = "";
+        });
+      });
+    }
+
+    /* -------------------------------------
+       4. SCROLL REVEAL
+    ------------------------------------- */
+    const revealSelectors = [
+      "#about",
+      "#roles",
+      "#gaming",
+      "#statistics",
+      "#game-stats",
+      "#achievements",
+      "#connect"
+    ];
+
+    const revealItems = [];
+
+    revealSelectors.forEach(function (selector) {
+      document.querySelectorAll(selector).forEach(function (element) {
+        // Keep the hero and intro animation untouched.
+        if (!element.classList.contains("hero")) {
+          revealItems.push(element);
+        }
+      });
+    });
+
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      revealItems.forEach(function (element) {
+        element.classList.add("xt-revealed");
+      });
+    } else {
+      revealItems.forEach(function (element) {
+        element.classList.add("xt-reveal");
+      });
+
+      const revealObserver = new IntersectionObserver(
+        function (entries, observer) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("xt-revealed");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+
+      revealItems.forEach(function (element) {
+        revealObserver.observe(element);
+      });
+    }
+
+    /* -------------------------------------
+       5. SUBTLE CARD SCAN EFFECT
+    ------------------------------------- */
+    if (!reduceMotion) {
+      const scanSelectors = [
+        ".role-card",
+        ".gaming-card",
+        ".social-card",
+        ".achievement-card",
+        ".profile-card"
+      ].join(",");
+
+      document.querySelectorAll(scanSelectors).forEach(function (card) {
+        card.classList.add("xt-scan-target");
+
+        card.addEventListener("mouseenter", function () {
+          card.classList.remove("xt-scan-active");
+
+          // Restart the scan animation.
+          void card.offsetWidth;
+          card.classList.add("xt-scan-active");
+        });
+
+        card.addEventListener("animationend", function (event) {
+          if (event.animationName === "xtScanSweep") {
+            card.classList.remove("xt-scan-active");
+          }
+        });
+      });
+    }
+
+    console.info("XTREMETOY cyberpunk effects initialized.");
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", startXTEffects, {
+      once: true
+    });
+  } else {
+    startXTEffects();
+  }
+})();
+
                   {
                     opacity: 0.4,
                     transform: "translateY(18px)"
